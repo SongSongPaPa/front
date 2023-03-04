@@ -32,7 +32,7 @@ function App() {
 
   return (
     <div className="App">
-      <LoginPage loginUri="https://api.intra.42.fr/oauth/authorize?client_id=u-s4t2ud-3caeb9dbdfcb3e93713d5075212189e056e453825da4e6a3c108ebba393824c9&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Floginreturn%2F42&response_type=code" onLogin={handleLogin} />
+      <LoginPage loginUri="https://api.intra.42.fr/oauth/authorize?client_id=u-s4t2ud-3caeb9dbdfcb3e93713d5075212189e056e453825da4e6a3c108ebba393824c9&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2F&response_type=code" onLogin={handleLogin} />
     </div>
   );
 };
