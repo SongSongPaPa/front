@@ -1,0 +1,11 @@
+/* Button.module.css 파일 */
+
+.button {
+  background-color: #000000;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+}
