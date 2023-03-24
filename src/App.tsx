@@ -1,12 +1,19 @@
 import React from 'react';
 import './App.css';
 import LoginPage from './LoginPage';
+import LobbyPage from './pages/LobbyPage';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <LoginPage/>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<LoginPage/>}/>
+          <Route path="/lobby" element={<LobbyPage/>}/>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 };
 

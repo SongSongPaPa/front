@@ -15,7 +15,7 @@
   display: inline-block;  
 }*/
 
-button {
+.button {
     font-family: Bouncy;
     font-size: 36px;
     text-align: center;

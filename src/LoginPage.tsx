@@ -8,7 +8,7 @@ function LoginPage() {
   return (
     <div className="image-container">
       <img className="Logo" src={Logo}></img>
-      <button>Login</button>
+      <button className="button">Login</button>
     </div>
   );
 };
