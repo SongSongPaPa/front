@@ -1,8 +1,20 @@
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content:flex-start;
+  align-items: center;
 }
 
-.container > * {
+.horizontal-rectangles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.horizontal-rectangles > * {
   margin-bottom: 20px;
+}
+
+.vertical-rectangle {
+  margin-left: 20px;
 }

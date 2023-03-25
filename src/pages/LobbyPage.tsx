@@ -1,13 +1,19 @@
 import React from 'react';
 import ChatRoomContainer from '../components/ChatRoomContainer';
 import GameRoomContainer from '../components/GameRoomContainer';
+import UserInfo from '../components/UserInfo';
 import './LobbyPage.css';
 
 function LobbyPage() {
     return (
         <div className='container'>
-            <GameRoomContainer/>
-            <ChatRoomContainer/>
+            <div className='horizontal-rectangles'>
+                <GameRoomContainer/>
+                <ChatRoomContainer/>
+            </div>
+            <div className='vertical-rectangle'>
+                <UserInfo/>
+            </div>
         </div>
     );
 };
