@@ -1,4 +1,8 @@
-.user-list {
+.user-profile {
+    background-color: #fcfcfc;
+    width: 367px;
+    height: 150px;
+    border-radius: 25px;
     top: 100px;
     left: 10px;
 }

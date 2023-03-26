@@ -1,6 +1,6 @@
 @font-face {
 	font-family: "Bouncy";
-	src: url("./fonts/Bouncy-Thin.otf");
+	src: url("../fonts/Bouncy-Thin.otf");
 }
 
 .image-container {
@@ -19,6 +19,7 @@
     font-family: Bouncy;
     font-size: 36px;
     text-align: center;
+    vertical-align: middle;
     position: absolute;
     border: none;
     background-color: #e2e2e2;
@@ -29,4 +30,9 @@
     height: 77px;
     line-height: 77px;
     border-radius: 25px;
+}
+
+a.button {
+  text-decoration: none;
+  color: #000000;
 }

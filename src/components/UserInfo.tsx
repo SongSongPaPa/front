@@ -6,7 +6,7 @@ const UserInfo = () => {
     const [selected, setSelected] = useState(false);
     return (
         <div className="user-box">
-            <div className="user-list">
+            <div className="user-profile"></div>
                 <ToggleButton
                     selected={selected}
                     toggleSelected={ () => {
@@ -15,7 +15,6 @@ const UserInfo = () => {
                     onText="Friend"
                     offText="All"
                 />
-            </div>
         </div>
     );
 }
