@@ -49,6 +49,8 @@
   border-radius: 25px 0px 0px 0px;
   border: none;
   position: absolute;
+  top: 0%;
+  cursor: pointer;
 }
 
 .game-watch-button {
@@ -60,7 +62,8 @@
   border-radius: 0px 0px 0px 25px;
   border: none;
   position: absolute;
-  bottom: 0%
+  bottom: 0%;
+  cursor: pointer;
 }
 
 .chat-join-button {
