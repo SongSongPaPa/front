@@ -11,13 +11,6 @@ top: 10px;
 left: 10px;
 }
 
-.user-box {
-    width: 367px;
-    height: 683px;
-    border-radius: 25px;
-    background-color: #fcfcfc;
-    margin-left: 10px;
-}
 
 .button-container {
 position: absolute;

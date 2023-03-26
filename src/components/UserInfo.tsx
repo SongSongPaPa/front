@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import ToggleButton from "./ToggleButton";
+import SearchBar from "./SearchBar";
 import './UserInfo.css';
 
 const UserInfo = () => {
@@ -7,14 +8,15 @@ const UserInfo = () => {
     return (
         <div className="user-box">
             <div className="user-profile"></div>
-                <ToggleButton
-                    selected={selected}
-                    toggleSelected={ () => {
-                        setSelected(!selected);
-                    }}
-                    onText="Friend"
-                    offText="All"
-                />
+            <ToggleButton
+                selected={selected}
+                toggleSelected={ () => {
+                    setSelected(!selected);
+                }}
+                onText="Friend"
+                offText="All"
+            />
+            <SearchBar></SearchBar>
         </div>
     );
 }

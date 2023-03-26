@@ -1,8 +1,21 @@
+.user-box {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    width: 367px;
+    height: 683px;
+    border-radius: 25px;
+    background-color: #fcfcfc;
+    margin-left: 10px;
+}
+
 .user-profile {
+    position: relative;
     background-color: #fcfcfc;
     width: 367px;
     height: 150px;
     border-radius: 25px;
-    top: 100px;
-    left: 10px;
+    top: 0px;
+    left: 0px;
 }
