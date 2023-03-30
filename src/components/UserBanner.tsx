@@ -1,5 +1,5 @@
 import React from "react";
-import SocketButton from "./SocketButton";
+import ModalButton from "./ModalButton";
 
 export interface UserBannerProps {
   imagePath: string;
@@ -11,9 +11,9 @@ const UserBanner = (props: UserBannerProps) => {
   const { imagePath, name, status } = props;
   return (
     <div className="banner-container">
-      <SocketButton text={name} className="user-banner">
+      <ModalButton text={name} className="user-banner">
         <img src={imagePath}></img>
-      </SocketButton>
+      </ModalButton>
     </div>
   );
 };
