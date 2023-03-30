@@ -1,9 +1,8 @@
 import React from "react";
 
-/*export const openCreateRoomModal = (setModalArgs:) => {
-  setModalArgs({
-    title: "Create Room",
-    content: "options",
-    callback: () => alert("modal closed"),
-  });
-};*/
+export const CreateRoomModal = {
+  isOpen: true,
+  title: "test",
+  content: "test",
+  callback: () => alert("test"),
+};

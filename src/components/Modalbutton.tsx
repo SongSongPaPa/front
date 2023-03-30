@@ -6,13 +6,13 @@ interface ButtonProps {
   text: string;
   className: string;
   children?: any;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-function ModalButton({ text, className, children }: ButtonProps) {
-  const { openModal, modalDataState } = useModal();
+function ModalButton({ text, className, children, onClick }: ButtonProps) {
   return (
     <div>
-      <button className={className} onClick={() => openModal(modalDataState)}>
+      <button className={className} onClick={onClick}>
         {children}
         {text}
       </button>

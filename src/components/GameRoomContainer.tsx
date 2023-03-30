@@ -5,6 +5,10 @@ import ModalButton from "./ModalButton";
 import GameRoomList from "./GameRoomList";
 import { useRecoilState } from "recoil";
 import { modalState } from "../recoil/modal";
+import { useModal } from "../hooks/useModal";
+import { useCallback } from "react";
+import { testCallback } from "./callbacks";
+//import { handleCreateRoomClick } from "./GameRoomUtils";
 
 const items = [
   { title: "Apple", headCount: 1 },
@@ -13,17 +17,27 @@ const items = [
 ];
 
 const GameRoomContainer = () => {
-  const [modalData, setModalData] = useRecoilState(modalState);
-  /*setModalData({
-    isOpen: true,
-    title: "my modal",
-    content: "content",
-    callback: () => alert("closed"),
-  });*/
+  const { openModal } = useModal();
+  const handleCreateRoomClick = useCallback(() => {
+    openModal({
+      title: "asdfads",
+      content: (
+        <div>
+          Content with callback function:{" "}
+          <button onClick={testCallback}>Click me</button>
+        </div>
+      ),
+      callback: testCallback,
+    });
+  }, [openModal]);
   return (
     <div className="box">
       <div className="button-container">
-        <ModalButton className="lobby-round-button" text="Quick Start" />
+        <ModalButton
+          className="lobby-round-button"
+          text="Quick Start"
+          onClick={handleCreateRoomClick}
+        />
         <ModalButton className="lobby-round-button" text="Create Room" />
       </div>
       <GameRoomList rooms={items} />
