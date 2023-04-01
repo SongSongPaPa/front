@@ -85,28 +85,6 @@ const ConfirmModal = ({
     { label: "Option 3", value: "option3" },
   ];
 
-  /*return (
-    <Dialog
-      open
-      onClose={onClose}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
-      maxWidth="sm"
-      fullWidth
-      sx={{ whiteSpace: "break-spaces" }}
-    >
-      <DialogTitle id="confirm-dialog-title">{title}</DialogTitle>
-      <DialogContent>
-        <DialogContentText>{message}</DialogContentText>
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={onClose}>{cancelText}</Button>
-        <Button onClick={onConfirm} color="primary" autoFocus>
-          {confirmText}
-        </Button>
-      </DialogActions>
-    </Dialog>
-  );*/
   return (
     <div className="Modal">
       <div className="modalBody">
