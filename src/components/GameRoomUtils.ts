@@ -17,7 +17,7 @@ import { useCallback } from "react";
   });
 }, [openModal]);*/
 
-export const handleCreateRoomClick = (openModal: modalState) => {
+/*export const handleCreateRoomClick = (openModal: modalState) => {
   openModal({
     title: "asdfads",
     content: (
@@ -28,7 +28,7 @@ export const handleCreateRoomClick = (openModal: modalState) => {
     ),
     callback: testCallback,
   });
-};
+};*/
 
 /*export const handleCreateRoomClick = () => {
   const { openModal } = useModal();

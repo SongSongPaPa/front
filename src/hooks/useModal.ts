@@ -29,6 +29,8 @@ export const useModal = () => {
       }),
     [setModalDataState]
   );
+  var i = 0;
+  console.log("hey %d", ++i);
 
   return { modalDataState, closeModal, openModal };
 };
