@@ -1,5 +1,6 @@
 import React from "react";
 import ModalButton from "./ModalButton";
+import useModal from "../hooks/useModal";
 
 export interface UserBannerProps {
   imagePath: string;
@@ -9,9 +10,22 @@ export interface UserBannerProps {
 
 const UserBanner = (props: UserBannerProps) => {
   const { imagePath, name, status } = props;
+  const { showModal } = useModal();
+  const handleClickAlertModal = () => {
+    showModal({
+      modalType: "AlertModal",
+      modalProps: {
+        message: "Success!",
+      },
+    });
+  };
   return (
     <div className="banner-container">
-      <ModalButton text={name} className="user-banner">
+      <ModalButton
+        text={name}
+        className="user-banner"
+        onClick={handleClickAlertModal}
+      >
         <img src={imagePath}></img>
       </ModalButton>
     </div>

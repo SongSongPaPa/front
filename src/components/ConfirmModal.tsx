@@ -1,29 +1,5 @@
-/*import React, { useState } from "react";
-import Modal from "react-modal";
-
-Modal.setAppElement("#root");
-
-export interface ConfirmModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-const ConfirmModal = ({ isOpen, onClose }: ConfirmModalProps) => {
-  return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={onClose}
-      contentLabel="Example Modal"
-    >
-      <h2>Confirm</h2>
-      <button onClick={onClose}>close</button>
-    </Modal>
-  );
-};
-
-export default ConfirmModal;*/
-
-import React from "react";
+import React, { useState } from "react";
+import "./CreateRoomModal.css";
 
 import {
   Dialog,
@@ -42,6 +18,41 @@ export interface ConfirmModalProps {
   confirmText?: string;
   handleClose?: (...arg: any[]) => any;
   handleConfirm?: (...arg: any[]) => any;
+}
+
+interface CheckboxOption {
+  label: string;
+  value: string;
+}
+
+interface CheckboxGroupProps {
+  options: CheckboxOption[];
+}
+
+function CheckboxGroup(props: CheckboxGroupProps) {
+  const { options } = props;
+  const [selectedValue, setSelectedValue] = useState<string>("");
+
+  const handleOptionSelect = (value: string) => {
+    setSelectedValue(value);
+  };
+
+  return (
+    <div>
+      {options.map((option) => (
+        <div key={option.value}>
+          <label>
+            <input
+              type="checkbox"
+              checked={selectedValue === option.value}
+              onChange={() => handleOptionSelect(option.value)}
+            />
+            {option.label}
+          </label>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 const ConfirmModal = ({
@@ -68,7 +79,13 @@ const ConfirmModal = ({
     hideModal();
   };
 
-  return (
+  const options = [
+    { label: "Option 1", value: "option1" },
+    { label: "Option 2", value: "option2" },
+    { label: "Option 3", value: "option3" },
+  ];
+
+  /*return (
     <Dialog
       open
       onClose={onClose}
@@ -89,6 +106,16 @@ const ConfirmModal = ({
         </Button>
       </DialogActions>
     </Dialog>
+  );*/
+  return (
+    <div className="Modal">
+      <div className="modalBody">
+        <button onClick={onClose}>close</button>
+        <button onClick={onConfirm}>ok</button>
+        <input></input>
+        <CheckboxGroup options={options}></CheckboxGroup>
+      </div>
+    </div>
   );
 };
 
