@@ -1,11 +1,11 @@
 import React from "react";
-import MyModal from "./MyModal";
-import { useModal } from "../hooks/useModal";
+//import MyModal from "./MyModal";
+//import { useModal } from "../hooks/useModal";
 
 interface ButtonProps {
   text: string;
   className: string;
-  children?: any;
+  children?: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
@@ -16,7 +16,6 @@ function ModalButton({ text, className, children, onClick }: ButtonProps) {
         {children}
         {text}
       </button>
-      <MyModal />
     </div>
   );
 }

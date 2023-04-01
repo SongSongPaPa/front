@@ -3,12 +3,8 @@ import "./GameRoomContainer.css";
 import "./button.css";
 import ModalButton from "./ModalButton";
 import GameRoomList from "./GameRoomList";
-import { useRecoilState } from "recoil";
-import { modalState } from "../recoil/modal";
-import { useModal } from "../hooks/useModal";
+import useModal from "../hooks/useModal";
 import { useCallback } from "react";
-import { testCallback } from "./callbacks";
-//import { handleCreateRoomClick } from "./GameRoomUtils";
 
 const items = [
   { title: "Apple", headCount: 1 },
@@ -17,28 +13,45 @@ const items = [
 ];
 
 const GameRoomContainer = () => {
-  const { openModal } = useModal();
-  const handleCreateRoomClick = useCallback(() => {
-    openModal({
-      title: "asdfads",
-      content: (
-        <div>
-          Content with callback function:{" "}
-          <button onClick={testCallback}>Click me</button>
-        </div>
-      ),
-      callback: testCallback,
+  const { showModal } = useModal();
+  const handleClickAlertModal = () => {
+    showModal({
+      modalType: "AlertModal",
+      modalProps: {
+        message: "Success!",
+      },
     });
-  }, [openModal]);
+  };
+
+  const handleClickConfirmModal = () => {
+    showModal({
+      modalType: "ConfirmModal",
+      modalProps: {
+        message: "Yes or No",
+        confirmText: "Yes",
+        cancelText: "No",
+        handleConfirm: () => {
+          console.log("Yes!");
+        },
+        handleClose: () => {
+          console.log("No!");
+        },
+      },
+    });
+  };
   return (
     <div className="box">
       <div className="button-container">
         <ModalButton
           className="lobby-round-button"
           text="Quick Start"
-          onClick={handleCreateRoomClick}
+          onClick={handleClickAlertModal}
         />
-        <ModalButton className="lobby-round-button" text="Create Room" />
+        <ModalButton
+          className="lobby-round-button"
+          text="Create Room"
+          onClick={handleClickConfirmModal}
+        />
       </div>
       <GameRoomList rooms={items} />
     </div>

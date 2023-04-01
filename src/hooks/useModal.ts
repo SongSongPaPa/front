@@ -1,36 +1,24 @@
-import { useCallback } from "react";
 import { useRecoilState } from "recoil";
-import { modalState } from "../recoil/modal";
+import { ModalType, modalState } from "../recoil/modal";
 
-type OpenModalType = {
-  title: string;
-  content: JSX.Element | string;
-  callback?: () => any;
-};
+export default function useModal() {
+  const [modal, setModal] = useRecoilState(modalState);
 
-export const useModal = () => {
-  const [modalDataState, setModalDataState] = useRecoilState(modalState);
+  const showModal = ({ modalType, modalProps }: ModalType) => {
+    console.log("hey");
+    setModal({ modalType, modalProps });
+  };
 
-  const closeModal = useCallback(
-    () =>
-      setModalDataState((prev) => {
-        return { ...prev, isOpen: false };
-      }),
-    [setModalDataState]
-  );
+  const hideModal = () => {
+    setModal(null);
+  };
 
-  const openModal = useCallback(
-    ({ title, content, callback }: OpenModalType) =>
-      setModalDataState({
-        isOpen: true,
-        title: title,
-        content: content,
-        callback: callback,
-      }),
-    [setModalDataState]
-  );
-  var i = 0;
-  console.log("hey %d", ++i);
+  console.log("modal state:", modal);
 
-  return { modalDataState, closeModal, openModal };
-};
+  return {
+    modal,
+    setModal,
+    showModal,
+    hideModal,
+  };
+}

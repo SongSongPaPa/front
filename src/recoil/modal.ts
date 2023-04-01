@@ -1,17 +1,23 @@
 import { atom } from "recoil";
+import { MODAL_TYPES } from "../components/GlobalModal";
+import { ConfirmModalProps } from "../components/ConfirmModal";
+import { AlertModalProps } from "../components/AlertModal";
 
-type ModalType = {
-  isOpen: boolean;
-  title: string;
-  content: JSX.Element | string;
-  callback?: () => any;
-};
+const { ConfirmModal, AlertModal } = MODAL_TYPES;
 
-export const modalState = atom<ModalType>({
+export interface ConfirmModalType {
+  modalType: typeof ConfirmModal;
+  modalProps: ConfirmModalProps;
+}
+
+export interface AlertModalType {
+  modalType: typeof AlertModal;
+  modalProps: AlertModalProps;
+}
+
+export type ModalType = ConfirmModalType | AlertModalType;
+
+export const modalState = atom<ModalType | null>({
   key: "modalState",
-  default: {
-    isOpen: false,
-    title: "",
-    content: "",
-  },
+  default: null,
 });
