@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import LoginPage from "./pages/LoginPage";
 import LobbyPage from "./pages/LobbyPage";
+import GameWaitPage from "./pages/GameWaitPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/lobby" element={<LobbyPage />} />
+          <Route path="/game-wait" element={<GameWaitPage />} />
         </Routes>
       </div>
     </BrowserRouter>
