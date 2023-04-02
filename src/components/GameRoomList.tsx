@@ -2,17 +2,21 @@ import React from "react";
 import GameRoom, { GameRoomProps } from "./GameRoom";
 
 interface GameRoomListProps {
-    rooms: GameRoomProps[];
+  rooms: GameRoomProps[];
 }
 
-const GameRoomList = ({rooms}: GameRoomListProps) => {
-    return (
+const GameRoomList = ({ rooms }: GameRoomListProps) => {
+  return (
     <div className="room-container">
       {rooms.map((room) => (
-        <GameRoom title={room.title} headCount={room.headCount}/>
+        <GameRoom
+          title={room.title}
+          headCount={room.headCount}
+          option={room.option}
+        />
       ))}
     </div>
   );
-}
+};
 
 export default GameRoomList;

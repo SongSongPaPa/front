@@ -1,24 +1,8 @@
 import React, { useState } from "react";
 import "./CreateRoomModal.css";
-
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Button,
-} from "@mui/material";
 import useModal from "../hooks/useModal";
-
-export interface ConfirmModalProps {
-  title?: string;
-  message: string;
-  cancelText?: string;
-  confirmText?: string;
-  handleClose?: (...arg: any[]) => any;
-  handleConfirm?: (...arg: any[]) => any;
-}
+import { useRecoilState } from "recoil";
+import { itemsState } from "./GameRoomContainer";
 
 interface CheckboxOption {
   label: string;
@@ -27,14 +11,15 @@ interface CheckboxOption {
 
 interface CheckboxGroupProps {
   options: CheckboxOption[];
+  selectedOption: string;
+  setSelectedOption: React.Dispatch<React.SetStateAction<string>>;
 }
 
 function CheckboxGroup(props: CheckboxGroupProps) {
-  const { options } = props;
-  const [selectedValue, setSelectedValue] = useState<string>("");
+  const { options, selectedOption, setSelectedOption } = props;
 
   const handleOptionSelect = (value: string) => {
-    setSelectedValue(value);
+    setSelectedOption(value);
   };
 
   return (
@@ -44,7 +29,7 @@ function CheckboxGroup(props: CheckboxGroupProps) {
           <label>
             <input
               type="checkbox"
-              checked={selectedValue === option.value}
+              checked={selectedOption === option.value}
               onChange={() => handleOptionSelect(option.value)}
             />
             {option.label}
@@ -55,27 +40,18 @@ function CheckboxGroup(props: CheckboxGroupProps) {
   );
 }
 
-const ConfirmModal = ({
-  title,
-  message,
-  cancelText = "취소",
-  confirmText = "확인",
-  handleClose,
-  handleConfirm,
-}: ConfirmModalProps) => {
+const ConfirmModal = () => {
   const { hideModal } = useModal();
+  const [items, setItems] = useRecoilState(itemsState);
+  const [selectedValue, setSelectedValue] = useState("");
+  const [inputValue, setInputValue] = useState("");
 
   const onClose = () => {
-    if (handleClose) {
-      handleClose();
-    }
     hideModal();
   };
 
-  const onConfirm = async () => {
-    if (handleConfirm) {
-      await handleConfirm();
-    }
+  const onConfirm = async (title: string, option: string) => {
+    setItems([...items, { title: title, headCount: 2, option: option }]);
     hideModal();
   };
 
@@ -89,9 +65,16 @@ const ConfirmModal = ({
     <div className="Modal">
       <div className="modalBody">
         <button onClick={onClose}>close</button>
-        <button onClick={onConfirm}>ok</button>
-        <input></input>
-        <CheckboxGroup options={options}></CheckboxGroup>
+        <button onClick={() => onConfirm(inputValue, selectedValue)}>ok</button>
+        <input
+          value={inputValue}
+          onChange={(event) => setInputValue(event.target.value)}
+        ></input>
+        <CheckboxGroup
+          options={options}
+          selectedOption={selectedValue}
+          setSelectedOption={setSelectedValue}
+        ></CheckboxGroup>
       </div>
     </div>
   );

@@ -12,12 +12,7 @@ const UserBanner = (props: UserBannerProps) => {
   const { imagePath, name, status } = props;
   const { showModal } = useModal();
   const handleClickAlertModal = () => {
-    showModal({
-      modalType: "AlertModal",
-      modalProps: {
-        message: "Success!",
-      },
-    });
+    showModal({ modalType: "AlertModal" });
   };
   return (
     <div className="banner-container">

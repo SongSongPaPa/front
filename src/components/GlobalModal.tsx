@@ -15,7 +15,7 @@ const MODAL_COMPONENTS: any = {
 };
 
 const GlobalModal = () => {
-  const { modalType, modalProps } = useRecoilState(modalState)[0] || {};
+  const { modalType } = useRecoilState(modalState)[0] || {};
 
   const renderComponent = () => {
     if (!modalType) {
@@ -23,7 +23,7 @@ const GlobalModal = () => {
     }
     const ModalComponent = MODAL_COMPONENTS[modalType];
 
-    return <ModalComponent {...modalProps} />;
+    return <ModalComponent />;
   };
 
   return <>{renderComponent()}</>;
