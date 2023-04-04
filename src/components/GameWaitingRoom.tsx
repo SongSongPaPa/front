@@ -4,7 +4,7 @@ import "./GameWaitingRoom.css";
 
 const GameWaitingRoom = () => {
   return (
-    <div className="container">
+    <div className="containerr">
       <GamePlayerBox />
       <GamePlayerBox />
     </div>
