@@ -18,7 +18,6 @@ const ConfirmModal = () => {
   const onConfirm = async (title: string, option: string) => {
     setItems([...items, { title: title, headCount: 2, option: option }]);
     hideModal();
-    //window.location.href = "/game-wait";
   };
 
   const options = [

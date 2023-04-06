@@ -1,4 +1,5 @@
 import React from "react";
+//import "./Message.css";
 
 export interface MessageProps {
   name: string;
@@ -7,8 +8,9 @@ export interface MessageProps {
 
 const Message = (props: MessageProps) => {
   const { name, content } = props;
+  const isSentByCurrentUser = name === "sohan";
   return (
-    <div>
+    <div className={`message ${isSentByCurrentUser ? "sent" : "received"}`}>
       {name} : {content}
     </div>
   );

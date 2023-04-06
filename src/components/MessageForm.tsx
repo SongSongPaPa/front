@@ -15,7 +15,7 @@ const MessageInput = () => {
     if (message.trim() === "") {
       return;
     }
-    setMessages([...messages, { name: "sohan", content: message }]);
+    setMessages([...messages, { name: "asdf", content: message }]);
     setMessage("");
   };
 
