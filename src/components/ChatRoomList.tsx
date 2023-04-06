@@ -1,18 +1,17 @@
 import React from "react";
-import ChatRoom, { ChatRoomProps } from "./ChatRoom";
+import { useRecoilState } from "recoil";
+import { chatRoomsState } from "../recoil/test";
+import ChatRoom from "./ChatRoom";
 
-interface ChatRoomListProps {
-    rooms: ChatRoomProps[];
-}
-
-const ChatRoomList = ({rooms}: ChatRoomListProps) => {
-    return (
+const ChatRoomList = () => {
+  const [rooms, setRooms] = useRecoilState(chatRoomsState);
+  return (
     <div className="room-container">
-      {rooms.map((room) => (
-        <ChatRoom title={room.title} headCount={room.headCount}/>
+      {rooms.map((room, index) => (
+        <ChatRoom key={index} title={room.title} headCount={room.headCount} />
       ))}
     </div>
   );
-}
+};
 
 export default ChatRoomList;
