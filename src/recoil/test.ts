@@ -30,3 +30,13 @@ export const roomState = atom({
     playerB: "",
   },
 });
+
+interface MessageItem {
+  name: string;
+  content: string;
+}
+
+export const MessageState = atom<MessageItem[]>({
+  key: "messages",
+  default: [],
+});

@@ -1,0 +1,15 @@
+.chatting-container {
+  background-color: #fcfcfc;
+  width: 864px;
+  height: 683px;
+  border-radius: 25px;
+  border: none;
+  gap: 70px;
+  position: relative;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
