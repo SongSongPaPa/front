@@ -21,8 +21,10 @@ const MessageInput = () => {
 
   return (
     <form onSubmit={handleMessageSubmit}>
-      <input type="text" value={message} onChange={handleMessageChange} />
-      <button type="submit">Send</button>
+      <div className="message-bar">
+        <input type="text" value={message} onChange={handleMessageChange} />
+        <button type="submit"></button>
+      </div>
     </form>
   );
 };
