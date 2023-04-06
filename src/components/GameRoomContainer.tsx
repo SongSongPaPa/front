@@ -4,18 +4,8 @@ import "./button.css";
 import ModalButton from "./ModalButton";
 import GameRoomList from "./GameRoomList";
 import useModal from "../hooks/useModal";
-import { atom, useRecoilState } from "recoil";
-
-export interface Item {
-  title: string;
-  headCount: number;
-  option: string;
-}
-
-export const itemsState = atom<Item[]>({
-  key: "items",
-  default: [],
-});
+import { useRecoilState } from "recoil";
+import { itemsState } from "../recoil/test";
 
 const GameRoomContainer = () => {
   const { showModal } = useModal();

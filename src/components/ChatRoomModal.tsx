@@ -1,49 +1,51 @@
-import React, { useState } from "react";
-import "./CreateRoomModal.css";
-import useModal from "../hooks/useModal";
 import { useRecoilState } from "recoil";
-import { itemsState } from "../recoil/test";
+import useModal from "../hooks/useModal";
+import { useState } from "react";
 import RadioGroup from "./RadioGroup";
+import { chatRoomsState } from "../recoil/test";
 
-const ConfirmModal = () => {
+const ChatRoomModal = () => {
   const { hideModal } = useModal();
-  const [items, setItems] = useRecoilState(itemsState);
+  const [items, setItems] = useRecoilState(chatRoomsState);
   const [selectedValue, setSelectedValue] = useState("");
   const [inputValue, setInputValue] = useState("");
+  const [password, setPassword] = useState("");
 
   const onClose = () => {
     hideModal();
   };
 
   const onConfirm = async (title: string, option: string) => {
-    setItems([...items, { title: title, headCount: 2, option: option }]);
+    setItems([...items, { title: title, headCount: 2 }]);
     hideModal();
-    //window.location.href = "/game-wait";
   };
 
   const options = [
     { label: "Option 1", value: "option1" },
     { label: "Option 2", value: "option2" },
-    { label: "Option 3", value: "option3" },
   ];
 
   return (
     <div className="Modal">
       <div className="modalBody">
-        <button onClick={onClose}>close</button>
-        <button onClick={() => onConfirm(inputValue, selectedValue)}>ok</button>
         <input
           value={inputValue}
           onChange={(event) => setInputValue(event.target.value)}
+        ></input>
+        <input
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
         ></input>
         <RadioGroup
           options={options}
           selectedOption={selectedValue}
           setSelectedOption={setSelectedValue}
         ></RadioGroup>
+        <button onClick={onClose}>close</button>
+        <button onClick={() => onConfirm(inputValue, selectedValue)}>ok</button>
       </div>
     </div>
   );
 };
 
-export default ConfirmModal;
+export default ChatRoomModal;

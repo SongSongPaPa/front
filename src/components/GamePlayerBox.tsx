@@ -4,12 +4,11 @@ import "./GamePlayerBox.css";
 interface GamePlayerBoxProps {
   imagePath?: string;
   playerName?: string;
-  isOccupied?: boolean;
 }
 
 const GamePlayerBox = (props: GamePlayerBoxProps) => {
-  const { imagePath, playerName, isOccupied } = props;
-  if (isOccupied) {
+  const { imagePath, playerName } = props;
+  if (playerName) {
     return (
       <div className="occupied">
         <img src={imagePath}></img>
