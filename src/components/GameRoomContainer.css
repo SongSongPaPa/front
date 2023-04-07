@@ -1,7 +1,5 @@
 .box {
   display: flex;
-  /*align-items: center;
-justify-content: center;*/
   width: 864px;
   height: 332px;
   background-color: #fcfcfc;
@@ -18,7 +16,7 @@ justify-content: center;*/
   display: flex;
 }
 
-.button-container button {
+.button-container > * {
   margin-left: 10px;
 }
 

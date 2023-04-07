@@ -15,8 +15,8 @@ const ChatRoomContainer = () => {
       <div className="button-container">
         <ModalButton
           className="lobby-round-button"
-          text="Create Room"
           onClick={handleClickChatRoomModal}
+          content={["Create Room"]}
         />
       </div>
       <ChatRoomList />

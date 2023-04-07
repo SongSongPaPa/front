@@ -4,27 +4,6 @@ import SearchBar from "./SearchBar";
 import UserList from "./UserList";
 import "./UserInfo.css";
 
-const items = [
-  {
-    imagePath:
-      "https://blog.kakaocdn.net/dn/bxLuQy/btr6CgpS8wc/SbzrenkzzLn7UZzHGj0Jk0/img.png",
-    name: "sohan",
-    status: true,
-  },
-  {
-    imagePath:
-      "https://blog.kakaocdn.net/dn/bxLuQy/btr6CgpS8wc/SbzrenkzzLn7UZzHGj0Jk0/img.png",
-    name: "seunpark",
-    status: true,
-  },
-  {
-    imagePath:
-      "https://blog.kakaocdn.net/dn/bxLuQy/btr6CgpS8wc/SbzrenkzzLn7UZzHGj0Jk0/img.png",
-    name: "seonkim",
-    status: true,
-  },
-];
-
 const UserInfo = () => {
   const [selected, setSelected] = useState(false);
   return (
@@ -39,7 +18,7 @@ const UserInfo = () => {
         offText="All"
       />
       <SearchBar></SearchBar>
-      <UserList users={items}></UserList>
+      <UserList></UserList>
     </div>
   );
 };

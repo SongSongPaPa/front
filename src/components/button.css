@@ -13,6 +13,10 @@
   cursor: pointer;
   width: 116px;
   height: 28px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .menu-button {

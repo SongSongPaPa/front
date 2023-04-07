@@ -1,12 +1,11 @@
 import React from "react";
-import UserBanner, { UserBannerProps } from "./UserBanner";
+import UserBanner from "./UserBanner";
 import "./UserInfo.css";
+import { useRecoilState } from "recoil";
+import { UserItemState } from "../recoil/test";
 
-interface UserListProps {
-  users: UserBannerProps[];
-}
-
-const UserList = ({ users }: UserListProps) => {
+const UserList = () => {
+  const [users, setUsers] = useRecoilState(UserItemState);
   return (
     <div className="user-list">
       {users.map((user) => (

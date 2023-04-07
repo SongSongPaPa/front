@@ -1,11 +1,12 @@
 import React from "react";
 import ModalButton from "./ModalButton";
 import useModal from "../hooks/useModal";
+import { UserStatusType } from "../recoil/test";
 
-export interface UserBannerProps {
+interface UserBannerProps {
   imagePath: string;
   name: string;
-  status?: boolean;
+  status: UserStatusType;
 }
 
 const UserBanner = (props: UserBannerProps) => {
@@ -14,15 +15,25 @@ const UserBanner = (props: UserBannerProps) => {
   const handleClickAlertModal = () => {
     showModal({ modalType: "AlertModal" });
   };
+  let dotClass = "";
+  if (status === "ONLINE") {
+    dotClass = "dot-green";
+  } else if (status === "OFFLINE") {
+    dotClass = "dot-gray";
+  } else if (status === "INGAME") {
+    dotClass = "dot-yellow";
+  }
   return (
-    <div className="banner-container">
+    <div>
       <ModalButton
-        text={name}
         className="user-banner"
         onClick={handleClickAlertModal}
-      >
-        <img src={imagePath}></img>
-      </ModalButton>
+        content={[
+          <img src={imagePath} />,
+          name,
+          <div className={dotClass}></div>,
+        ]}
+      ></ModalButton>
     </div>
   );
 };

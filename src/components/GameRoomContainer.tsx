@@ -22,13 +22,13 @@ const GameRoomContainer = () => {
       <div className="button-container">
         <ModalButton
           className="lobby-round-button"
-          text="Quick Start"
           onClick={handleClickAlertModal}
+          content={["Quick Start"]}
         />
         <ModalButton
           className="lobby-round-button"
-          text="Create Room"
           onClick={handleClickConfirmModal}
+          content={["Create Room"]}
         />
       </div>
       <GameRoomList rooms={items} />
