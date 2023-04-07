@@ -3,18 +3,21 @@ import { useRecoilState } from "recoil";
 import ConfirmModal from "./ConfirmModal";
 import AlertModal from "./AlertModal";
 import ChatRoomModal from "./ChatRoomModal";
+import ChatRoomInfoModal from "./ChatRoomInfoModal";
 import { modalState } from "../recoil/modal";
 
 export const MODAL_TYPES = {
   ConfirmModal: "ConfirmModal",
   AlertModal: "AlertModal",
   ChatRoomModal: "ChatRoomModal",
+  ChatRoomInfoModal: "ChatRoomInfoModal",
 } as const;
 
 const MODAL_COMPONENTS: any = {
   [MODAL_TYPES.ConfirmModal]: ConfirmModal,
   [MODAL_TYPES.AlertModal]: AlertModal,
   [MODAL_TYPES.ChatRoomModal]: ChatRoomModal,
+  [MODAL_TYPES.ChatRoomInfoModal]: ChatRoomInfoModal,
 };
 
 const GlobalModal = () => {

@@ -7,13 +7,17 @@ import useModal from "../hooks/useModal";
 const ChatRoomHeader = () => {
   const { showModal } = useModal();
   const handleClickMenu = () => {
-    //showModal
+    showModal({ modalType: "ChatRoomInfoModal" });
   };
   return (
     <div className="chatroomheader">
       <button className="back-button"></button>
       <p>Sample Room Title</p>
-      <ModalButton className="menu-button" content={[""]} />
+      <ModalButton
+        className="menu-button"
+        onClick={handleClickMenu}
+        content={[""]}
+      />
     </div>
   );
 };

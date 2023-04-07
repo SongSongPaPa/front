@@ -29,4 +29,6 @@
   width: 33px;
   height: 33px;
   margin-right: 25px;
+  position: relative;
+  display: flex;
 }

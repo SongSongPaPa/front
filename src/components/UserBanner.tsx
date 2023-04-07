@@ -6,7 +6,7 @@ import { UserStatusType } from "../recoil/test";
 interface UserBannerProps {
   imagePath: string;
   name: string;
-  status: UserStatusType;
+  status?: UserStatusType;
 }
 
 const UserBanner = (props: UserBannerProps) => {
