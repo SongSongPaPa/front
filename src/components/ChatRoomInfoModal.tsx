@@ -1,6 +1,7 @@
 import React from "react";
 import useModal from "../hooks/useModal";
 import "./ChatRoomInfoModal.css";
+import ChatUserList from "./ChatUserList";
 
 const ChatRoomInfoModal = () => {
   const { hideModal } = useModal();
@@ -10,8 +11,9 @@ const ChatRoomInfoModal = () => {
   return (
     <div className="modal-container">
       <div className="modal-body">
-        <button onClick={onClose}>close</button>
+        <ChatUserList />
       </div>
+      <div className="overlay" onClick={onClose}></div>
     </div>
   );
 };

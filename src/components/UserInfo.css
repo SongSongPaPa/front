@@ -48,6 +48,20 @@
   cursor: pointer;
 }
 
+.chatuser-banner {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: 7px;
+  font-family: Bouncy;
+  font-size: 14px;
+  background-color: transparent;
+  width: 140px;
+  height: 40px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
 .dot-green {
   width: 8px;
   height: 8px;
@@ -70,4 +84,30 @@
   background-color: #fbe38f;
   border-radius: 50%;
   border: none;
+}
+
+.gold-crown {
+  background-image: url("/src/image/gold.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fcfcfc;
+  border: none;
+  cursor: pointer;
+  width: 12px;
+  height: 9px;
+  position: relative;
+  display: flex;
+}
+
+.silver-crown {
+  background-image: url("/src/image/silver.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fcfcfc;
+  border: none;
+  cursor: pointer;
+  width: 12px;
+  height: 9px;
+  position: relative;
+  display: flex;
 }

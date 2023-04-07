@@ -6,13 +6,26 @@ import { UserItemState } from "../recoil/test";
 
 const UserList = () => {
   const [users, setUsers] = useRecoilState(UserItemState);
+  const getDotColor = (status: string): string => {
+    if (status === "ONLINE") {
+      return "dot-green";
+    } else if (status === "OFFLINE") {
+      return "dot-gray";
+    } else if (status === "INGAME") {
+      return "dot-yellow";
+    }
+    return "";
+  };
   return (
     <div className="user-list">
       {users.map((user) => (
         <UserBanner
-          imagePath={user.imagePath}
-          name={user.name}
-          status={user.status}
+          className="user-banner"
+          content={[
+            <img src={user.imagePath} />,
+            <span>{user.name}</span>,
+            <div className={getDotColor(user.status)}></div>,
+          ]}
         />
       ))}
     </div>
