@@ -1,6 +1,6 @@
 @font-face {
-	font-family: "Bouncy";
-	src: url("../fonts/Bouncy-Thin.otf");
+  font-family: "Bouncy";
+  src: url("../fonts/Bouncy-Thin.otf");
 }
 
 .lobby-round-button {
@@ -15,3 +15,14 @@
   height: 28px;
 }
 
+.menu-button {
+  background-image: url("/src/image/menu.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fcfcfc;
+  border: none;
+  cursor: pointer;
+  width: 33px;
+  height: 33px;
+  margin-right: 25px;
+}

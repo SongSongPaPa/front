@@ -38,6 +38,7 @@
 .message-bar input {
   outline: none;
   border: none;
+  width: 780px;
   font-size: 14px;
   line-height: 30px;
   margin-left: 15px;

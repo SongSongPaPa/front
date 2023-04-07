@@ -3,13 +3,13 @@ import React from "react";
 //import { useModal } from "../hooks/useModal";
 
 interface ButtonProps {
-  text: string;
   className: string;
+  text?: string;
   children?: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-function ModalButton({ text, className, children, onClick }: ButtonProps) {
+function ModalButton({ className, text, children, onClick }: ButtonProps) {
   return (
     <div>
       <button className={className} onClick={onClick}>
