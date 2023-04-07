@@ -3,9 +3,11 @@ import ToggleButton from "./ToggleButton";
 import SearchBar from "./SearchBar";
 import UserList from "./UserList";
 import "./UserInfo.css";
+import { useRecoilState } from "recoil";
+import { UserListState } from "../recoil/test";
 
 const UserInfo = () => {
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useRecoilState(UserListState);
   return (
     <div className="user-box">
       <div className="user-profile"></div>
@@ -18,7 +20,9 @@ const UserInfo = () => {
         offText="All"
       />
       <SearchBar></SearchBar>
-      <UserList></UserList>
+      <div className="user-list-container">
+        <UserList></UserList>
+      </div>
     </div>
   );
 };

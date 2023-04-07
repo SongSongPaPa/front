@@ -62,6 +62,96 @@ export const UserItemState = atom<UserItem[]>({
     {
       imagePath:
         "https://blog.kakaocdn.net/dn/bxLuQy/btr6CgpS8wc/SbzrenkzzLn7UZzHGj0Jk0/img.png",
+      name: "a",
+      status: ONLINE,
+    },
+    {
+      imagePath:
+        "https://blog.kakaocdn.net/dn/bxLuQy/btr6CgpS8wc/SbzrenkzzLn7UZzHGj0Jk0/img.png",
+      name: "b",
+      status: OFFLINE,
+    },
+    {
+      imagePath:
+        "https://blog.kakaocdn.net/dn/bxLuQy/btr6CgpS8wc/SbzrenkzzLn7UZzHGj0Jk0/img.png",
+      name: "c",
+      status: INGAME,
+    },
+    {
+      imagePath:
+        "https://blog.kakaocdn.net/dn/bxLuQy/btr6CgpS8wc/SbzrenkzzLn7UZzHGj0Jk0/img.png",
+      name: "d",
+      status: ONLINE,
+    },
+    {
+      imagePath:
+        "https://blog.kakaocdn.net/dn/bxLuQy/btr6CgpS8wc/SbzrenkzzLn7UZzHGj0Jk0/img.png",
+      name: "e",
+      status: ONLINE,
+    },
+    {
+      imagePath:
+        "https://blog.kakaocdn.net/dn/bxLuQy/btr6CgpS8wc/SbzrenkzzLn7UZzHGj0Jk0/img.png",
+      name: "f",
+      status: ONLINE,
+    },
+    {
+      imagePath:
+        "https://blog.kakaocdn.net/dn/bxLuQy/btr6CgpS8wc/SbzrenkzzLn7UZzHGj0Jk0/img.png",
+      name: "g",
+      status: ONLINE,
+    },
+    {
+      imagePath:
+        "https://blog.kakaocdn.net/dn/bxLuQy/btr6CgpS8wc/SbzrenkzzLn7UZzHGj0Jk0/img.png",
+      name: "h",
+      status: ONLINE,
+    },
+    {
+      imagePath:
+        "https://blog.kakaocdn.net/dn/bxLuQy/btr6CgpS8wc/SbzrenkzzLn7UZzHGj0Jk0/img.png",
+      name: "i",
+      status: OFFLINE,
+    },
+    {
+      imagePath:
+        "https://blog.kakaocdn.net/dn/bxLuQy/btr6CgpS8wc/SbzrenkzzLn7UZzHGj0Jk0/img.png",
+      name: "j",
+      status: OFFLINE,
+    },
+    {
+      imagePath:
+        "https://blog.kakaocdn.net/dn/bxLuQy/btr6CgpS8wc/SbzrenkzzLn7UZzHGj0Jk0/img.png",
+      name: "k",
+      status: INGAME,
+    },
+    {
+      imagePath:
+        "https://blog.kakaocdn.net/dn/bxLuQy/btr6CgpS8wc/SbzrenkzzLn7UZzHGj0Jk0/img.png",
+      name: "l",
+      status: INGAME,
+    },
+    {
+      imagePath:
+        "https://blog.kakaocdn.net/dn/bxLuQy/btr6CgpS8wc/SbzrenkzzLn7UZzHGj0Jk0/img.png",
+      name: "m",
+      status: OFFLINE,
+    },
+    {
+      imagePath:
+        "https://blog.kakaocdn.net/dn/bxLuQy/btr6CgpS8wc/SbzrenkzzLn7UZzHGj0Jk0/img.png",
+      name: "n",
+      status: OFFLINE,
+    },
+  ],
+});
+
+export const FriendUserItemState = atom<UserItem[]>({
+  key: "frienduseritem",
+  default: [
+    {
+      imagePath:
+        "https://blog.kakaocdn.net/dn/bxLuQy/btr6CgpS8wc/SbzrenkzzLn7UZzHGj0Jk0/img.png",
       name: "sohan",
       status: ONLINE,
     },
@@ -78,6 +168,11 @@ export const UserItemState = atom<UserItem[]>({
       status: INGAME,
     },
   ],
+});
+
+export const FilteredUserItemState = atom<UserItem[]>({
+  key: "filteredusertiem",
+  default: [],
 });
 
 export const itemsState = atom<Item[]>({
@@ -111,4 +206,9 @@ export const MessageState = atom<MessageItem[]>({
 export const PopoverState = atom({
   key: "popover",
   default: false,
+});
+
+export const UserListState = atom({
+  key: "userlist",
+  default: true,
 });

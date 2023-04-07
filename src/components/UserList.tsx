@@ -2,10 +2,12 @@ import React from "react";
 import UserBanner from "./UserBanner";
 import "./UserInfo.css";
 import { useRecoilState } from "recoil";
-import { UserItemState } from "../recoil/test";
+import { FilteredUserItemState } from "../recoil/test";
 
 const UserList = () => {
-  const [users, setUsers] = useRecoilState(UserItemState);
+  const [filteredUsers, setFilteredUsers] = useRecoilState(
+    FilteredUserItemState
+  );
   const getDotColor = (status: string): string => {
     if (status === "ONLINE") {
       return "dot-green";
@@ -18,7 +20,7 @@ const UserList = () => {
   };
   return (
     <div className="user-list">
-      {users.map((user) => (
+      {filteredUsers.map((user) => (
         <UserBanner
           className="user-banner"
           content={[
