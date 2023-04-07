@@ -25,6 +25,7 @@ const ChatUserList = () => {
             <div className={getCrownIcon(user.role)}></div>,
             <span>{user.name}</span>,
           ]}
+          enableRightClick={true}
         />
       ))}
     </div>

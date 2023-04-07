@@ -1,21 +1,18 @@
 import React from "react";
 import ModalButton from "./ModalButton";
 import useModal from "../hooks/useModal";
-import { UserStatusType } from "../recoil/test";
 import ChatRoomPopover from "./ChatRoomPopover";
-import { PopoverState } from "../recoil/test";
-import { useRecoilState } from "recoil";
 import { useState } from "react";
 
 interface UserBannerProps {
   className: string;
   content: JSX.Element[];
+  enableRightClick?: boolean;
 }
 
 const UserBanner = (props: UserBannerProps) => {
-  //const [showPopover, setShowPopover] = useRecoilState(PopoverState);
   const [showPopover, setShowPopover] = useState(false);
-  const { className, content } = props;
+  const { className, content, enableRightClick = false } = props;
   const { showModal } = useModal();
   const handleClickAlertModal = () => {
     showModal({ modalType: "AlertModal" });
@@ -28,7 +25,7 @@ const UserBanner = (props: UserBannerProps) => {
     console.log(userBanner);
   };
   return (
-    <div onContextMenu={handleRightClick}>
+    <div onContextMenu={enableRightClick ? handleRightClick : undefined}>
       <ModalButton
         className={className}
         onClick={handleClickAlertModal}
