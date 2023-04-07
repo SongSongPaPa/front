@@ -5,6 +5,7 @@ import UserBanner from "./UserBanner";
 
 const ChatUserList = () => {
   const [users, setUsers] = useRecoilState(ChatUserItemState);
+
   const getCrownIcon = (role: string): string => {
     if (role === "ADMIN") {
       return "gold-crown";
@@ -13,6 +14,7 @@ const ChatUserList = () => {
     }
     return "";
   };
+
   return (
     <div className="user-list">
       {users.map((user) => (

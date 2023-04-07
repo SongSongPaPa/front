@@ -107,3 +107,8 @@ export const MessageState = atom<MessageItem[]>({
   key: "messages",
   default: [],
 });
+
+export const PopoverState = atom({
+  key: "popover",
+  default: false,
+});

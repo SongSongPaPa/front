@@ -28,15 +28,13 @@ type ButtonProps = {
 
 function ModalButton({ className, content, onClick }: ButtonProps) {
   return (
-    <div className={className} onClick={onClick}>
-      {content.map((item, index) => {
-        if (React.isValidElement(item)) {
-          return item;
-        } else {
-          return <span key={index}>{item}</span>;
-        }
-      })}
-    </div>
+    <span className={className} onClick={onClick}>
+      {content.map((item, index) => (
+        <span key={index}>
+          {React.isValidElement(item) ? item : <span>{item}</span>}
+        </span>
+      ))}
+    </span>
   );
 }
 

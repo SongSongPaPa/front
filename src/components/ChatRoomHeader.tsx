@@ -17,7 +17,7 @@ const ChatRoomHeader = () => {
         className="menu-button"
         onClick={handleClickMenu}
         content={[""]}
-      />
+      ></ModalButton>
     </div>
   );
 };
