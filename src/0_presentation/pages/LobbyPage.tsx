@@ -1,7 +1,7 @@
 import React from "react";
 import ChatRoomContainer from "../components/lobby/ChatRoomContainer";
 import GameRoomContainer from "../components/lobby/GameRoomContainer";
-import UserInfo from "../components/user/UserInfo";
+import UserInterface from "../components/user/UserInterface";
 import "./LobbyPage.css";
 
 function LobbyPage() {
@@ -12,7 +12,7 @@ function LobbyPage() {
         <ChatRoomContainer />
       </div>
       <div className="vertical-rectangle">
-        <UserInfo />
+        <UserInterface />
       </div>
     </div>
   );

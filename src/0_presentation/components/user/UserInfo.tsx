@@ -1,28 +1,37 @@
-import React, { useState } from "react";
-import ToggleButton from "../common/ToggleButton";
-import SearchBar from "./SearchBar";
-import UserList from "./UserList";
-import "./UserInfo.css";
-import { useRecoilState } from "recoil";
-import { UserListState } from "@domain/recoil/test";
+import React from "react";
+import ModalButton from "../common/ModalButton";
+import useModal from "@application/hooks/useModal";
+import ChatRoomPopover from "../modals/ChatRoomPopover";
+import { useState } from "react";
 
-const UserInfo = () => {
-  const [selected, setSelected] = useRecoilState(UserListState);
+interface UserInfoProps {
+  className: string;
+  content: JSX.Element[];
+  enableRightClick?: boolean;
+}
+
+const UserInfo = (props: UserInfoProps) => {
+  const [showPopover, setShowPopover] = useState(false);
+  const { className, content, enableRightClick = false } = props;
+  const { showModal } = useModal();
+  const handleClickAlertModal = () => {
+    showModal({ modalType: "AlertModal" });
+  };
+  const handleRightClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setShowPopover(true);
+    const userBanner = event.currentTarget as HTMLDivElement;
+    console.log(userBanner);
+  };
   return (
-    <div className="user-box">
-      <div className="user-profile"></div>
-      <ToggleButton
-        selected={selected}
-        toggleSelected={() => {
-          setSelected(!selected);
-        }}
-        onText="Friend"
-        offText="All"
-      />
-      <SearchBar></SearchBar>
-      <div className="user-list-container">
-        <UserList></UserList>
-      </div>
+    <div onContextMenu={enableRightClick ? handleRightClick : undefined}>
+      <ModalButton
+        className={className}
+        onClick={handleClickAlertModal}
+        content={[...content]}
+      ></ModalButton>
+      {showPopover && <ChatRoomPopover onClose={() => setShowPopover(false)} />}
     </div>
   );
 };

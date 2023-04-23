@@ -1,5 +1,5 @@
 import React from "react";
-import UserInfo from "../components/user/UserInfo";
+import UserInterface from "../components/user/UserInterface";
 import ChattingContainer from "../components/chat/ChattingContainer";
 
 function ChatPage() {
@@ -9,7 +9,7 @@ function ChatPage() {
         <ChattingContainer />
       </div>
       <div className="vertical-rectangle">
-        <UserInfo />
+        <UserInterface />
       </div>
     </div>
   );

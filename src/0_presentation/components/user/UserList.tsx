@@ -1,6 +1,6 @@
 import React from "react";
-import UserBanner from "../common/UserBanner";
-import "./UserInfo.css";
+import UserInfo from "./UserInfo";
+import "./UserInterface.css";
 import { useRecoilState } from "recoil";
 import { FilteredUserItemState } from "@domain/recoil/test";
 
@@ -21,7 +21,7 @@ const UserList = () => {
   return (
     <div className="user-list">
       {filteredUsers.map((user) => (
-        <UserBanner
+        <UserInfo
           className="user-banner"
           content={[
             <img src={user.imagePath} />,

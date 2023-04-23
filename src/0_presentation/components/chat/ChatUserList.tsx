@@ -1,7 +1,7 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import { ChatUserItemState } from "@domain/recoil/test";
-import UserBanner from "@common/UserBanner";
+import UserInfo from "../user/UserInfo";
 
 const ChatUserList = () => {
   const [users, setUsers] = useRecoilState(ChatUserItemState);
@@ -18,7 +18,7 @@ const ChatUserList = () => {
   return (
     <div className="user-list">
       {users.map((user) => (
-        <UserBanner
+        <UserInfo
           className="chatuser-banner"
           content={[
             <img src={user.imagePath} />,

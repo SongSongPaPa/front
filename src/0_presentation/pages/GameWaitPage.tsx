@@ -1,5 +1,5 @@
 import React from "react";
-import UserInfo from "../components/user/UserInfo";
+import UserInfo from "../components/user/UserInterface";
 import GameWaitingRoom from "../components/game/GameWaitingRoom";
 import "./GameWaitPage.css";
 
