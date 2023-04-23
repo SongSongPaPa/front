@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { RecoilRoot } from "recoil";
-import GlobalModal from "./components/GlobalModal";
+import GlobalModal from "./0_presentation/components/modals/GlobalModal";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { MODAL_TYPES } from "../components/GlobalModal";
+import { MODAL_TYPES } from "../0_presentation/components/modals/GlobalModal";
 
 const {
   ConfirmModal,

@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "Bouncy";
+  src: url("/src/assets/fonts/Bouncy-Thin.otf");
+}
+
+.occupied {
+  font-family: Bouncy;
+  font-size: 36px;
+  background-color: #bfff8c;
+  border-radius: 25px;
+  width: 320px;
+  height: 290px;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+}
+
+.vacant {
+  font-family: Bouncy;
+  font-size: 36px;
+  background-color: #d9d9d9;
+  border-radius: 25px;
+  width: 320px;
+  height: 290px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
