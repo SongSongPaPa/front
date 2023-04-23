@@ -44,6 +44,7 @@ const ChatRoomModal = () => {
         <button onClick={onClose}>close</button>
         <button onClick={() => onConfirm(inputValue, selectedValue)}>ok</button>
       </div>
+      <div className="overlay" onClick={onClose}></div>
     </div>
   );
 };

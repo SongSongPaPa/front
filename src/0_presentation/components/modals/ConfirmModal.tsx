@@ -41,6 +41,7 @@ const ConfirmModal = () => {
           setSelectedOption={setSelectedValue}
         ></RadioGroup>
       </div>
+      <div className="overlay" onClick={onClose}></div>
     </div>
   );
 };
