@@ -1,11 +1,11 @@
 @font-face {
   font-family: "Bouncy";
-  src: url("/src/assets/fonts/Bouncy-Thin.otf");
+  src: url("@assets/fonts/Bouncy-Thin.otf");
 }
 
 @font-face {
   font-family: "ONE";
-  src: url("/src/assets/fonts/ONE\ Mobile\ POP.otf");
+  src: url("@assets/fonts/ONE\ Mobile\ POP.otf");
 }
 
 .room {

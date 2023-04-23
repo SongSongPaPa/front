@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Bouncy";
-  src: url("/src/assets/fonts/Bouncy-Thin.otf");
+  src: url("@assets/fonts/Bouncy-Thin.otf");
 }
 
 .image-container {

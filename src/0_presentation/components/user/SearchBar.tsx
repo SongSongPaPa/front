@@ -5,7 +5,7 @@ import {
   FriendUserItemState,
   UserItemState,
   UserListState,
-} from "../../../recoil/test";
+} from "@domain/recoil/test";
 import "../common/Bar.css";
 import { useEffect } from "react";
 

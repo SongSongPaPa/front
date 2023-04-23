@@ -1,5 +1,5 @@
 import React from "react";
-import useModal from "../../../hooks/useModal";
+import useModal from "@application/hooks/useModal";
 import "./ChatRoomInfoModal.css";
 import ChatUserList from "../chat/ChatUserList";
 

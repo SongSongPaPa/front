@@ -3,9 +3,9 @@ import "./GameRoomContainer.css";
 import "../common/button.css";
 import ModalButton from "../common/ModalButton";
 import GameRoomList from "./GameRoomList";
-import useModal from "../../../hooks/useModal";
+import useModal from "@application/hooks/useModal";
 import { useRecoilState } from "recoil";
-import { itemsState } from "../../../recoil/test";
+import { itemsState } from "@domain/recoil/test";
 
 const GameRoomContainer = () => {
   const { showModal } = useModal();

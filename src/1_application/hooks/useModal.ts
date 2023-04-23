@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { ModalType, modalState } from "../recoil/modal";
+import { ModalType, modalState } from "../../2_domain/recoil/modal";
 
 export default function useModal() {
   const [modal, setModal] = useRecoilState(modalState);

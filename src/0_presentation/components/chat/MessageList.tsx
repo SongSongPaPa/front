@@ -1,7 +1,7 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import Message from "./Message";
-import { MessageState } from "../../../recoil/test";
+import { MessageState } from "@domain/recoil/test";
 import "./Message.css";
 
 const MessageList = () => {

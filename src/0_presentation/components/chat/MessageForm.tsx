@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useRecoilState } from "recoil";
-import { MessageState } from "../../../recoil/test";
+import { MessageState } from "@domain/recoil/test";
 
 const MessageInput = () => {
   const [message, setMessage] = useState("");

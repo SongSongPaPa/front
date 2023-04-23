@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { PopoverState } from "../../../recoil/test";
+import { PopoverState } from "@domain/recoil/test";
 import "./ChatRoomPopover.css";
 
 const ChatRoomPopover = ({ onClose }: { onClose: () => void }) => {

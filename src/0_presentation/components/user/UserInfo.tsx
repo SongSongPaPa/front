@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 import UserList from "./UserList";
 import "./UserInfo.css";
 import { useRecoilState } from "recoil";
-import { UserListState } from "../../../recoil/test";
+import { UserListState } from "@domain/recoil/test";
 
 const UserInfo = () => {
   const [selected, setSelected] = useRecoilState(UserListState);

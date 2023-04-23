@@ -5,7 +5,7 @@ import AlertModal from "./AlertModal";
 import ChatRoomModal from "./ChatRoomModal";
 import ChatRoomInfoModal from "./ChatRoomInfoModal";
 import ChatRoomPopover from "./ChatRoomPopover";
-import { modalState } from "../../../recoil/modal";
+import { modalState } from "@domain/recoil/modal";
 
 export const MODAL_TYPES = {
   ConfirmModal: "ConfirmModal",

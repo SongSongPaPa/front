@@ -1,8 +1,8 @@
 import { useRecoilState } from "recoil";
-import useModal from "../../../hooks/useModal";
+import useModal from "@application/hooks/useModal";
 import { useState } from "react";
 import RadioGroup from "../common/RadioGroup";
-import { chatRoomsState } from "../../../recoil/test";
+import { chatRoomsState } from "@domain/recoil/test";
 
 const ChatRoomModal = () => {
   const { hideModal } = useModal();

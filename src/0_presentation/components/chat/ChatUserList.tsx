@@ -1,7 +1,7 @@
 import React from "react";
 import { useRecoilState } from "recoil";
-import { ChatUserItemState } from "../../../recoil/test";
-import UserBanner from "../common/UserBanner";
+import { ChatUserItemState } from "@domain/recoil/test";
+import UserBanner from "@common/UserBanner";
 
 const ChatUserList = () => {
   const [users, setUsers] = useRecoilState(ChatUserItemState);

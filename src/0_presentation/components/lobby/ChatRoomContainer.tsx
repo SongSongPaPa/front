@@ -3,7 +3,7 @@ import "./GameRoomContainer.css";
 import "../common/button.css";
 import ModalButton from "../common/ModalButton";
 import ChatRoomList from "./ChatRoomList";
-import useModal from "../../../hooks/useModal";
+import useModal from "@application/hooks/useModal";
 
 const ChatRoomContainer = () => {
   const { showModal } = useModal();

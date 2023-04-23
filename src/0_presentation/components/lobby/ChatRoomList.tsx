@@ -1,6 +1,6 @@
 import React from "react";
 import { useRecoilState } from "recoil";
-import { chatRoomsState } from "../../../recoil/test";
+import { chatRoomsState } from "@domain/recoil/test";
 import ChatRoom from "./ChatRoom";
 
 const ChatRoomList = () => {

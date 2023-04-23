@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { request } from "http";
 import "./LoginPage.css";
-import Logo from "../../assets/image/SSPP.png";
+import Logo from "@assets/image/SSPP.png";
 
 import { useNavigate } from "react-router-dom";
 

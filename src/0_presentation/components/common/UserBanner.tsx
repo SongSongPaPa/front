@@ -1,6 +1,6 @@
 import React from "react";
 import ModalButton from "./ModalButton";
-import useModal from "../../../hooks/useModal";
+import useModal from "@application/hooks/useModal";
 import ChatRoomPopover from "../modals/ChatRoomPopover";
 import { useState } from "react";
 

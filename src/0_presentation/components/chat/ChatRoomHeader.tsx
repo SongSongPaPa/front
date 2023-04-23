@@ -1,8 +1,8 @@
 import React from "react";
-import ModalButton from "../common/ModalButton";
+import ModalButton from "@common/ModalButton";
 import "./ChatRoomHeader.css";
-import "../common/button.css";
-import useModal from "../../../hooks/useModal";
+import "@common/button.css";
+import useModal from "@application/hooks/useModal";
 
 const ChatRoomHeader = () => {
   const { showModal } = useModal();

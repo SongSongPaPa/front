@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../lobby/CreateRoomModal.css";
-import useModal from "../../../hooks/useModal";
+import useModal from "@application/hooks/useModal";
 import { useRecoilState } from "recoil";
-import { itemsState } from "../../../recoil/test";
+import { itemsState } from "@domain/recoil/test";
 import RadioGroup from "../common/RadioGroup";
 
 const ConfirmModal = () => {

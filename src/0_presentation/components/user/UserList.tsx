@@ -2,7 +2,7 @@ import React from "react";
 import UserBanner from "../common/UserBanner";
 import "./UserInfo.css";
 import { useRecoilState } from "recoil";
-import { FilteredUserItemState } from "../../../recoil/test";
+import { FilteredUserItemState } from "@domain/recoil/test";
 
 const UserList = () => {
   const [filteredUsers, setFilteredUsers] = useRecoilState(

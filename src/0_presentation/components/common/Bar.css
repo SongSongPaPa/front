@@ -24,7 +24,7 @@
 }
 
 .message-bar button {
-  background-image: url("/src/assets/image/send.png");
+  background-image: url("@assets/image/send.png");
   background-repeat: no-repeat;
   background-position: center;
   background-color: #ffffff;
