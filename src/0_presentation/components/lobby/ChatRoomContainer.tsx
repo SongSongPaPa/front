@@ -7,15 +7,15 @@ import useModal from "@application/hooks/useModal";
 
 const ChatRoomContainer = () => {
   const { showModal } = useModal();
-  const handleClickChatRoomModal = () => {
-    showModal({ modalType: "ChatRoomModal" });
+  const handleClickChatRoomCreateModal = () => {
+    showModal({ modalType: "ChatRoomCreateModal" });
   };
   return (
     <div className="box">
       <div className="button-container">
         <ModalButton
           className="lobby-round-button"
-          onClick={handleClickChatRoomModal}
+          onClick={handleClickChatRoomCreateModal}
           content={["Create Room"]}
         />
       </div>

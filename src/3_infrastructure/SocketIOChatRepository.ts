@@ -9,7 +9,9 @@ export const SocketIOChatRepository = (): IChatRepository => {
   //const [socket, setSocket] = useRecoilState(socketState);
   const socket = useContext(SocketContext);
   const createChatRoom = (user: User, chat: Chat): void => {
-    socket?.emit("broadcast:chat:createChat", chat);
+    console.log("nah?");
+    console.log(socket);
+    socket?.emit("createChatRoom", chat);
   };
 
   const sendMessage = (user: User, message: Message): void => {

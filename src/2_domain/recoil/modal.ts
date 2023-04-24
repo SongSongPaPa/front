@@ -4,7 +4,7 @@ import { MODAL_TYPES } from "../../0_presentation/components/modals/GlobalModal"
 const {
   ConfirmModal,
   AlertModal,
-  ChatRoomModal,
+  ChatRoomCreateModal,
   ChatRoomInfoModal,
   ChatRoomPopover,
 } = MODAL_TYPES;
@@ -17,8 +17,8 @@ export interface AlertModalType {
   modalType: typeof AlertModal;
 }
 
-export interface ChatRoomModalType {
-  modalType: typeof ChatRoomModal;
+export interface ChatRoomCreateModalType {
+  modalType: typeof ChatRoomCreateModal;
 }
 
 export interface ChatRoomInfoModalType {
@@ -32,7 +32,7 @@ export interface ChatRoomPopoverType {
 export type ModalType =
   | ConfirmModalType
   | AlertModalType
-  | ChatRoomModalType
+  | ChatRoomCreateModalType
   | ChatRoomInfoModalType
   | ChatRoomPopoverType;
 

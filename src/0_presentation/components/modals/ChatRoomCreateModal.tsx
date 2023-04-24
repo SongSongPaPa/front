@@ -1,22 +1,32 @@
 import { useRecoilState } from "recoil";
 import useModal from "@application/hooks/useModal";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import RadioGroup from "../common/RadioGroup";
-import { chatRoomsState } from "@domain/recoil/test";
+import useChatService from "@root/1_application/hooks/useChatService";
 
-const ChatRoomModal = () => {
+const ChatRoomCreateModal = () => {
   const { hideModal } = useModal();
-  const [items, setItems] = useRecoilState(chatRoomsState);
+  //const [items, setItems] = useRecoilState(chatRoomsState);
   const [selectedValue, setSelectedValue] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [password, setPassword] = useState("");
-
+  const { createChatRoom } = useChatService();
   const onClose = () => {
     hideModal();
   };
 
   const onConfirm = async (title: string, option: string) => {
-    setItems([...items, { title: title, headCount: 2 }]);
+    //setItems([...items, { title: title, headCount: 2 }]);
+    console.log("yes?");
+    createChatRoom(
+      { imagePath: "", name: "asdf", status: "ONLINE" },
+      {
+        info: { title: title, headCount: "0" },
+        participants: [],
+        owner: { imagePath: "", name: "asdf", status: "ONLINE" },
+        admin: [],
+      }
+    );
     hideModal();
   };
 
@@ -49,4 +59,4 @@ const ChatRoomModal = () => {
   );
 };
 
-export default ChatRoomModal;
+export default ChatRoomCreateModal;

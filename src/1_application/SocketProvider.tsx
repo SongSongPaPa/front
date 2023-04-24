@@ -1,5 +1,8 @@
-import React, { createContext, ReactNode } from "react";
+import { chatRoomsState } from "@root/2_domain/recoil/test";
+import React, { createContext, ReactNode, useEffect, useMemo } from "react";
 import * as io from "socket.io-client";
+import { useRecoilState } from "recoil";
+import { prepareCssVars } from "@mui/system";
 
 interface ISocketManager {
   socket: io.Socket;
@@ -16,7 +19,10 @@ class SocketManager implements ISocketManager {
   socket: io.Socket;
 
   constructor() {
-    this.socket = io.connect("ws://43.200.11.197:4000");
+    this.socket = io.connect("localhost:8000", {
+      withCredentials: true,
+      extraHeaders: { "my-custom-header": "asdf" },
+    });
   }
 
   connect(user: string) {
@@ -53,8 +59,16 @@ interface SocketProviderProps {
 }
 
 export const SocketProvider = ({ children }: SocketProviderProps) => {
-  const socketManager = new SocketManager();
-
+  const socketManager = useMemo(() => new SocketManager(), []);
+  const [chatRooms, setChatRooms] = useRecoilState(chatRoomsState);
+  const handleChatRoomCreate = (data: any) => {
+    console.log("ma", data);
+    setChatRooms((prev) => [...prev, data]);
+    console.log(chatRooms.length);
+  };
+  useEffect(() => {
+    socketManager.on("broadcast:chat:createChatRoom", handleChatRoomCreate);
+  }, []);
   return (
     <SocketContext.Provider value={socketManager}>
       {children}
