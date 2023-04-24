@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { RecoilRoot } from "recoil";
+import { SocketProvider } from "@application/SocketProvider";
 import GlobalModal from "./0_presentation/components/modals/GlobalModal";
 
 const root = ReactDOM.createRoot(
@@ -12,8 +13,10 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <RecoilRoot>
-      <GlobalModal />
-      <App />
+      <SocketProvider>
+        <GlobalModal />
+        <App />
+      </SocketProvider>
     </RecoilRoot>
   </React.StrictMode>
 );

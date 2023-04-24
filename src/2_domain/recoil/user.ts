@@ -1,14 +1,27 @@
 import { atom } from "recoil";
 
-interface User {
+type UserStatusType = "ONLINE" | "OFFLINE" | "INGAME";
+
+type ChatUserRoleType = "ADMIN" | "STAFF" | "GENERAL";
+
+export interface UserItem {
   name: string;
   imagePath: string;
+  status: UserStatusType;
 }
 
-export const userState = atom({
-  key: "user",
-  default: {
-    name: "",
-    img: "",
-  },
+interface ChatUserItem {
+  name: string;
+  imagePath: string;
+  role: ChatUserRoleType;
+}
+
+export const userItemState = atom<UserItem[]>({
+  key: "useritem",
+  default: [],
+});
+
+export const chatUserItemState = atom<ChatUserItem[]>({
+  key: "chatuseritem",
+  default: [],
 });
