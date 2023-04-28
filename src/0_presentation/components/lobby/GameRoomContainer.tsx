@@ -6,15 +6,18 @@ import GameRoomList from "./GameRoomList";
 import useModal from "@application/hooks/useModal";
 import { useRecoilState } from "recoil";
 import { itemsState } from "@domain/recoil/test";
+import { useNavigate } from "react-router-dom";
 
 const GameRoomContainer = () => {
   const { showModal } = useModal();
   const [items, setItems] = useRecoilState(itemsState);
-  const handleClickAlertModal = () => {
-    showModal({ modalType: "AlertModal" });
+  const navigate = useNavigate();
+
+  const handleClickQuickStart = () => {
+    navigate("/game-wait");
   };
 
-  const handleClickConfirmModal = () => {
+  const handleClickGameRoomCreateModal = () => {
     showModal({ modalType: "GameRoomCreateModal" });
   };
   return (
@@ -22,12 +25,12 @@ const GameRoomContainer = () => {
       <div className="button-container">
         <ModalButton
           className="lobby-round-button"
-          onClick={handleClickAlertModal}
+          onClick={handleClickQuickStart}
           content={["Quick Start"]}
         />
         <ModalButton
           className="lobby-round-button"
-          onClick={handleClickConfirmModal}
+          onClick={handleClickGameRoomCreateModal}
           content={["Create Room"]}
         />
       </div>

@@ -3,7 +3,7 @@ import { Chat } from "@domain/Chat";
 import { Message } from "@domain/Chat";
 import { IChatRepository } from "@domain/IChatRepository";
 import { useContext } from "react";
-import SocketContext from "@root/1_application/SocketProvider";
+/*import SocketContext from "@root/1_application/SocketProvider";
 
 export const SocketIOChatRepository = (): IChatRepository => {
   //const [socket, setSocket] = useRecoilState(socketState);
@@ -27,4 +27,4 @@ export const SocketIOChatRepository = (): IChatRepository => {
     });
   };
   return { createChatRoom, sendMessage, onMessageReceived };
-};
+};*/

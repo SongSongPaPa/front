@@ -1,6 +1,7 @@
 import React from "react";
 import "./Room.css";
-import SocketButton from "../common/SocketButton";
+import ModalButton from "../common/ModalButton";
+import { useNavigate } from "react-router-dom";
 
 export interface GameRoomProps {
   id: number;
@@ -10,13 +11,19 @@ export interface GameRoomProps {
 }
 
 const GameRoom = ({ title, headCount, option }: GameRoomProps) => {
+  const navigate = useNavigate();
   return (
     <div className="room">
       <div className="title">{title}</div>
       <div className="headcount">{headCount}</div>
       <div className="headcount">{option}</div>
-      <SocketButton className="game-play-button" text="Play!" />
-      <SocketButton className="game-watch-button" text="watch" />
+      <button
+        className="game-play-button"
+        onClick={() => navigate("/game-wait")}
+      >
+        Play!
+      </button>
+      <button className="game-watch-button">watch</button>
     </div>
   );
 };

@@ -5,18 +5,23 @@ import "./LoginPage.css";
 import Logo from "@assets/image/SSPP.png";
 
 import { useNavigate } from "react-router-dom";
+import { useUserProfile } from "@root/1_application/hooks/useAuth";
 
 function LoginPage() {
   const nav = useNavigate();
   const handleClick = () => {
-    nav("/lobby");
+    //nav("/lobby");
   };
   return (
     <div className="image-container">
       <img className="Logo" src={Logo}></img>
-      <button className="button" onClick={handleClick}>
+      <a
+        href={process.env.REACT_APP_API_URL + "/auth/login"}
+        className="button"
+      >
         Login
-      </button>
+      </a>
+      <button onClick={useUserProfile}>profile</button>
     </div>
   );
 }

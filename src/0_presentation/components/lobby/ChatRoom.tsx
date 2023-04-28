@@ -1,6 +1,7 @@
 import React from "react";
 import "./Room.css";
 import SocketButton from "../common/SocketButton";
+import { useNavigate } from "react-router-dom";
 
 export interface ChatRoomProps {
   title: string;
@@ -8,11 +9,14 @@ export interface ChatRoomProps {
 }
 
 const ChatRoom = ({ title, headCount }: ChatRoomProps) => {
+  const navigate = useNavigate();
   return (
     <div className="room">
       <div className="title">{title}</div>
       <div className="headcount">{headCount}</div>
-      <SocketButton className="chat-join-button" text="Join" />
+      <button className="chat-join-button" onClick={() => navigate("/chat")}>
+        join
+      </button>
     </div>
   );
 };
