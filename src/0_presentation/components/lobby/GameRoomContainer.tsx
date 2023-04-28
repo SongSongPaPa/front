@@ -15,7 +15,7 @@ const GameRoomContainer = () => {
   };
 
   const handleClickConfirmModal = () => {
-    showModal({ modalType: "ConfirmModal" });
+    showModal({ modalType: "GameRoomCreateModal" });
   };
   return (
     <div className="box">

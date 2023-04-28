@@ -1,6 +1,7 @@
 import { atom } from "recoil";
 
 interface Item {
+  id: number;
   title: string;
   headCount: number;
   option: string;

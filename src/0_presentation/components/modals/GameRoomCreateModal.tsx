@@ -4,20 +4,26 @@ import useModal from "@application/hooks/useModal";
 import { useRecoilState } from "recoil";
 import { itemsState } from "@domain/recoil/test";
 import RadioGroup from "../common/RadioGroup";
+import { useNavigate } from "react-router-dom";
 
 const ConfirmModal = () => {
   const { hideModal } = useModal();
   const [items, setItems] = useRecoilState(itemsState);
   const [selectedValue, setSelectedValue] = useState("");
   const [inputValue, setInputValue] = useState("");
-
+  const navigate = useNavigate();
+  let tempid = 0;
   const onClose = () => {
     hideModal();
   };
 
   const onConfirm = async (title: string, option: string) => {
-    setItems([...items, { title: title, headCount: 2, option: option }]);
+    setItems([
+      ...items,
+      { id: tempid++, title: title, headCount: 2, option: option },
+    ]);
     hideModal();
+    navigate("/game-wait");
   };
 
   const options = [

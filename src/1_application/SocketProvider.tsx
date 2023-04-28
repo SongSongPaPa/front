@@ -2,7 +2,6 @@ import { chatRoomsState } from "@root/2_domain/recoil/test";
 import React, { createContext, ReactNode, useEffect, useMemo } from "react";
 import * as io from "socket.io-client";
 import { useRecoilState } from "recoil";
-import { prepareCssVars } from "@mui/system";
 
 interface ISocketManager {
   socket: io.Socket;

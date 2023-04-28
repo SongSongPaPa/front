@@ -8,13 +8,15 @@ import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
   const nav = useNavigate();
-  const handleClick = (name: string, img: string) => {
+  const handleClick = () => {
     nav("/lobby");
   };
   return (
     <div className="image-container">
       <img className="Logo" src={Logo}></img>
-      <button className="button">Login</button>
+      <button className="button" onClick={handleClick}>
+        Login
+      </button>
     </div>
   );
 }

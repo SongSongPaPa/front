@@ -1,6 +1,6 @@
 import React from "react";
 import { useRecoilState } from "recoil";
-import ConfirmModal from "./ConfirmModal";
+import GameRoomCreateModal from "./GameRoomCreateModal";
 import AlertModal from "./AlertModal";
 import ChatRoomCreateModal from "./ChatRoomCreateModal";
 import ChatRoomInfoModal from "./ChatRoomInfoModal";
@@ -8,7 +8,7 @@ import ChatRoomPopover from "./ChatRoomPopover";
 import { modalState } from "@domain/recoil/modal";
 
 export const MODAL_TYPES = {
-  ConfirmModal: "ConfirmModal",
+  GameRoomCreateModal: "GameRoomCreateModal",
   AlertModal: "AlertModal",
   ChatRoomCreateModal: "ChatRoomCreateModal",
   ChatRoomInfoModal: "ChatRoomInfoModal",
@@ -16,7 +16,7 @@ export const MODAL_TYPES = {
 } as const;
 
 const MODAL_COMPONENTS: any = {
-  [MODAL_TYPES.ConfirmModal]: ConfirmModal,
+  [MODAL_TYPES.GameRoomCreateModal]: GameRoomCreateModal,
   [MODAL_TYPES.AlertModal]: AlertModal,
   [MODAL_TYPES.ChatRoomCreateModal]: ChatRoomCreateModal,
   [MODAL_TYPES.ChatRoomInfoModal]: ChatRoomInfoModal,

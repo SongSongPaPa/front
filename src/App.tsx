@@ -6,10 +6,12 @@ import GameWaitPage from "./0_presentation/pages/GameWaitPage";
 import ChatPage from "./0_presentation/pages/ChatPage";
 import SignupPage from "./0_presentation/pages/SignupPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import GlobalModal from "./0_presentation/components/modals/GlobalModal";
 
 function App() {
   return (
     <BrowserRouter>
+      <GlobalModal />
       <div className="App">
         <Routes>
           <Route path="/" element={<LoginPage />} />

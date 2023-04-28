@@ -3,6 +3,7 @@ import "./Room.css";
 import SocketButton from "../common/SocketButton";
 
 export interface GameRoomProps {
+  id: number;
   title: string;
   headCount: number;
   option: string;

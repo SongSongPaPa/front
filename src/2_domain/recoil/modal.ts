@@ -2,7 +2,7 @@ import { atom } from "recoil";
 import { MODAL_TYPES } from "../../0_presentation/components/modals/GlobalModal";
 
 const {
-  ConfirmModal,
+  GameRoomCreateModal,
   AlertModal,
   ChatRoomCreateModal,
   ChatRoomInfoModal,
@@ -10,7 +10,7 @@ const {
 } = MODAL_TYPES;
 
 export interface ConfirmModalType {
-  modalType: typeof ConfirmModal;
+  modalType: typeof GameRoomCreateModal;
 }
 
 export interface AlertModalType {

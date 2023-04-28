@@ -10,6 +10,8 @@ const GameRoomList = ({ rooms }: GameRoomListProps) => {
     <div className="room-container">
       {rooms.map((room) => (
         <GameRoom
+          key={room.id}
+          id={room.id}
           title={room.title}
           headCount={room.headCount}
           option={room.option}

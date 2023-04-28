@@ -13,10 +13,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <RecoilRoot>
-      <SocketProvider>
-        <GlobalModal />
-        <App />
-      </SocketProvider>
+      <App />
     </RecoilRoot>
   </React.StrictMode>
 );
