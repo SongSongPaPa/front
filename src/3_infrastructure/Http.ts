@@ -1,5 +1,5 @@
 import customAxios from "./customAxios";
-import { User } from "@domain/User";
+import { User } from "@root/2_domain/models/User";
 
 class Http {
   public async login(): Promise<void> {
@@ -13,9 +13,7 @@ class Http {
 
   public async getUserDetail(): Promise<User> {
     console.log(process.env.REACT_APP_API_URL);
-    const data = await customAxios.get("/user/detail", {
-      withCredentials: true,
-    });
+    const data = await customAxios.get("/user/detail", {});
     return data.data;
     console.log(data);
     //const request = customAxios({

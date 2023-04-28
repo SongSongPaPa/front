@@ -1,6 +1,6 @@
 //import { SocketIOChatRepository } from "@infrastructure/SocketIOChatRepository";
-import { User } from "@root/2_domain/User";
-import { Chat } from "@root/2_domain/Chat";
+import { User } from "@root/2_domain/models/User";
+import { Chat } from "@root/2_domain/models/Chat";
 
 const useChatService = () => {
   //const socketRepository = SocketIOChatRepository();

@@ -1,27 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './ToggleButton.css'
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import "./ToggleButton.css";
+import { UserListState } from "@root/2_domain/recoil/test";
+import { useRecoilState } from "recoil";
 
 interface ToggleButtonProps {
-  selected: boolean;
-  toggleSelected: () => void;
   onText: string;
   offText: string;
 }
 
-const ToggleButton = ({ selected, toggleSelected, onText, offText}: ToggleButtonProps) => {
+const ToggleButton = ({ onText, offText }: ToggleButtonProps) => {
+  const [selected, setSelected] = useRecoilState(UserListState);
   return (
-    <div className="toggle-container" onClick={toggleSelected}>
+    <div className="toggle-container" onClick={() => setSelected(!selected)}>
       <div className={`dialog-button ${selected ? "" : "disabled"}`}>
         {selected ? onText : offText}
       </div>
     </div>
   );
-};
-
-ToggleButton.propTypes = {
-  selected: PropTypes.bool.isRequired,
-  toggleSelected: PropTypes.func.isRequired,
 };
 
 export default ToggleButton;

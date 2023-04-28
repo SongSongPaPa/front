@@ -20,7 +20,7 @@ function App() {
           <Route path="/game-wait" element={<GameWaitPage />} />
           <Route path="/chat" element={<ChatPage />} />
           <Route path="/signup" element={<SignupPage />} />
-          <Route path="/twofactor" element={<TwoFactorPage />} />
+          <Route path="/two-factor" element={<TwoFactorPage />} />
         </Routes>
       </div>
     </BrowserRouter>

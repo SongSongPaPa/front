@@ -1,6 +1,6 @@
-import { User } from "@domain/User";
-import { Chat } from "@domain/Chat";
-import { Message } from "@domain/Chat";
+import { User } from "@root/2_domain/models/User";
+import { Chat } from "@root/2_domain/models/Chat";
+import { Message } from "@root/2_domain/models/Chat";
 import { IChatRepository } from "@domain/IChatRepository";
 import { useContext } from "react";
 /*import SocketContext from "@root/1_application/SocketProvider";

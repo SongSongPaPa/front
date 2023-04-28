@@ -1,6 +1,6 @@
-import { User } from "./User";
-import { Chat } from "./Chat";
-import { Message } from "./Chat";
+import { User } from "./models/User";
+import { Chat } from "./models/Chat";
+import { Message } from "./models/Chat";
 
 export interface IChatRepository {
   createChatRoom(user: User, chat: Chat): void;

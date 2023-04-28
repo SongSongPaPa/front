@@ -5,13 +5,9 @@ import "./LoginPage.css";
 import Logo from "@assets/image/SSPP.png";
 
 import { useNavigate } from "react-router-dom";
-import { useUserProfile } from "@root/1_application/hooks/useAuth";
+import { useUserProfile } from "@root/1_application/hooks/useUser";
 
 function LoginPage() {
-  const nav = useNavigate();
-  const handleClick = () => {
-    //nav("/lobby");
-  };
   return (
     <div className="image-container">
       <img className="Logo" src={Logo}></img>

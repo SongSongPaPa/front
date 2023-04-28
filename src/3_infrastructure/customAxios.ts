@@ -3,11 +3,10 @@ import axios from "axios";
 
 const customAxios = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
-  withCredentials: true,
 });
 
 // customAxios.defaults.withCredentials = true;
-// customAxios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+//customAxios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 // customAxios.defaults.headers.common["Access-Control-Allow-Methods"] = "*";
 // customAxios.defaults.headers.common["Access-Control-Allow-Headers"] = "*";
 
