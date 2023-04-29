@@ -6,8 +6,8 @@ export interface PublicChatInfo {
   id: number;
   title: string;
   mode: ChatType;
-  owner: PublicUserInfo;
-  admin: PublicUserInfo;
+  //owner: PublicUserInfo;
+  //admin: PublicUserInfo;
 }
 
 export interface InnerChatInfo {
