@@ -1,9 +1,10 @@
-import { meState } from "@root/2_domain/recoil/userAtom";
+import { meState, otherState } from "@root/2_domain/recoil/userAtom";
 import { useRecoilState } from "recoil";
 import { HttpUserRepository } from "@infrastructure/HttpUserRepository";
 
 const useUser = () => {
   const [me, setMe] = useRecoilState(meState);
+  const [other, setOther] = useRecoilState(otherState);
   const userRepository = HttpUserRepository();
   const login = async () => {
     try {
@@ -25,7 +26,7 @@ const useUser = () => {
   const getUserProfileById = async (id: number) => {
     try {
       const data = await userRepository.getUserProfileById(id);
-      return data;
+      setOther(data);
     } catch (error) {
       console.log(error);
     }

@@ -1,18 +1,25 @@
 import React, { useEffect } from "react";
 import useUser from "@application/useUser";
-import { useRecoilState } from "recoil";
-import { meState } from "@root/2_domain/recoil/userAtom";
+import { useRecoilValue } from "recoil";
+import { meState, otherState } from "@root/2_domain/recoil/userAtom";
 
 const Profile = () => {
   const { getMyProfile, getUserProfileById } = useUser();
-  const [me, setMe] = useRecoilState(meState);
+  const me = useRecoilValue(meState);
+  const other = useRecoilValue(otherState);
 
   useEffect(() => {
     getMyProfile();
+    getUserProfileById(1);
   }, []);
 
   if (!me) {
     return <div>Loading...</div>;
+  }
+  if (!other) {
+    console.log("no such user");
+  } else {
+    console.log(other);
   }
   return (
     <div>

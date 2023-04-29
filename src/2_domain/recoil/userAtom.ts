@@ -5,3 +5,8 @@ export const meState = atom<PrivateUserInfo>({
   key: "me",
   default: undefined,
 });
+
+export const otherState = atom<PrivateUserInfo>({
+  key: "other",
+  default: undefined,
+});
