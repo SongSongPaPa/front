@@ -6,7 +6,7 @@ import GlobalSocket from "@root/3_infrastructure/GlobalSocket";
 const useUser = () => {
   const [me, setMe] = useRecoilState(meState);
   const setOther = useSetRecoilState(otherState);
-  const userRepository = new UserRepository(GlobalSocket.getUserSocket());
+  const userRepository = new UserRepository(GlobalSocket.getChatSocket());
 
   const login = async () => {
     try {

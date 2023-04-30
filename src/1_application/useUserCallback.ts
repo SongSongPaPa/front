@@ -1,7 +1,7 @@
 import { useRecoilCallback } from "recoil";
 import { meState } from "@root/2_domain/recoil/userAtom";
 
-const userCallbacks = {
+const useUserCallback = {
   onUpdateDisplayName: useRecoilCallback(({ set }) => (userId: number, name: string) => {
     set(meState, (oldMe) => {
       if (oldMe.id === userId) {
@@ -13,4 +13,4 @@ const userCallbacks = {
   }),
 };
 
-export default userCallbacks;
+export default useUserCallback;
