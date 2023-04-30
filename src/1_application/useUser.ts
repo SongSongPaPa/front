@@ -1,40 +1,26 @@
-import { meState, otherState } from "@root/2_domain/recoil/userAtom";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import UserRepository from "@root/3_infrastructure/UserRepository";
 import GlobalSocket from "@root/3_infrastructure/GlobalSocket";
+import { useEffect } from "react";
+import useChatCallbacks from "./useChatCallback";
+import useUserCallback from "./useUserCallback";
 
-const useUser = () => {
-  const [me, setMe] = useRecoilState(meState);
-  const setOther = useSetRecoilState(otherState);
-  const userRepository = new UserRepository(GlobalSocket.getChatSocket());
+const useUserEvent = () => {
+  const socket = GlobalSocket.getUserSocket();
+  const { onUpdateDisplayName, onUpdateImage, onFollowUser, onUnfollowUser, onBlockUser } = useUserCallback();
+  useEffect(() => {
+    socket.on("connect", () => {
+      console.log("User socket Connected to server");
+    });
 
-  const getMyProfile = async () => {
-    try {
-      const data = await userRepository.getMyProfile();
-      setMe(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    socket.on("disconnect", () => {
+      console.log("User socket Disconnected from server");
+    });
 
-  const getUserProfileById = async (id: number) => {
-    try {
-      const data = await userRepository.getUserProfileById(id);
-      setOther(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const updateDisplayName = (name: string) => {
-    try {
-      userRepository.updateDisplayName(name);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  return { getMyProfile, getUserProfileById, updateDisplayName };
+    socket.on("broadcast:user:updateDisplayName", onUpdateDisplayName);
+    socket.on("broadcast:user:updateImage", onUpdateImage);
+    socket.on("single:user:followUser", onFollowUser);
+    socket.on("single:user:unFollowUser", onUnfollowUser);
+    socket.on("single:user:blockUser", onBlockUser);
+  }, []);
 };
 
-export default useUser;
+export default useUserEvent;
