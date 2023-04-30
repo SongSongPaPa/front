@@ -1,7 +1,7 @@
-import { PublicChatInfo } from "../Chat";
+import { ChatInfo } from "../Chat";
 import { atom } from "recoil";
 
-export const chatRoomListState = atom<PublicChatInfo[]>({
+export const chatRoomListState = atom<ChatInfo[]>({
   key: "chatrooms",
   default: [],
 });

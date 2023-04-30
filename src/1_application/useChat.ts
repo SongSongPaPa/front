@@ -4,7 +4,20 @@ import useChatCallbacks from "./useChatCallback";
 
 const useChatEvent = () => {
   const socket = GlobalSocket.getChatSocket();
-  const { onCreateChat } = useChatCallbacks();
+  const {
+    onCreateChat,
+    onUpdateChat,
+    onSetAdmin,
+    onDeleteChat,
+    onGroupJoinChat,
+    onGroupLeaveChat,
+    onGroupSendMessage,
+    onKickUser,
+    onMuteUser,
+    onSingleJoinChat,
+    onSingleLeaveChat,
+    onSingleSendMessage,
+  } = useChatCallbacks();
   useEffect(() => {
     socket.on("connect", () => {
       console.log("Connected to server");
@@ -15,19 +28,20 @@ const useChatEvent = () => {
     });
     ///socket.on("single:chat:createChat", (data) => console.log(data));
     socket.on("broadcast:chat:createChat", onCreateChat);
-    socket.on("broadcast:chat:updateChat", (data) => console.log(data));
+    socket.on("broadcast:chat:updateChat", onUpdateChat);
+    socket.on("broadcast:chat:setAdmin", onSetAdmin);
+    socket.on("broadcast:chat:deleteChat", onDeleteChat);
 
-    socket.on("single:chat:joinChat", (data) => console.log(data));
-    socket.on("group:chat:joinChat", (data) => console.log(data));
-    socket.on("single:chat:leaveChat", (data) => console.log(data));
-    socket.on("broadcast:chat:deleteChat", (data) => console.log(data));
-    socket.on("broadcast:chat:setAdmin", (data) => console.log(data));
-    socket.on("group:chat:leaveChat", (data) => console.log(data));
-    socket.on("group:chat:sendMessage", (data) => console.log(data));
-    socket.on("group:chat:kickUser", (data) => console.log(data));
-    socket.on("group:chat:muteUser", (data) => console.log(data));
+    socket.on("group:chat:joinChat", onGroupJoinChat);
+    socket.on("group:chat:leaveChat", onGroupLeaveChat);
+    socket.on("group:chat:sendMessage", onGroupSendMessage);
+    socket.on("group:chat:kickUser", onKickUser);
+    socket.on("group:chat:muteUser", onMuteUser);
 
-    socket.on("single:chat:sendMessage", (data) => console.log(data));
+    socket.on("single:chat:joinChat", onSingleJoinChat);
+    socket.on("single:chat:leaveChat", onSingleLeaveChat);
+    socket.on("single:chat:sendMessage", onSingleSendMessage);
+    //성수한테 물어봐야함
     socket.on("single:chat:inviteUser", (data) => console.log(data));
   }, []);
 };

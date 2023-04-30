@@ -1,5 +1,5 @@
 import { PublicUserInfo } from "./User";
-import { PublicChatInfo } from "./Chat";
+import { ChatInfo } from "./Chat";
 
 export interface IChatRepository {
   /* ================================= */
