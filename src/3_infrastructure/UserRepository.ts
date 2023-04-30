@@ -10,22 +10,6 @@ class UserRepository implements IUserRepository {
     this.socket = socket;
   }
 
-  setSocketListen() {
-    this.socket.on("connect", () => {
-      console.log("Connected to server");
-    });
-
-    this.socket.on("disconnect", () => {
-      console.log("Disconnected from server");
-    });
-
-    this.socket.on("broadcast:user:updateDisplayName", (data) => console.log(data));
-  }
-
-  login = async (): Promise<void> => {
-    await customAxios.get("/auth/login");
-  };
-
   getMyProfile = async (): Promise<PrivateUserInfo> => {
     const me = await customAxios.get("/user/detail");
     return me.data;
@@ -38,6 +22,22 @@ class UserRepository implements IUserRepository {
 
   updateDisplayName = (name: string): void => {
     this.socket.emit("updateDisplayName", name);
+  };
+
+  updateImage = (userId: number, mimeType: string): void => {
+    this.socket.emit("updateImage", { userId: userId, mimeType: mimeType });
+  };
+
+  followUser = (userId: number): void => {
+    this.socket.emit("followUser", { userId: userId });
+  };
+
+  unfollowUser = (userId: number): void => {
+    this.socket.emit("unfollowUser", { userId: userId });
+  };
+
+  blockUser = (userId: number): void => {
+    this.socket.emit("blockUser", { userId: userId });
   };
 }
 
