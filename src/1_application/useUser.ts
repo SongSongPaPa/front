@@ -8,14 +8,6 @@ const useUser = () => {
   const setOther = useSetRecoilState(otherState);
   const userRepository = new UserRepository(GlobalSocket.getChatSocket());
 
-  const login = async () => {
-    try {
-      await userRepository.login();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const getMyProfile = async () => {
     try {
       const data = await userRepository.getMyProfile();
@@ -41,7 +33,8 @@ const useUser = () => {
       console.log(error);
     }
   };
-  return { login, getMyProfile, getUserProfileById, updateDisplayName };
+
+  return { getMyProfile, getUserProfileById, updateDisplayName };
 };
 
 export default useUser;
