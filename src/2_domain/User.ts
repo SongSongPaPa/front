@@ -14,4 +14,6 @@ export interface PrivateUserInfo {
   achievements: string[];
   level: number;
   id: number;
+  friends: number[];
+  blocks: number[];
 }

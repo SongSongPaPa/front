@@ -9,6 +9,7 @@ import ChatRepository from "@root/3_infrastructure/SocketIOChatRepository";
 import { useRecoilCallback } from "recoil";
 
 import useChatEvent from "./useChat";
+import useUserEvent from "./useUser";
 
 interface SocketProviderProps {
   children: ReactNode;
@@ -18,6 +19,7 @@ export const SocketHandler = ({ children }: SocketProviderProps) => {
   const socket = GlobalSocket.getChatSocket();
 
   useChatEvent();
+  useUserEvent();
   return <>{children}</>;
 };
 

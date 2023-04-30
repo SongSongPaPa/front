@@ -5,7 +5,7 @@ const useChatService = () => {
   const socketRepository = new SocketIOChatRepository(GlobalSocket.getChatSocket());
 
   const createChatRoom = () => {
-    socketRepository.createChatRoom();
+    //socketRepository.createChatRoom();
   };
 
   return { createChatRoom };
