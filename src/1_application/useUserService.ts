@@ -6,7 +6,7 @@ import GlobalSocket from "@root/3_infrastructure/GlobalSocket";
 const useUserService = () => {
   const [me, setMe] = useRecoilState(meState);
   const setOther = useSetRecoilState(otherState);
-  const userRepository = new UserRepository(GlobalSocket.getChatSocket());
+  const userRepository = new UserRepository(GlobalSocket.getUserSocket());
 
   const getMyProfile = async () => {
     try {
@@ -28,6 +28,7 @@ const useUserService = () => {
 
   const updateDisplayName = (name: string) => {
     try {
+      console.log("in updatedisplayname");
       userRepository.updateDisplayName(name);
     } catch (error) {
       console.log(error);

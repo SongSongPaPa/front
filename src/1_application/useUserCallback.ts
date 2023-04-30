@@ -2,15 +2,19 @@ import { useRecoilCallback } from "recoil";
 import { meState } from "@root/2_domain/recoil/userAtom";
 
 const useUserCallback = () => {
-  const onUpdateDisplayName = useRecoilCallback(({ set }) => (userId: number, name: string) => {
-    set(meState, (oldMe) => {
-      if (oldMe.id === userId) {
-        return { ...oldMe, name: name };
-      } else {
-        return oldMe;
-      }
-    });
-  });
+  // const onUpdateDisplayName = useRecoilCallback(({ set }) => (data: { userId: number; name: string }) => {
+  //   console.log("change Name", data.userId, data.name);
+  //   set(meState, (oldMe) => {
+  //     if (oldMe.id === data.userId) {
+  //       return { ...oldMe, name: data.name };
+  //     } else {
+  //       return oldMe;
+  //     }
+  //   });
+  // });
+  const onUpdateDisplayName = (data: { userId: number; name: string }) => {
+    console.log(data);
+  };
 
   const onUpdateImage = useRecoilCallback(({ set }) => (userId: number, imageUrl: string) => {
     console.log("update image", userId, imageUrl);

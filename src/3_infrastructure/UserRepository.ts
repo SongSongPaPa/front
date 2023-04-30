@@ -2,12 +2,14 @@ import { IUserRepository } from "@domain/IUserRepository";
 import { PrivateUserInfo } from "@domain/User";
 import customAxios from "@root/lib/customAxios";
 import { Socket } from "socket.io-client";
+import GlobalSocket from "./GlobalSocket";
 
 class UserRepository implements IUserRepository {
   private socket: Socket;
 
   constructor(socket: Socket) {
     this.socket = socket;
+    //console.log(this.socket);
   }
 
   getMyProfile = async (): Promise<PrivateUserInfo> => {
@@ -21,7 +23,9 @@ class UserRepository implements IUserRepository {
   };
 
   updateDisplayName = (name: string): void => {
-    this.socket.emit("updateDisplayName", name);
+    console.log("emit update display name");
+    console.log(this.socket);
+    this.socket.emit("updateDisplayName", { name: name });
   };
 
   updateImage = (userId: number, mimeType: string): void => {

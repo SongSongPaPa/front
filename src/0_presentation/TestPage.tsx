@@ -7,47 +7,52 @@ import "./teststyle.css";
 
 const TestPage = () => {
   const { createChatRoom } = useChatService();
-  const { updateDisplayName, updateImage, followUser, unfollowUser, blockUser } = useUserService();
+  const { getMyProfile, getUserProfileById, updateDisplayName, updateImage, followUser, unfollowUser, blockUser } =
+    useUserService();
   const rooms = useRecoilValue(chatRoomListState);
   return (
     <div>
+      <h1>Login</h1>
       <p>
-        <button className="test" onClick={createChatRoom}>
-          Create Chat
-        </button>
-      </p>
-      <div className="test">
         <a href={process.env.REACT_APP_API_URL + "/auth/login"}>login</a>
-      </div>
+      </p>
+      <h1>Chat</h1>
+      <p>
+        <button onClick={createChatRoom}>Create Chat</button>
+      </p>
       <div className="room-container">
         {rooms.map((room, index) => (
-          <p key={index}>{room.title}asdf</p>
+          <p key={index}>{room.name}asdf</p>
         ))}
       </div>
+      <h1>User</h1>
       <p>
-        <button className="test" onClick={() => updateDisplayName("test")}>
+        <button onClick={getMyProfile}>My Profile</button>
+      </p>
+      <p>
+        <button onClick={() => getUserProfileById(1)}>Other Profile</button>
+      </p>
+      <p>
+        <button
+          onClick={() => {
+            console.log("changename");
+            updateDisplayName("test");
+          }}
+        >
           Change Name
         </button>
       </p>
       <p>
-        <button className="test" onClick={() => updateImage(1, "test")}>
-          Change Image
-        </button>
+        <button onClick={() => updateImage(1, "test")}>Change Image</button>
       </p>
       <p>
-        <button className="test" onClick={() => followUser(2)}>
-          Follow User
-        </button>
+        <button onClick={() => followUser(2)}>Follow User</button>
       </p>
       <p>
-        <button className="test" onClick={() => unfollowUser(2)}>
-          Unfollow User
-        </button>
+        <button onClick={() => unfollowUser(2)}>Unfollow User</button>
       </p>
       <p>
-        <button className="test" onClick={() => blockUser(3)}>
-          Block User
-        </button>
+        <button onClick={() => blockUser(3)}>Block User</button>
       </p>
     </div>
   );

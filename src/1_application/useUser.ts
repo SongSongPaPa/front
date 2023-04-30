@@ -15,7 +15,8 @@ const useUserEvent = () => {
       console.log("User socket Disconnected from server");
     });
 
-    socket.on("broadcast:user:updateDisplayName", onUpdateDisplayName);
+    // socket.on("broadcast:user:updateDisplayName", onUpdateDisplayName);
+    socket.on("broadcast:user:updateDisplayName", (d) => console.log(d));
     socket.on("broadcast:user:updateImage", onUpdateImage);
     socket.on("single:user:followUser", onFollowUser);
     socket.on("single:user:unFollowUser", onUnfollowUser);
