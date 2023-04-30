@@ -6,7 +6,7 @@ interface ButtonProps {
   children: string | JSX.Element;
 }
 
-const StyledButton = styled.button<ButtonProps>`
+/*const StyledButton = styled.button<ButtonProps>`
   ${({ type }) => ButtonStyle[type]};
 `;
 
@@ -19,3 +19,4 @@ const Button = ({ type, children, ...rest }: ButtonProps) => {
 };
 
 export default Button;
+*/

@@ -1,11 +1,13 @@
 import { meState, otherState } from "@root/2_domain/recoil/userAtom";
-import { useRecoilState } from "recoil";
-import { HttpUserRepository } from "@infrastructure/HttpUserRepository";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import UserRepository from "@root/3_infrastructure/UserRepository";
+import GlobalSocket from "@root/3_infrastructure/GlobalSocket";
 
 const useUser = () => {
   const [me, setMe] = useRecoilState(meState);
-  const [other, setOther] = useRecoilState(otherState);
-  const userRepository = HttpUserRepository();
+  const setOther = useSetRecoilState(otherState);
+  const userRepository = new UserRepository(GlobalSocket.getUserSocket());
+
   const login = async () => {
     try {
       await userRepository.login();
@@ -32,7 +34,14 @@ const useUser = () => {
     }
   };
 
-  return { login, getMyProfile, getUserProfileById };
+  const updateDisplayName = (name: string) => {
+    try {
+      userRepository.updateDisplayName(name);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  return { login, getMyProfile, getUserProfileById, updateDisplayName };
 };
 
 export default useUser;

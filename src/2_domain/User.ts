@@ -13,4 +13,5 @@ export interface PrivateUserInfo {
   twoFactorUid: string;
   achievements: string[];
   level: number;
+  id: number;
 }
