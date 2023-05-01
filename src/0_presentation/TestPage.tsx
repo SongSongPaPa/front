@@ -43,7 +43,7 @@ const TestPage = () => {
         </button>
       </p>
       <p>
-        <button onClick={() => updateImage(1, "test")}>Change Image</button>
+        <button onClick={() => updateImage("123123", "test")}>Change Image</button>
       </p>
       <p>
         <button onClick={() => followUser(2)}>Follow User</button>
