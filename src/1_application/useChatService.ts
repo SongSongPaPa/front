@@ -1,4 +1,4 @@
-import SocketIOChatRepository from "@root/3_infrastructure/SocketIOChatRepository";
+import SocketIOChatRepository from "@root/3_infrastructure/ChatRepository";
 import GlobalSocket from "@root/3_infrastructure/GlobalSocket";
 
 const useChatService = () => {
