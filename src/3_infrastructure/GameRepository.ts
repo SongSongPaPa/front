@@ -9,32 +9,32 @@ class GameRepository implements IGameRepository {
   }
 
   public createGame = (speed: number): void => {
-    console.log("send createGame, speed: ", speed);
+    console.log("GameRepository createGame, speed: ", speed);
     this.socket.emit("createGame", { speed: speed });
   };
 
   public joinGame = (gameId: number): void => {
-    console.log("send joinGame, gameId: ", gameId);
+    console.log("GameRepository joinGame, gameId: ", gameId);
     this.socket.emit("joinGame", { gameId: gameId });
   };
 
   public watchGame = (gameId: number): void => {
-    console.log("send watchGame, gameId: ", gameId);
+    console.log("GameRepository watchGame, gameId: ", gameId);
     this.socket.emit("watchGame", { gameId: gameId });
   };
 
   public leaveGame = (gameId: number): void => {
-    console.log("send leaveGame, gameId: ", gameId);
+    console.log("GameRepository leaveGame, gameId: ", gameId);
     this.socket.emit("leaveGame", { gameId: gameId });
   };
 
   public startGame = (): void => {
-    console.log("send startGame");
+    console.log("GameRepository startGame");
     this.socket.emit("startGame");
   };
 
   public movePaddle = (keyCode: number): void => {
-    console.log("send movePaddle, keyCode: ", keyCode);
+    console.log("GameRepository movePaddle, keyCode: ", keyCode);
     this.socket.emit("movePaddle", { keyCode: keyCode });
   };
 }

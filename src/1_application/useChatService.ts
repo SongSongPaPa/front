@@ -1,8 +1,8 @@
-import SocketIOChatRepository from "@root/3_infrastructure/ChatRepository";
+import ChatRepository from "@root/3_infrastructure/ChatRepository";
 import GlobalSocket from "@root/3_infrastructure/GlobalSocket";
 
 const useChatService = () => {
-  const socketRepository = new SocketIOChatRepository(GlobalSocket.getChatSocket());
+  const socketRepository = new ChatRepository(GlobalSocket.getChatSocket());
 
   const createChat = (name: string, type: string, password?: string) => {
     console.log("send createChat");
