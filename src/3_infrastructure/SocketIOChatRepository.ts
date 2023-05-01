@@ -18,7 +18,7 @@ class ChatRepository implements IChatRepository {
   /*             Broadcast             */
   /* ================================= */
 
-  public createChatRoom(name: string, type: string, password?: string): void {
+  public createChat(name: string, type: string, password?: string): void {
     this.socket.emit("createChat", { name: name, type: type, password: password });
   }
 
