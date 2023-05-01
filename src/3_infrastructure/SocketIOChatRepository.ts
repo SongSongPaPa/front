@@ -34,8 +34,8 @@ class ChatRepository implements IChatRepository {
   /*             Group             */
   /* ============================= */
 
-  public joinChat(userId: number, password?: string): void {
-    this.socket.emit("joinChat", { userId: userId, password: password });
+  public joinChat(chatId: number, password?: string): void {
+    this.socket.emit("joinChat", { chatId: chatId, password: password });
   }
 
   public leaveChat(): void {

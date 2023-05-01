@@ -4,7 +4,7 @@ import GlobalSocket from "@root/3_infrastructure/GlobalSocket";
 const useChatService = () => {
   const socketRepository = new SocketIOChatRepository(GlobalSocket.getChatSocket());
 
-  const createChatRoom = (name: string, type: string, password?: string) => {
+  const createChat = (name: string, type: string, password?: string) => {
     console.log("send createChat");
     try {
       socketRepository.createChat(name, type, password);
@@ -31,10 +31,10 @@ const useChatService = () => {
     }
   };
 
-  const joinChat = (userId: number, password?: string) => {
+  const joinChat = (chatId: number, password?: string) => {
     console.log("send joinChat");
     try {
-      socketRepository.joinChat(userId, password);
+      socketRepository.joinChat(chatId, password);
     } catch (e) {
       console.log(e);
     }
@@ -95,7 +95,7 @@ const useChatService = () => {
   };
 
   return {
-    createChatRoom,
+    createChat,
     updateChat,
     setAdmin,
     joinChat,
