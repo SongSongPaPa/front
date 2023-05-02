@@ -1,10 +1,18 @@
-import styled from "styled-components";
-import { ButtonStyle } from "./ButtonStyle";
+import { StyledButton } from "./ButtonStyle";
 
-interface ButtonProps {
-  type: string;
-  children: string | JSX.Element;
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  name: string;
 }
+
+const Button = ({ name, children, ...rest }: ButtonProps) => {
+  return (
+    <StyledButton className={name} {...rest}>
+      {children}
+    </StyledButton>
+  );
+};
+
+export default Button;
 
 /*const StyledButton = styled.button<ButtonProps>`
   ${({ type }) => ButtonStyle[type]};

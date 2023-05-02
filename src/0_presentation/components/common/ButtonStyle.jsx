@@ -67,13 +67,32 @@ export const ButtonStyle = {
     background-color: #6c757d;
     color: white;
   `,
+  "user-banner": `
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  font-family: Bouncy;
+  font-size: 14px;
+  background-color: #fcfcfc;
+  width: 140px;
+  height: 40px;
+  margin-top: 10px;
+  cursor: pointer;
+  color:black;
+  gap:20px;
+}`,
 };
 
 export const StyledButton = styled.button`
-  ${({ type }) => ButtonStyle[type]};
+  ${({ className }) => ButtonStyle[className]};
 `;
 
-const IconStyle = {
+export const StyledIcon = styled.div`
+  ${({ className }) => IconStyle[className]};
+`;
+
+export const IconStyle = {
   "setting-icon": `
     background-color: #6c757d;
     color: white;

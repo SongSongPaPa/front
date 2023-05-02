@@ -1,4 +1,4 @@
-type UserStateType = "ONLINE" | "OFFLINE" | "INGAME";
+type UserStateType = "online" | "offline" | "ingame";
 
 export interface PublicUserInfo {
   id: number;
