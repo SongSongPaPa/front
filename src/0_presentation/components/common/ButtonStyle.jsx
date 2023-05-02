@@ -19,6 +19,7 @@ export const ButtonStyle = {
   "join-chat": `
     font-family: Bouncy;
     font-size: 16px;
+    color: #000000; 
     width: 98px;
     height: 106px;
     background-color: #7abfff;
@@ -30,6 +31,7 @@ export const ButtonStyle = {
   "join-game": `
     font-family: Bouncy;
     font-size: 16px;
+    color: #000000; 
     width: 98px;
     height: 53px;
     background-color: #bfff8c;
@@ -42,6 +44,7 @@ export const ButtonStyle = {
   "watch-game": `
     font-family: Bouncy;
     font-size: 16px;
+    color: #000000; 
     width: 98px;
     height: 53px;
     background-color: #fbe38f;

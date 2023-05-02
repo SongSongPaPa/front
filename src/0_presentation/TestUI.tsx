@@ -2,6 +2,8 @@ import React from "react";
 import Button from "./components/common/Button";
 import UserList from "./User/UserList";
 import ChatUserList from "./Chat/UserList";
+import ChatRoomList from "./Chat/RoomList";
+import GameRoomList from "./Game/RoomList";
 
 const TestUI = () => {
   return (
@@ -12,10 +14,12 @@ const TestUI = () => {
         <span>asdf</span>
         <div></div>
       </Button>
-      <Button name="watch-game">watch</Button>
       <h1>User List</h1>
       <ChatUserList></ChatUserList>
       <UserList></UserList>
+      <h1>Room List</h1>
+      <ChatRoomList></ChatRoomList>
+      <GameRoomList></GameRoomList>
     </div>
   );
 };
