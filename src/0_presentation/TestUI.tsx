@@ -4,6 +4,7 @@ import UserList from "./User/UserList";
 import ChatUserList from "./Chat/UserList";
 import ChatRoomList from "./Chat/RoomList";
 import GameRoomList from "./Game/RoomList";
+import Input from "./components/common/Input";
 
 const TestUI = () => {
   return (
@@ -20,6 +21,8 @@ const TestUI = () => {
       <h1>Room List</h1>
       <ChatRoomList></ChatRoomList>
       <GameRoomList></GameRoomList>
+      <h1>Input</h1>
+      <Input type="search" placeholder="search"></Input>
     </div>
   );
 };
