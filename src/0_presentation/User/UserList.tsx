@@ -1,4 +1,4 @@
-import UserItem from "./UserItem";
+import UserItem from "../components/common/UserListItem";
 import { userListState } from "@root/2_domain/recoil/userAtom";
 import { useRecoilValue } from "recoil";
 
@@ -29,7 +29,7 @@ const UserList = () => {
   return (
     <div>
       {users.map((user, index) => (
-        <UserItem id={index} profile={user.profile} nickname={user.nickname} state={user.state} />
+        <UserItem key={index} userId={index} profile={user.profile} nickname={user.nickname} state={user.state} />
       ))}
     </div>
   );

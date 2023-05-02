@@ -80,7 +80,7 @@ export const ButtonStyle = {
   margin-top: 10px;
   cursor: pointer;
   color:black;
-  gap:20px;
+  gap:10px;
 }`,
 };
 

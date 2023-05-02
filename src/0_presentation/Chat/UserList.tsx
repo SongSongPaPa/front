@@ -1,4 +1,4 @@
-import UserItem from "./UserItem";
+import UserListItem from "../components/common/UserListItem";
 import { userListState } from "@root/2_domain/recoil/userAtom";
 import { useRecoilValue } from "recoil";
 
@@ -7,19 +7,19 @@ const sample: PublicUserInfo[] = [
   {
     id: 1,
     profile: "https://blog.kakaocdn.net/dn/bxLuQy/btr6CgpS8wc/SbzrenkzzLn7UZzHGj0Jk0/img.png",
-    nickname: "a",
+    nickname: "aaa",
     state: "online",
   },
   {
     id: 2,
     profile: "https://blog.kakaocdn.net/dn/bxLuQy/btr6CgpS8wc/SbzrenkzzLn7UZzHGj0Jk0/img.png",
-    nickname: "b",
+    nickname: "a",
     state: "offline",
   },
   {
     id: 3,
     profile: "https://blog.kakaocdn.net/dn/bxLuQy/btr6CgpS8wc/SbzrenkzzLn7UZzHGj0Jk0/img.png",
-    nickname: "c",
+    nickname: "a",
     state: "ingame",
   },
 ];
@@ -29,7 +29,7 @@ const UserList = () => {
   return (
     <div>
       {users.map((user, index) => (
-        <UserItem id={index} profile={user.profile} nickname={user.nickname} state={user.state} />
+        <UserListItem key={index} userId={user.id} role={user.state} profile={user.profile} nickname={user.nickname} />
       ))}
     </div>
   );
