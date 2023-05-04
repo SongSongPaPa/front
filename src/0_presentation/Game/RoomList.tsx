@@ -1,11 +1,22 @@
-import RoomListItem from "../RoomListItem";
+import RoomListItem from "../components/common/RoomListItem";
 import { chatRoomListState } from "@root/2_domain/recoil/chatAtom";
 import { useRecoilValue } from "recoil";
+import styled from "styled-components";
+
+const RoomListWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 30px;
+  position: absolute;
+  top: 40px;
+`;
 
 const RoomList = () => {
   const rooms = useRecoilValue(chatRoomListState);
   return (
-    <div>
+    <RoomListWrapper>
       {rooms.map((room, index) => (
         <RoomListItem
           key={index}
@@ -15,7 +26,7 @@ const RoomList = () => {
           isGame={true}
         />
       ))}
-    </div>
+    </RoomListWrapper>
   );
 };
 

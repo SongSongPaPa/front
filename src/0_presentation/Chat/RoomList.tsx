@@ -1,4 +1,4 @@
-import RoomListItem from "../RoomListItem";
+import RoomListItem from "../components/common/RoomListItem";
 import { chatRoomListState } from "@root/2_domain/recoil/chatAtom";
 import { useRecoilValue } from "recoil";
 

@@ -1,6 +1,10 @@
-import styled from "styled-components";
+import styled, { css, CSSProperties } from "styled-components";
 
-export const ButtonStyle = {
+type ButtonStyleType = {
+  [key: string]: string;
+};
+
+export const ButtonStyle: ButtonStyleType = {
   "lobby-small-common": `
     font-family: Bouncy;
     font-size: 15px;
@@ -87,58 +91,62 @@ export const ButtonStyle = {
 }`,
 };
 
-export const StyledButton = styled.button`
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  className: string;
+}
+
+export const StyledButton = styled.button<ButtonProps>`
   ${({ className }) => ButtonStyle[className]};
 `;
 
-export const StyledIcon = styled.div`
-  ${({ className }) => IconStyle[className]};
-`;
+// export const StyledIcon = styled.div`
+//   ${({ className }) => IconStyle[className]};
+// `;
 
-export const IconStyle = {
-  "setting-icon": `
-    background-color: #6c757d;
-    color: white;
-  `,
-  "menu-icon": `
-    background-color: #6c757d;
-    color: white;
-  `,
-  "back-icon": `
-    background-color: #6c757d;
-    color: white;
-  `,
-  "send-icon": `
-    background-color: #6c757d;
-    color: white;
-  `,
-  "crown-silver-icon": `
-    background-color: #6c757d;
-    color: white;
-  `,
-  "crown-silver-icon": `
-    background-color: #6c757d;
-    color: white;
-  `,
-  "dot-green": `
-  width: 8px;
-  height: 8px;
-  background-color: #bfff8c;
-  border-radius: 50%;
-  border: none;
-`,
-  "dot-gray": `
-  width: 8px;
-  height: 8px;
-  background-color: #e9e9e9;
-  border-radius: 50%;
-  border: none;
-`,
-  "dot-yellow": `
-  width: 8px;
-  height: 8px;
-  background-color: #fbe38f;
-  border-radius: 50%;
-  border: none;
-`,
-};
+// export const IconStyle = {
+//   "setting-icon": `
+//     background-color: #6c757d;
+//     color: white;
+//   `,
+//   "menu-icon": `
+//     background-color: #6c757d;
+//     color: white;
+//   `,
+//   "back-icon": `
+//     background-color: #6c757d;
+//     color: white;
+//   `,
+//   "send-icon": `
+//     background-color: #6c757d;
+//     color: white;
+//   `,
+//   "crown-silver-icon": `
+//     background-color: #6c757d;
+//     color: white;
+//   `,
+//   "crown-silver-icon": `
+//     background-color: #6c757d;
+//     color: white;
+//   `,
+//   "dot-green": `
+//   width: 8px;
+//   height: 8px;
+//   background-color: #bfff8c;
+//   border-radius: 50%;
+//   border: none;
+// `,
+//   "dot-gray": `
+//   width: 8px;
+//   height: 8px;
+//   background-color: #e9e9e9;
+//   border-radius: 50%;
+//   border: none;
+// `,
+//   "dot-yellow": `
+//   width: 8px;
+//   height: 8px;
+//   background-color: #fbe38f;
+//   border-radius: 50%;
+//   border: none;
+// `,
+// };

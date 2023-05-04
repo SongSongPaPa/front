@@ -1,5 +1,5 @@
 import UserItem from "../components/common/UserListItem";
-import { userListState } from "@root/2_domain/recoil/userAtom";
+import { filteredUserListState, userListState } from "@root/2_domain/recoil/userAtom";
 import { useRecoilValue } from "recoil";
 
 import { PublicUserInfo } from "@root/2_domain/User";
@@ -25,7 +25,8 @@ const sample: PublicUserInfo[] = [
 ];
 const UserList = () => {
   //const users = useRecoilValue(userListState);
-  const users = sample;
+  const users = useRecoilValue(filteredUserListState);
+  //const users = sample;
   return (
     <div>
       {users.map((user, index) => (

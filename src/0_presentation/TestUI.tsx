@@ -5,6 +5,8 @@ import ChatUserList from "./Chat/UserList";
 import ChatRoomList from "./Chat/RoomList";
 import GameRoomList from "./Game/RoomList";
 import Input from "./components/common/Input";
+import ToggleButton from "./User/ToggleButton";
+import UserInterface from "./User/UserInterface";
 
 const TestUI = () => {
   return (
@@ -23,6 +25,10 @@ const TestUI = () => {
       <GameRoomList></GameRoomList>
       <h1>Input</h1>
       <Input type="search" placeholder="search"></Input>
+      <h1>Toggle Button</h1>
+      <ToggleButton onText="on" offText="off"></ToggleButton>
+      <h1>User Interface</h1>
+      <UserInterface />
     </div>
   );
 };
