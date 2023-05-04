@@ -1,3 +1,6 @@
+import { PlayerInfo } from "@root/2_domain/Game";
+import { gameRoomListState, gamingState } from "@root/2_domain/recoil/gameAtom";
+import { GamePlayerDto, GamePublicDto } from "@root/3_infrastructure/dto/socket/game.dto";
 import { useRecoilCallback } from "recoil";
 
 const useChatCallbacks = () => {
@@ -5,22 +8,41 @@ const useChatCallbacks = () => {
   /*             Broadcast             */
   /* ================================= */
 
-  const onCreateChat = useRecoilCallback(({ set }) => (newChat: ChatPublicDto) => {
-    set(chatRoomListState, (prev) => {
-      const data: ChatInfo = {
-        chatId: newChat.chatId,
-        ownerId: newChat.ownerId,
-        adminId: newChat.adminId,
-        type: typeConverter(newChat.type),
-        name: newChat.name,
-      };
-      return [...prev, data];
+  const onCreateGame = useRecoilCallback(({ set }) => (newChat: GamePublicDto) => {
+    //Todo: 3초 2초 1초 내려주는 소켓 명세 있어야함
+  });
+
+  const onDeleteGame = useRecoilCallback(({ set }) => (data: { gameId: number }) => {
+    set(gameRoomListState, (prev) => {
+      return prev.filter((e) => e.gameId !== data.gameId);
     });
   });
-  ㅎ;
+
   /* ============================= */
   /*             Group             */
   /* ============================= */
+
+  const onGroupWatchGame = useRecoilCallback(({ set }) => (data: { userId: number }) => {
+    set(gamingState, (prev) => {
+      prev.watcher.push(data.userId);
+      return prev;
+    });
+  });
+  const onGroupJoinGame = useRecoilCallback(({ set }) => (data: GamePlayerDto) => {
+    set(gamingState, (prev) => {
+      const player: PlayerInfo = { userId: data.userId, score: data.score, position: data.position };
+      prev.players.push(player);
+      return prev;
+    });
+  });
+  const onGroupDeleteGame = useRecoilCallback(({ set }) => () => {
+    set(gamingState, (prev) => {
+      const player: PlayerInfo = { userId: data.userId, score: data.score, position: data.position };
+      prev.players.push(player);
+      return prev;
+    });
+  });
+
   /* ============================== */
   /*             Single             */
   /* ============================== */
