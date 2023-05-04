@@ -28,16 +28,16 @@ const useUserService = () => {
 
   const updateDisplayName = (name: string) => {
     try {
-      console.log("in updatedisplayname");
       userRepository.updateDisplayName(name);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const updateImage = (userId: number, mimeType: string) => {
+  const updateImage = (image: string, mimeType: string) => {
+    console.log("in updateImage");
     try {
-      userRepository.updateImage(userId, mimeType);
+      userRepository.updateImage(image, mimeType);
     } catch (error) {
       console.log(error);
     }

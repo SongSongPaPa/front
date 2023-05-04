@@ -6,7 +6,18 @@ import useUserService from "@root/1_application/useUserService";
 import "./teststyle.css";
 
 const TestPage = () => {
-  const { createChatRoom } = useChatService();
+  const {
+    createChat,
+    updateChat,
+    setAdmin,
+    joinChat,
+    leaveChat,
+    sendMessage,
+    kickUser,
+    muteUser,
+    sendDirectMessage,
+    inviteUser,
+  } = useChatService();
   const { getMyProfile, getUserProfileById, updateDisplayName, updateImage, followUser, unfollowUser, blockUser } =
     useUserService();
   const rooms = useRecoilValue(chatRoomListState);
@@ -18,7 +29,34 @@ const TestPage = () => {
       </p>
       <h1>Chat</h1>
       <p>
-        <button onClick={createChatRoom}>Create Chat</button>
+        <button onClick={() => createChat("테스트", "public", undefined)}>Create Chat</button>
+      </p>
+      <p>
+        <button onClick={() => updateChat("테스트", "public", undefined)}>Update Chat</button>
+      </p>
+      <p>
+        <button onClick={() => setAdmin(3)}>Set Admin</button>
+      </p>
+      <p>
+        <button onClick={() => joinChat(1, undefined)}>Joni Chat</button>
+      </p>
+      <p>
+        <button onClick={() => leaveChat()}>Leave Chat</button>
+      </p>
+      <p>
+        <button onClick={() => sendMessage("메세지를 보내보자")}>Send Message</button>
+      </p>
+      <p>
+        <button onClick={() => kickUser(1)}>Kick User 1</button>
+      </p>
+      <p>
+        <button onClick={() => muteUser(2)}>Mute User 2</button>
+      </p>
+      <p>
+        <button onClick={() => sendDirectMessage(5, "hi this is dm")}>DM to 5</button>
+      </p>
+      <p>
+        <button onClick={() => inviteUser(5)}>Invite User 5</button>
       </p>
       <div className="room-container">
         {rooms.map((room, index) => (
@@ -43,7 +81,7 @@ const TestPage = () => {
         </button>
       </p>
       <p>
-        <button onClick={() => updateImage(1, "test")}>Change Image</button>
+        <button onClick={() => updateImage("123123", "test")}>Change Image</button>
       </p>
       <p>
         <button onClick={() => followUser(2)}>Follow User</button>

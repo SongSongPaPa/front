@@ -6,7 +6,7 @@ export interface IChatRepository {
   /*             Broadcast             */
   /* ================================= */
 
-  createChatRoom(name: string, type: string, password?: string): void;
+  createChat(name: string, type: string, password?: string): void;
   updateChat(name: string, type: string, password?: string): void;
   setAdmin(userId: number): void;
 
@@ -14,7 +14,7 @@ export interface IChatRepository {
   /*             Group             */
   /* ============================= */
 
-  joinChat(userId: number, password?: string): void;
+  joinChat(chatId: number, password?: string): void;
   leaveChat(): void;
   sendMessage(message: string): void;
   kickUser(userId: number): void;

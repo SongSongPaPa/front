@@ -18,7 +18,7 @@ class ChatRepository implements IChatRepository {
   /*             Broadcast             */
   /* ================================= */
 
-  public createChatRoom(name: string, type: string, password?: string): void {
+  public createChat(name: string, type: string, password?: string): void {
     this.socket.emit("createChat", { name: name, type: type, password: password });
   }
 
@@ -34,8 +34,8 @@ class ChatRepository implements IChatRepository {
   /*             Group             */
   /* ============================= */
 
-  public joinChat(userId: number, password?: string): void {
-    this.socket.emit("joinChat", { userId: userId, password: password });
+  public joinChat(chatId: number, password?: string): void {
+    this.socket.emit("joinChat", { chatId: chatId, password: password });
   }
 
   public leaveChat(): void {
