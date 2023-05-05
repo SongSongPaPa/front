@@ -5,12 +5,7 @@ import { Socket } from "socket.io-client";
 import GlobalSocket from "./GlobalSocket";
 
 class UserRepository implements IUserRepository {
-  private socket: Socket;
-
-  constructor(socket: Socket) {
-    this.socket = socket;
-    //console.log(this.socket);
-  }
+  private socket: Socket = GlobalSocket.getSocket();
 
   getMyProfile = async (): Promise<PrivateUserInfo> => {
     const me = await customAxios.get("/user/detail");
@@ -45,4 +40,4 @@ class UserRepository implements IUserRepository {
   };
 }
 
-export default UserRepository;
+export default new UserRepository();

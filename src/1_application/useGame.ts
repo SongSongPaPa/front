@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import useGameCallbacks from "./useGameCallback";
 
 const useGameEvent = () => {
-  const socket = GlobalSocket.getUserSocket();
+  const socket = GlobalSocket.getSocket();
   const {
     onCreateGame,
     onBroadDeleteGame,

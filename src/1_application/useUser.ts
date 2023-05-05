@@ -4,7 +4,7 @@ import useChatCallbacks from "./useChatCallback";
 import useUserCallback from "./useUserCallback";
 
 const useUserEvent = () => {
-  const socket = GlobalSocket.getUserSocket();
+  const socket = GlobalSocket.getSocket();
   const { onUpdateDisplayName, onUpdateImage, onFollowUser, onUnfollowUser, onBlockUser } = useUserCallback();
   useEffect(() => {
     socket.on("connect", () => {

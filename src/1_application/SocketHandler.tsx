@@ -16,7 +16,7 @@ interface SocketProviderProps {
 }
 
 export const SocketHandler = ({ children }: SocketProviderProps) => {
-  const socket = GlobalSocket.getChatSocket();
+  //const socket = GlobalSocket.getChatSocket();
 
   useChatEvent();
   useUserEvent();

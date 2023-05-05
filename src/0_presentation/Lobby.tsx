@@ -54,6 +54,9 @@ const Lobby = () => {
   const handleClickAlertModal = () => {
     showModal({ modalType: "AlertModal" });
   };
+  const handleClickChatRoomCreate = () => {
+    showModal({ modalType: "ChatRoomCreateModal" });
+  };
   return (
     <PageWrapper>
       <RoomWrapper>
@@ -70,7 +73,7 @@ const Lobby = () => {
         </RoomListContainer>
         <RoomListContainer>
           <ButtonContainer>
-            <Button name="lobby-small-common" onClick={() => alert("chat create")}>
+            <Button name="lobby-small-common" onClick={handleClickChatRoomCreate}>
               Create Room
             </Button>
           </ButtonContainer>

@@ -1,12 +1,9 @@
 import GameRepository from "@root/3_infrastructure/GameRepository";
-import GlobalSocket from "@root/3_infrastructure/GlobalSocket";
 
 const useGameService = () => {
-  const socketRepository = new GameRepository(GlobalSocket.getChatSocket());
-
   const createGame = (speed: number) => {
     try {
-      socketRepository.createGame(speed);
+      GameRepository.createGame(speed);
     } catch (e) {
       console.log(e);
     }
@@ -14,7 +11,7 @@ const useGameService = () => {
 
   const joinGame = (gameId: number) => {
     try {
-      socketRepository.joinGame(gameId);
+      GameRepository.joinGame(gameId);
     } catch (e) {
       console.log(e);
     }
@@ -22,7 +19,7 @@ const useGameService = () => {
 
   const watchGame = (gameId: number) => {
     try {
-      socketRepository.watchGame(gameId);
+      GameRepository.watchGame(gameId);
     } catch (e) {
       console.log(e);
     }
@@ -30,7 +27,7 @@ const useGameService = () => {
 
   const leaveGame = (gameId: number) => {
     try {
-      socketRepository.leaveGame(gameId);
+      GameRepository.leaveGame(gameId);
     } catch (e) {
       console.log(e);
     }
@@ -38,7 +35,7 @@ const useGameService = () => {
 
   const startGame = () => {
     try {
-      socketRepository.startGame();
+      GameRepository.startGame();
     } catch (e) {
       console.log(e);
     }
@@ -46,7 +43,7 @@ const useGameService = () => {
 
   const movePaddle = (keyCode: number) => {
     try {
-      socketRepository.leaveGame(keyCode);
+      GameRepository.leaveGame(keyCode);
     } catch (e) {
       console.log(e);
     }

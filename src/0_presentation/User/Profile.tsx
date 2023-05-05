@@ -8,7 +8,7 @@ const Profile = () => {
   const profile = useRecoilValue(meState);
   useEffect(() => {
     getMyProfile();
-  });
+  }, []);
   if (!profile) {
     return <div>Loading...</div>;
   }

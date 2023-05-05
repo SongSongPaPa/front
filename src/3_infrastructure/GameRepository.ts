@@ -1,12 +1,9 @@
 import { IGameRepository } from "@root/2_domain/IGameRepository";
 import { Socket } from "socket.io-client";
+import GlobalSocket from "./GlobalSocket";
 
 class GameRepository implements IGameRepository {
-  private socket: Socket;
-
-  constructor(socket: Socket) {
-    this.socket = socket;
-  }
+  private socket: Socket = GlobalSocket.getSocket();
 
   public createGame = (speed: number): void => {
     console.log("GameRepository createGame, speed: ", speed);
@@ -39,4 +36,4 @@ class GameRepository implements IGameRepository {
   };
 }
 
-export default GameRepository;
+export default new GameRepository();

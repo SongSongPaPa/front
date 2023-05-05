@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import useChatCallbacks from "./useChatCallback";
 
 const useChatEvent = () => {
-  const socket = GlobalSocket.getChatSocket();
+  const socket = GlobalSocket.getSocket();
   const {
     onCreateChat,
     onUpdateChat,

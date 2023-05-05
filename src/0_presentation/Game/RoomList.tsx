@@ -1,5 +1,5 @@
 import RoomListItem from "../components/common/RoomListItem";
-import { chatRoomListState } from "@root/2_domain/recoil/chatAtom";
+import { gameRoomListState } from "@root/2_domain/recoil/gameAtom";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 
@@ -14,17 +14,11 @@ const RoomListWrapper = styled.div`
 `;
 
 const RoomList = () => {
-  const rooms = useRecoilValue(chatRoomListState);
+  const rooms = useRecoilValue(gameRoomListState);
   return (
     <RoomListWrapper>
-      {rooms.map((room, index) => (
-        <RoomListItem
-          key={index}
-          roomId={room.chatId}
-          name={room.name}
-          headCount={room.users ? room.users.length : 0}
-          isGame={true}
-        />
+      {rooms.map((room) => (
+        <RoomListItem key={room.gameId} roomId={room.gameId} name={room.name} headCount={0} isGame={true} />
       ))}
     </RoomListWrapper>
   );

@@ -1,13 +1,10 @@
 import ChatRepository from "@root/3_infrastructure/ChatRepository";
-import GlobalSocket from "@root/3_infrastructure/GlobalSocket";
 
 const useChatService = () => {
-  const socketRepository = new ChatRepository(GlobalSocket.getChatSocket());
-
   const createChat = (name: string, type: string, password?: string) => {
     console.log("send createChat");
     try {
-      socketRepository.createChat(name, type, password);
+      ChatRepository.createChat(name, type, password);
     } catch (e) {
       console.log(e);
     }
@@ -16,7 +13,7 @@ const useChatService = () => {
   const updateChat = (name: string, type: string, password?: string) => {
     console.log("send updateChat");
     try {
-      socketRepository.updateChat(name, type, password);
+      ChatRepository.updateChat(name, type, password);
     } catch (e) {
       console.log(e);
     }
@@ -25,7 +22,7 @@ const useChatService = () => {
   const setAdmin = (userId: number) => {
     console.log("send setAdmin");
     try {
-      socketRepository.setAdmin(userId);
+      ChatRepository.setAdmin(userId);
     } catch (e) {
       console.log(e);
     }
@@ -34,7 +31,7 @@ const useChatService = () => {
   const joinChat = (chatId: number, password?: string) => {
     console.log("send joinChat");
     try {
-      socketRepository.joinChat(chatId, password);
+      ChatRepository.joinChat(chatId, password);
     } catch (e) {
       console.log(e);
     }
@@ -43,7 +40,7 @@ const useChatService = () => {
   const leaveChat = () => {
     console.log("send leaveChat");
     try {
-      socketRepository.leaveChat();
+      ChatRepository.leaveChat();
     } catch (e) {
       console.log(e);
     }
@@ -52,7 +49,7 @@ const useChatService = () => {
   const sendMessage = (message: string) => {
     console.log("send sendMessage");
     try {
-      socketRepository.sendMessage(message);
+      ChatRepository.sendMessage(message);
     } catch (e) {
       console.log(e);
     }
@@ -61,7 +58,7 @@ const useChatService = () => {
   const kickUser = (userId: number) => {
     console.log("send kickUser");
     try {
-      socketRepository.kickUser(userId);
+      ChatRepository.kickUser(userId);
     } catch (e) {
       console.log(e);
     }
@@ -70,7 +67,7 @@ const useChatService = () => {
   const muteUser = (userId: number) => {
     console.log("send muteUser");
     try {
-      socketRepository.muteUser(userId);
+      ChatRepository.muteUser(userId);
     } catch (e) {
       console.log(e);
     }
@@ -79,7 +76,7 @@ const useChatService = () => {
   const sendDirectMessage = (userId: number, message: string) => {
     console.log("send sendDirectMessage");
     try {
-      socketRepository.sendDirectMessage(userId, message);
+      ChatRepository.sendDirectMessage(userId, message);
     } catch (e) {
       console.log(e);
     }
@@ -88,7 +85,7 @@ const useChatService = () => {
   const inviteUser = (userId: number) => {
     console.log("send inviteUser");
     try {
-      socketRepository.inviteUser(userId);
+      ChatRepository.inviteUser(userId);
     } catch (e) {
       console.log(e);
     }

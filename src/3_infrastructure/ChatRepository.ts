@@ -1,25 +1,17 @@
-import { io, Socket } from "socket.io-client";
+import { Socket } from "socket.io-client";
 import { IChatRepository } from "@root/2_domain/IChatRepository";
-import chatCallbacks from "@root/1_application/useChatCallback";
-import useChatCallbacks from "@root/1_application/useChatCallback";
+import GlobalSocket from "./GlobalSocket";
 
 class ChatRepository implements IChatRepository {
-  private socket: Socket;
-
-  constructor(socket: Socket) {
-    this.socket = socket;
-  }
-
-  /*public setSocket(serverUrl: string) {
-    this.socket = io(serverUrl);
-  }*/
+  private socket: Socket = GlobalSocket.getSocket();
 
   /* ================================= */
   /*             Broadcast             */
   /* ================================= */
 
   public createChat(name: string, type: string, password?: string): void {
-    this.socket.emit("createChat", { name: name, type: type, password: password });
+    console.log(name, type);
+    this.socket.emit("createChat", { chat: { name: name, type: type, password: password } });
   }
 
   public updateChat(name: string, type: string, password?: string): void {
@@ -67,4 +59,4 @@ class ChatRepository implements IChatRepository {
   }
 }
 
-export default ChatRepository;
+export default new ChatRepository();

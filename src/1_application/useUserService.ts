@@ -1,16 +1,14 @@
 import { meState, otherState } from "@root/2_domain/recoil/userAtom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import UserRepository from "@root/3_infrastructure/UserRepository";
-import GlobalSocket from "@root/3_infrastructure/GlobalSocket";
 
 const useUserService = () => {
   const [me, setMe] = useRecoilState(meState);
   const setOther = useSetRecoilState(otherState);
-  const userRepository = new UserRepository(GlobalSocket.getUserSocket());
 
   const getMyProfile = async () => {
     try {
-      const data = await userRepository.getMyProfile();
+      const data = await UserRepository.getMyProfile();
       setMe(data);
     } catch (error) {
       console.log(error);
@@ -19,7 +17,7 @@ const useUserService = () => {
 
   const getUserProfileById = async (id: number) => {
     try {
-      const data = await userRepository.getUserProfileById(id);
+      const data = await UserRepository.getUserProfileById(id);
       setOther(data);
     } catch (error) {
       console.log(error);
@@ -28,7 +26,7 @@ const useUserService = () => {
 
   const updateDisplayName = (name: string) => {
     try {
-      userRepository.updateDisplayName(name);
+      UserRepository.updateDisplayName(name);
     } catch (error) {
       console.log(error);
     }
@@ -37,7 +35,7 @@ const useUserService = () => {
   const updateImage = (image: string, mimeType: string) => {
     console.log("in updateImage");
     try {
-      userRepository.updateImage(image, mimeType);
+      UserRepository.updateImage(image, mimeType);
     } catch (error) {
       console.log(error);
     }
@@ -45,7 +43,7 @@ const useUserService = () => {
 
   const followUser = (userId: number) => {
     try {
-      userRepository.followUser(userId);
+      UserRepository.followUser(userId);
     } catch (error) {
       console.log(error);
     }
@@ -53,7 +51,7 @@ const useUserService = () => {
 
   const unfollowUser = (userId: number) => {
     try {
-      userRepository.unfollowUser(userId);
+      UserRepository.unfollowUser(userId);
     } catch (error) {
       console.log(error);
     }
@@ -61,7 +59,7 @@ const useUserService = () => {
 
   const blockUser = (userId: number) => {
     try {
-      userRepository.blockUser(userId);
+      UserRepository.blockUser(userId);
     } catch (error) {
       console.log(error);
     }
