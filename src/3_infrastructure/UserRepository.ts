@@ -1,5 +1,5 @@
 import { IUserRepository } from "@domain/IUserRepository";
-import { PrivateUserInfo } from "@domain/User";
+import { UserInfo } from "@domain/User";
 import customAxios from "@root/lib/customAxios";
 import { Socket } from "socket.io-client";
 import GlobalSocket from "./GlobalSocket";
@@ -12,12 +12,12 @@ class UserRepository implements IUserRepository {
     //console.log(this.socket);
   }
 
-  getMyProfile = async (): Promise<PrivateUserInfo> => {
+  getMyProfile = async (): Promise<UserInfo> => {
     const me = await customAxios.get("/user/detail");
     return me.data;
   };
 
-  getUserProfileById = async (id: number): Promise<PrivateUserInfo> => {
+  getUserProfileById = async (id: number): Promise<UserInfo> => {
     const user = await customAxios.get(`/user/detail/${id}`);
     return user.data;
   };

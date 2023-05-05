@@ -1,11 +1,11 @@
-import { meState, otherState } from "@root/2_domain/recoil/userAtom";
+import { meState, detailState, userListState } from "@root/2_domain/recoil/userAtom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import UserRepository from "@root/3_infrastructure/UserRepository";
 import GlobalSocket from "@root/3_infrastructure/GlobalSocket";
 
 const useUserService = () => {
   const [me, setMe] = useRecoilState(meState);
-  const setOther = useSetRecoilState(otherState);
+  const setOther = useSetRecoilState(detailState);
   const userRepository = new UserRepository(GlobalSocket.getUserSocket());
 
   const getMyProfile = async () => {

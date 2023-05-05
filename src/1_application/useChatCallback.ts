@@ -1,5 +1,5 @@
-import { useRecoilCallback } from "recoil";
-import { chatRoomListState } from "@root/2_domain/recoil/chatAtom";
+import { useRecoilCallback, useRecoilState } from "recoil";
+import { chatRoomListState, chatState } from "@root/2_domain/recoil/chatAtom";
 import { ChatInfo, typeConverter } from "@root/2_domain/Chat";
 import ChatSessionDto, { ChatPublicDto } from "@root/3_infrastructure/dto/socket/chat.dto";
 import { messageListState } from "@root/2_domain/recoil/messageAtom";
@@ -10,50 +10,66 @@ const useChatCallbacks = () => {
   /*             Broadcast             */
   /* ================================= */
 
-  const onCreateChat = useRecoilCallback(({ set }) => (newChat: ChatPublicDto) => {
+  const onCreateChat = useRecoilCallback(({ set }) => (data: ChatPublicDto) => {
     set(chatRoomListState, (prev) => {
-      const data: ChatInfo = {
-        chatId: newChat.chatId,
-        ownerId: newChat.ownerId,
-        adminId: newChat.adminId,
-        type: typeConverter(newChat.type),
-        name: newChat.name,
+      console.log("in onCreateChat callback");
+      const chat: ChatInfo = {
+        chatId: data.chatId,
+        ownerId: data.ownerId,
+        adminId: data.adminId,
+        type: typeConverter(data.type),
+        name: data.name,
       };
-      return [...prev, data];
+      return [...prev, chat];
     });
   });
 
-  const onUpdateChat = useRecoilCallback(({ set }) => (newChat: ChatPublicDto) => {
+  const onUpdateChat = useRecoilCallback(({ set }) => (data: ChatPublicDto) => {
     set(chatRoomListState, (prev) => {
-      const chat = prev.find((e) => e.chatId === newChat.chatId);
-      if (chat === undefined) {
-        console.log("⛔️ 없는 채팅방인뎁쇼");
-        return prev;
-      }
-      chat.adminId = newChat.adminId;
-      chat.ownerId = newChat.ownerId;
-      chat.type = typeConverter(newChat.type);
-      chat.name = newChat.name;
-      return prev.map((element) => (element.chatId === chat.chatId ? chat : element));
-    });
-    set(messageListState, (prev) => {
-      const message: ChatMessage = { message: "방 정보가 바뀌었다리", sourceId: 0, direct: false, system: true };
-      return [...prev, message];
-    });
-  });
-
-  const onSetAdmin = useRecoilCallback(({ set }) => (data: { chatId: number; adminId: number }) => {
-    set(chatRoomListState, (prev) => {
+      console.log("in onUpdateChat callback");
       const chat = prev.find((e) => e.chatId === data.chatId);
       if (chat === undefined) {
         console.log("⛔️ 없는 채팅방인뎁쇼");
         return prev;
       }
-      chat.adminId = data.adminId;
-      return prev.map((element) => (element.chatId === chat.chatId ? chat : element));
+      const newChat: ChatInfo = {
+        chatId: chat.chatId,
+        adminId: data.adminId,
+        ownerId: data.ownerId,
+        type: typeConverter(data.type),
+        name: data.name,
+      };
+      return prev.map((element) => (element.chatId === newChat.chatId ? newChat : element));
     });
-    //Todo: userAtom이 만들어지면, message에 유저이름을 넣어보자.
     set(messageListState, (prev) => {
+      console.log("in messageListState callback");
+      const message: ChatMessage = { message: "방 정보가 바뀌었다리", sourceId: 0, direct: false, system: true };
+      return [...prev, message];
+    });
+  });
+
+  const onSetAdmin = useRecoilCallback(({ set }) => (data: { chatId: number; ownerId: number; adminId: number }) => {
+    set(chatRoomListState, (prev) => {
+      console.log("in onSetAdmin callback - chatRoomListState");
+      const chat = prev.find((e) => e.chatId === data.chatId);
+      if (chat === undefined) {
+        console.log("⛔️ 없는 채팅방인뎁쇼");
+        return prev;
+      }
+      const newChat: ChatInfo = {
+        chatId: data.chatId,
+        ownerId: data.ownerId || chat.ownerId,
+        adminId: data.adminId || chat.adminId,
+        type: chat.type,
+        name: chat.name,
+      };
+      return prev.map((element) => (element.chatId === chat.chatId ? newChat : element));
+    });
+
+    //Todo: userAtom이 만들어지면, message에 유저이름을 넣어보자.
+
+    set(messageListState, (prev) => {
+      console.log("in onSetAdmin callback - messageListState");
       const message: ChatMessage = {
         message: `방장이 ${data.adminId}바뀌었다리`,
         sourceId: 0,
@@ -111,6 +127,9 @@ const useChatCallbacks = () => {
     });
     //Todo: userAtom이 만들어지면, message에 유저이름을 넣어보자.
     set(messageListState, (prev) => {
+      // if (chatState.chatId !== undefined){
+
+      // }
       const message: ChatMessage = {
         message: `${data.userId}가 나갔다`,
         sourceId: data.userId,
@@ -195,11 +214,18 @@ const useChatCallbacks = () => {
       //Todo: 나가는 기능 구현하세요
       return prev.map((element) => (element.chatId === chatRoom.chatId ? chatRoom : element));
     });
+    set(messageListState, (prev) => {
+      return [];
+    });
+    set(chatState, (prev) => {
+      return { ...prev, chatId: 0 };
+    });
   });
 
+  //Todo: 채팅방 페이지로 넘어가는 로직 필요
   const onSingleJoinChat = useRecoilCallback(({ set }) => (newChat: ChatSessionDto) => {
-    set(chatRoomListState, (prev) => {
-      const chatRoom = prev.find((e) => !(e.users === null || e.users === undefined));
+    set(chatState, (prev) => {
+      console.log("in onSingleJoinChat callback");
       const data: ChatInfo = {
         chatId: newChat.public.chatId,
         ownerId: newChat.public.ownerId,
@@ -213,10 +239,10 @@ const useChatCallbacks = () => {
         muted: newChat.private.muted,
         invited: newChat.private.invited,
       };
-      if (chatRoom === undefined) {
-        return [...prev, data];
-      }
-      return prev.map((ele) => (ele.chatId === chatRoom.chatId ? data : ele));
+      return data;
+    });
+    set(messageListState, (prev) => {
+      return [];
     });
   });
 

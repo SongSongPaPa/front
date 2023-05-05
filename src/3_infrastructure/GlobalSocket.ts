@@ -8,9 +8,9 @@ class GlobalSocket {
   private static chatSocket = io(`${process.env.REACT_APP_SOCKET_URL as string}`, {
     withCredentials: true,
   });
-  private static userSocket = io(`${process.env.REACT_APP_SOCKET_URL as string}`, {
-    withCredentials: true,
-  });
+  // private static userSocket = io(`${process.env.REACT_APP_SOCKET_URL as string}`, {
+  //   withCredentials: true,
+  // });
   //private static gameSocket = io(process.env.REACT_APP_SOCKET_URL as string, { path: "/game" });
 
   public static getChatSocket = (): Socket => {
@@ -19,7 +19,7 @@ class GlobalSocket {
   };
 
   public static getUserSocket = (): Socket => {
-    return this.userSocket;
+    return this.chatSocket;
   };
 
   /*public static getGameSocket = (): Socket => {

@@ -1,4 +1,8 @@
-type UserStateType = "ONLINE" | "OFFLINE" | "INGAME";
+export enum UserStateType {
+  ONLINE = "online",
+  OFFLINE = "offline",
+  IN_GAME = "inGame",
+}
 
 export interface PublicUserInfo {
   id: number;
@@ -7,13 +11,14 @@ export interface PublicUserInfo {
   profile: string;
 }
 
-export interface PrivateUserInfo {
-  name: string;
-  twoFactor: boolean;
-  twoFactorUid: string;
-  achievements: string[];
-  level: number;
+export interface UserInfo {
   id: number;
+  state: UserStateType;
+  name: string;
+  nickname: string;
+  level: number;
+  profile: string;
+  achievements: string[];
   friends: number[];
   blocks: number[];
 }

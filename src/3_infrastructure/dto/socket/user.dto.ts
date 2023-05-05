@@ -1,7 +1,8 @@
 export interface UserInfoDto {
   userId: number;
   username: string;
-  status: string;
+  state: string;
+  profile: string;
 }
 
 export interface UserSocketDto extends UserInfoDto {

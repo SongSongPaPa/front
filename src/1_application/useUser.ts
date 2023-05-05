@@ -5,7 +5,8 @@ import useUserCallback from "./useUserCallback";
 
 const useUserEvent = () => {
   const socket = GlobalSocket.getUserSocket();
-  const { onUpdateDisplayName, onUpdateImage, onFollowUser, onUnfollowUser, onBlockUser } = useUserCallback();
+  const { onConnect, onChangeState, onUpdateDisplayName, onUpdateImage, onFollowUser, onUnfollowUser, onBlockUser } =
+    useUserCallback();
   useEffect(() => {
     socket.on("connect", () => {
       console.log("User socket Connected to server");
@@ -15,7 +16,10 @@ const useUserEvent = () => {
       console.log("User socket Disconnected from server");
     });
 
-    // socket.on("broadcast:user:updateDisplayName", onUpdateDisplayName);
+    //Todo: socket에서도 401이면 로그인화면으로
+    socket.on("single:user:error", (data) => console.log(data));
+    socket.on("single:user:connect", onConnect);
+    socket.on("broadcast:user:changeState", onChangeState);
     socket.on("broadcast:user:updateDisplayName", onUpdateDisplayName);
     socket.on("broadcast:user:updateImage", onUpdateImage);
     socket.on("single:user:followUser", onFollowUser);

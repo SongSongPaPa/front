@@ -4,9 +4,9 @@ export interface GameRoomInfo {
   gameId: number;
   ownerId: number;
   name: string;
-  pause: boolean;
-  onGame: boolean;
-  onRound: boolean;
+  speed: number;
+  // onGame: boolean;
+  // onRound: boolean;
 }
 
 // 게임 중과 관련된 모델
