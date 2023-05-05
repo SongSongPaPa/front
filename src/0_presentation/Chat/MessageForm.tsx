@@ -36,7 +36,7 @@ const MessageForm = () => {
   return (
     <form onSubmit={handleMessageSubmit}>
       <MessageBar>
-        <Input type="message" value={message} onChange={handleMessageChange} />
+        <Input name="message" value={message} onChange={handleMessageChange} />
         <Button name="send" type="submit" />
       </MessageBar>
     </form>

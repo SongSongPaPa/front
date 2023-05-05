@@ -24,7 +24,7 @@ const TestUI = () => {
       <ChatRoomList></ChatRoomList>
       <GameRoomList></GameRoomList>
       <h1>Input</h1>
-      <Input type="search" placeholder="search"></Input>
+      <Input name="search" placeholder="search"></Input>
       <h1>Toggle Button</h1>
       <ToggleButton onText="on" offText="off"></ToggleButton>
       <h1>User Interface</h1>

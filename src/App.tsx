@@ -8,12 +8,10 @@ import GlobalModal from "./0_presentation/modals/GlobalModal";
 import Chat from "./0_presentation/Chat";
 import GameWait from "./0_presentation/GameWait";
 import Login from "./0_presentation/Login";
-import GlobalStyle from "./GlobalStyle";
 
 function App() {
   return (
     <BrowserRouter>
-      <GlobalStyle />
       <GlobalModal />
       <SocketHandler>
         <div className="App">

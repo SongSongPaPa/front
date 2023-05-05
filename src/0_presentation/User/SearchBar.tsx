@@ -19,7 +19,7 @@ const SearchBar = () => {
     }
   };
 
-  return <Input type="search" placeholder="search" onChange={handleChange}></Input>;
+  return <Input name="search" placeholder="search" onChange={handleChange}></Input>;
 };
 
 export default SearchBar;

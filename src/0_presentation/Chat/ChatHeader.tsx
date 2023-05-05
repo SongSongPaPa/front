@@ -16,7 +16,6 @@ const Header = styled.div`
   margin-top: 7px;
 
   > p {
-    font-family: Bouncy;
     font-size: 20px;
   }
 `;

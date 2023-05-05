@@ -6,9 +6,7 @@ function Login() {
   return (
     <LoginWrapper>
       <img src={Logo}></img>
-      <a href={process.env.REACT_APP_API_URL + "/auth/login"} className="button">
-        Login
-      </a>
+      <a href={process.env.REACT_APP_API_URL + "/auth/login"}>Login</a>
     </LoginWrapper>
   );
 }

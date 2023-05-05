@@ -6,8 +6,8 @@ type ButtonStyleType = {
 
 export const ButtonStyle: ButtonStyleType = {
   "lobby-small-common": `
-    font-family: Bouncy;
     font-size: 15px;
+    font-family: Bouncy;
     background-color: #d9d9d9;
     border: none;
     border-radius: 25px;
@@ -21,7 +21,6 @@ export const ButtonStyle: ButtonStyleType = {
     justify-content: center;
   `,
   "join-chat": `
-    font-family: Bouncy;
     font-size: 16px;
     color: #000000; 
     width: 98px;
@@ -33,7 +32,6 @@ export const ButtonStyle: ButtonStyleType = {
     top: 0px;
   `,
   "join-game": `
-    font-family: Bouncy;
     font-size: 16px;
     color: #000000; 
     width: 98px;
@@ -46,7 +44,6 @@ export const ButtonStyle: ButtonStyleType = {
     cursor: pointer;
   `,
   "watch-game": `
-    font-family: Bouncy;
     font-size: 16px;
     color: #000000; 
     width: 98px;
@@ -79,7 +76,6 @@ export const ButtonStyle: ButtonStyleType = {
   align-items: center;
   justify-content: flex-start;
   text-align: center;
-  font-family: Bouncy;
   font-size: 14px;
   background-color: #fcfcfc;
   width: 140px;

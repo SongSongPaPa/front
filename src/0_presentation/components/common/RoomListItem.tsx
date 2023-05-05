@@ -22,7 +22,6 @@ const Room = styled.div`
 `;
 
 const Title = styled.div`
-  font-family: Bouncy;
   font-size: 20px;
   position: relative;
   left: 43.41%;
@@ -32,7 +31,6 @@ const Title = styled.div`
 `;
 
 const HeadCount = styled.div`
-  font-family: ONE;
   font-size: 15px;
   position: relative;
   left: 90%;

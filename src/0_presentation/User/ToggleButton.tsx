@@ -9,7 +9,6 @@ interface ToggleButtonProps {
 }
 
 const userStyles = css`
-  font-family: "Bouncy";
   width: 306px;
   background-color: #e9e9e9;
   cursor: pointer;
@@ -23,6 +22,7 @@ const userStyles = css`
 const dialogButtonStyles = css`
   font-size: 14px;
   font-weight: bold;
+  font-family: Bouncy;
   cursor: pointer;
   background-color: #ffffff;
   color: #000000;

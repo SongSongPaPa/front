@@ -7,7 +7,6 @@ interface GamePlayerBoxProps {
 }
 
 const Box = styled.div<GamePlayerBoxProps>`
-  font-family: Bouncy;
   font-size: 36px;
   background-color: ${(props) => {
     if (props.imagePath) {

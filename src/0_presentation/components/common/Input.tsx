@@ -2,11 +2,11 @@ import React from "react";
 import { InputStyle } from "./InputStyle";
 
 interface InputProps extends React.HTMLProps<HTMLInputElement> {
-  type: string;
+  name: string;
 }
 
-const Input = ({ type, ...rest }: InputProps) => {
-  const style = InputStyle[type];
+const Input = ({ name, ...rest }: InputProps) => {
+  const style = InputStyle[name];
   return <input style={style} {...rest}></input>;
 };
 
