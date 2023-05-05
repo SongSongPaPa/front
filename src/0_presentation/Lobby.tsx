@@ -57,6 +57,10 @@ const Lobby = () => {
   const handleClickChatRoomCreate = () => {
     showModal({ modalType: "ChatRoomCreateModal" });
   };
+
+  const handleClickGameRoomCreate = () => {
+    showModal({ modalType: "GameRoomCreateModal" });
+  };
   return (
     <PageWrapper>
       <RoomWrapper>
@@ -65,7 +69,7 @@ const Lobby = () => {
             <Button name="lobby-small-common" onClick={handleClickAlertModal}>
               Quick Start
             </Button>
-            <Button name="lobby-small-common" onClick={() => alert("create")}>
+            <Button name="lobby-small-common" onClick={handleClickGameRoomCreate}>
               Create Room
             </Button>
           </ButtonContainer>

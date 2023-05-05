@@ -1,4 +1,4 @@
-import styled, { css, CSSProperties } from "styled-components";
+import styled from "styled-components";
 
 type ButtonStyleType = {
   [key: string]: string;
@@ -89,6 +89,18 @@ export const ButtonStyle: ButtonStyleType = {
   color:black;
   gap:10px;
 }`,
+
+  send: `
+  background-image: url("@assets/image/send.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+  width: 34px;
+  height: 34px;
+  margin-right: 15px;
+  `,
 };
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
