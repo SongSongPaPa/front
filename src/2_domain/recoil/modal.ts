@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 import { MODAL_TYPES } from "@root/0_presentation/modals/GlobalModal";
 
-const { GameRoomCreateModal, AlertModal, ChatRoomCreateModal, ChatRoomInfoModal, ChatRoomPopover } = MODAL_TYPES;
+const { GameRoomCreateModal, AlertModal, ChatRoomCreateModal, ChatUserInfoModal, ChatRoomPopover } = MODAL_TYPES;
 
 export interface ConfirmModalType {
   modalType: typeof GameRoomCreateModal;
@@ -15,8 +15,8 @@ export interface ChatRoomCreateModalType {
   modalType: typeof ChatRoomCreateModal;
 }
 
-export interface ChatRoomInfoModalType {
-  modalType: typeof ChatRoomInfoModal;
+export interface ChatUserInfoModalType {
+  modalType: typeof ChatUserInfoModal;
 }
 
 export interface ChatRoomPopoverType {
@@ -27,7 +27,7 @@ export type ModalType =
   | ConfirmModalType
   | AlertModalType
   | ChatRoomCreateModalType
-  | ChatRoomInfoModalType
+  | ChatUserInfoModalType
   | ChatRoomPopoverType;
 
 export const modalState = atom<ModalType | null>({

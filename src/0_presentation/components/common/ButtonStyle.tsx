@@ -101,6 +101,31 @@ export const ButtonStyle: ButtonStyleType = {
   height: 34px;
   margin-right: 15px;
   `,
+
+  back: `
+  background-image: url("@assets/image/back.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fcfcfc;
+  border: none;
+  cursor: pointer;
+  width: 33px;
+  height: 33px;
+  margin-left: 25px;`,
+
+  menu: `
+  background-image: url("@assets/image/menu.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fcfcfc;
+  border: none;
+  cursor: pointer;
+  width: 33px;
+  height: 33px;
+  margin-right: 25px;
+  position: relative;
+  display: flex;
+  `,
 };
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

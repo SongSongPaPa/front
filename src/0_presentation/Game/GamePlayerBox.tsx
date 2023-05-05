@@ -6,12 +6,14 @@ interface GamePlayerBoxProps {
   playerName?: string;
 }
 
-/*const Box = styled.div<GamePlayerBoxProps>`
+const Box = styled.div<GamePlayerBoxProps>`
   font-family: Bouncy;
   font-size: 36px;
   background-color: ${(props) => {
     if (props.imagePath) {
-      return;
+      return "#bfff8c";
+    } else {
+      return "#d9d9d9";
     }
   }};
   border-radius: 25px;
@@ -20,23 +22,14 @@ interface GamePlayerBoxProps {
   align-items: center;
   flex-direction: column;
   display: flex;
-`;*/
+`;
 
-const GamePlayerBox = (props: GamePlayerBoxProps) => {
-  const { imagePath, playerName } = props;
-  if (playerName) {
-    return (
-      <div className="occupied">
-        <img src={imagePath}></img>
-        <div>{playerName}</div>
-      </div>
-    );
-  }
+const GamePlayerBox = ({ imagePath, playerName }: GamePlayerBoxProps) => {
   return (
-    <div className="vacant">
-      <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcvU39g%2Fbtr7hSO7dGu%2F7BfyRmVjkstGJQVpq2UQSk%2Fimg.png"></img>
-      <div>wating ...</div>
-    </div>
+    <Box>
+      <img src={imagePath}></img>
+      <div>{playerName ? playerName : "waiting..."}</div>
+    </Box>
   );
 };
 

@@ -38,3 +38,28 @@ export const Overlay = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+export const ChatModal = styled.div`
+  width: 864px;
+  height: 683px;
+  background-color: #ffffff;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 25px;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 100;
+`;
+
+export const ChatModalBody = styled.div`
+  position: relative;
+  flex-direction: row;
+  width: 300px;
+  height: 683px;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  z-index: 102;
+`;

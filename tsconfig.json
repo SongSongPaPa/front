@@ -17,5 +17,5 @@
     "noEmit": true,
     "jsx": "preserve"
   },
-  "include": ["src", "craco.config.js"]
+  "include": ["src", "craco.config.js", "index.d.ts"]
 }
