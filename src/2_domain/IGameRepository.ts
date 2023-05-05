@@ -11,7 +11,7 @@ export interface IGameRepository {
 
   joinGame(gameId: number): void;
   watchGame(gameId: number): void;
-  leaveGame(gameId: number): void;
+  leaveGame(): void;
   startGame(): void;
   movePaddle(keyCode: number): void;
 

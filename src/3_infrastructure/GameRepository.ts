@@ -23,9 +23,9 @@ class GameRepository implements IGameRepository {
     this.socket.emit("watchGame", { gameId: gameId });
   };
 
-  public leaveGame = (gameId: number): void => {
-    console.log("GameRepository leaveGame, gameId: ", gameId);
-    this.socket.emit("leaveGame", { gameId: gameId });
+  public leaveGame = (): void => {
+    console.log("GameRepository leaveGame, gameId: ");
+    this.socket.emit("leaveGame");
   };
 
   public startGame = (): void => {
