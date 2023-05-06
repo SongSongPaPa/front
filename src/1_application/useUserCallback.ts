@@ -2,7 +2,7 @@ import { useRecoilCallback } from "recoil";
 import { meState, userListState } from "@root/2_domain/recoil/userAtom";
 import { PublicUserInfo, UserStateType } from "@root/2_domain/User";
 import { UserInfoDto } from "@root/3_infrastructure/dto/socket/user.dto";
-import ChatPublicDto from "@infrastructure/dto/socket/chat.dto";
+import { ChatPublicDto } from "@root/3_infrastructure/dto/socket/chat.dto";
 import { GamePublicDto } from "@root/3_infrastructure/dto/socket/game.dto";
 import { gameRoomListState } from "@root/2_domain/recoil/gameAtom";
 import { GameRoomInfo } from "@root/2_domain/Game";
@@ -34,7 +34,7 @@ const useUserCallback = () => {
     console.log(data);
     console.log("change Name", data.userId, data.name);
     set(meState, (oldMe) => {
-      if (oldMe.id === data.userId) {
+      if (oldMe !== undefined && oldMe.id === data.userId) {
         return { ...oldMe, name: data.name };
       } else {
         return oldMe;
@@ -46,7 +46,7 @@ const useUserCallback = () => {
     console.log(data);
     console.log("update image", data.userId, data.imageUrl);
     set(meState, (oldMe) => {
-      if (oldMe.id === data.userId) {
+      if (oldMe !== undefined && oldMe.id === data.userId) {
         return { ...oldMe, profile: data.imageUrl };
       } else {
         return oldMe;
@@ -62,41 +62,40 @@ const useUserCallback = () => {
     ({ set }) =>
       (data: { userList: UserInfoDto[]; chatList: ChatPublicDto[]; gameList: GamePublicDto[] }) => {
         console.log("onConnect, data: ", data);
-        // set(gameRoomListState, (prev) => {
-        //   return data.gameList.map((e) => {
-        //     const gameInfo: GameRoomInfo = {
-        //       gameId: e.gameId,
-        //       ownerId: e.ownerId,
-        //       name: e.name,
-        //       speed: e.speed,
-        //     };
-        //     return gameInfo;
-        //   });
-        // });
-        // //Todo : 성수야 profile 날려줘
-        // set(userListState, (prev) => {
-        //   return data.userList.map((e) => {
-        //     const userInfo: PublicUserInfo = {
-        //       id: e.userId,
-        //       nickname: e.username,
-        //       state: e.state as UserStateType,
-        //       profile: e.userId,
-        //     };
-        //     return userInfo;
-        //   });
-        // });
-        // set(chatRoomListState, (prev) => {
-        //   return data.chatList.map((e) => {
-        //     const chatInfo: ChatInfo = {
-        //       chatId: e.public.chatId,
-        //       ownerId: e.public.ownerId,
-        //       adminId: e.public.adminId,
-        //       type: typeConverter(e.public.type),
-        //       name: e.public.name,
-        //     };
-        //     return chatInfo;
-        //   });
-        // });
+        set(gameRoomListState, (prev) => {
+          return data.gameList.map((e) => {
+            const gameInfo: GameRoomInfo = {
+              gameId: e.gameId,
+              ownerId: e.ownerId,
+              name: e.name,
+              speed: e.speed,
+            };
+            return gameInfo;
+          });
+        });
+        set(userListState, (prev) => {
+          return data.userList.map((e) => {
+            const userInfo: PublicUserInfo = {
+              id: e.userId,
+              nickname: e.username,
+              state: e.state as UserStateType,
+              profile: e.profile,
+            };
+            return userInfo;
+          });
+        });
+        set(chatRoomListState, (prev) => {
+          return data.chatList.map((e: ChatPublicDto) => {
+            const chatInfo: ChatInfo = {
+              chatId: e.chatId,
+              ownerId: e.ownerId,
+              adminId: e.adminId,
+              type: typeConverter(e.type),
+              name: e.name,
+            };
+            return chatInfo;
+          });
+        });
       }
   );
 

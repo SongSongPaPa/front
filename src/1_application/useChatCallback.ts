@@ -1,7 +1,7 @@
 import { useRecoilCallback, useRecoilState } from "recoil";
 import { chatRoomListState, chatState } from "@root/2_domain/recoil/chatAtom";
 import { ChatInfo, typeConverter } from "@root/2_domain/Chat";
-import ChatSessionDto, { ChatPublicDto } from "@root/3_infrastructure/dto/socket/chat.dto";
+import { ChatSessionDto, ChatPublicDto } from "@root/3_infrastructure/dto/socket/chat.dto";
 import { messageListState } from "@root/2_domain/recoil/messageAtom";
 import { ChatMessage } from "@root/2_domain/ChatMessage";
 
@@ -143,6 +143,7 @@ const useChatCallbacks = () => {
   const onGroupSendMessage = useRecoilCallback(
     ({ set }) =>
       (data: { sourceId: number; message: string; direct: boolean }) => {
+        console.log("on onGroupSendMessage ", data);
         set(messageListState, (prev) => {
           const message: ChatMessage = { ...data, system: false };
           return [...prev, message];
@@ -198,7 +199,8 @@ const useChatCallbacks = () => {
   /*             Single             */
   /* ============================== */
 
-  const onSingleLeaveChat = useRecoilCallback(({ set }) => (data: { userId: number }) => {
+  const onSingleLeaveChat = useRecoilCallback(({ set }) => () => {
+    console.log("on single leave chat ");
     set(chatRoomListState, (prev) => {
       const chatRoom = prev.find((e) => !(e.users === null || e.users === undefined));
       if (chatRoom === undefined) {
@@ -249,6 +251,7 @@ const useChatCallbacks = () => {
   const onSingleSendMessage = useRecoilCallback(
     ({ set }) =>
       (data: { sourceId: number; message: string; direct: boolean }) => {
+        console.log("on onSingleSendMessage ", data);
         set(messageListState, (prev) => {
           const message: ChatMessage = { ...data, system: false };
           return [...prev, message];

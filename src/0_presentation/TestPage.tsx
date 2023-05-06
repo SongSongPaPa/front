@@ -56,7 +56,7 @@ const TestPage = () => {
         ))}
       </div>
       <p>
-        <button onClick={() => joinChat(1, "1234")}>Joni Chat 1 </button>
+        <button onClick={() => joinChat(7, "1234")}>Joni Chat 7 </button>
       </p>
       <p>
         <button onClick={() => leaveChat()}>Leave Chat</button>
