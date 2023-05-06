@@ -4,6 +4,7 @@ import AlertModal from "./AlertModal";
 import ChatRoomCreateModal from "./ChatRoomCreateModal";
 import GameRoomCreateModal from "./GameRoomCreateModal";
 import ChatUserInfoModal from "./ChatUserInfoModal";
+import UserProfileModal from "./UserProfileModal";
 import { modalState } from "@root/2_domain/recoil/modal";
 
 export const MODAL_TYPES = {
@@ -11,6 +12,7 @@ export const MODAL_TYPES = {
   AlertModal: "AlertModal",
   ChatRoomCreateModal: "ChatRoomCreateModal",
   ChatUserInfoModal: "ChatUserInfoModal",
+  UserProfileModal: "UserProfileModal",
   ChatRoomPopover: "ChatRoomPopover",
 } as const;
 
@@ -19,6 +21,7 @@ const MODAL_COMPONENTS: any = {
   [MODAL_TYPES.AlertModal]: AlertModal,
   [MODAL_TYPES.ChatRoomCreateModal]: ChatRoomCreateModal,
   [MODAL_TYPES.ChatUserInfoModal]: ChatUserInfoModal,
+  [MODAL_TYPES.UserProfileModal]: UserProfileModal,
   // [MODAL_TYPES.ChatRoomPopover]: ChatRoomPopover,
 };
 

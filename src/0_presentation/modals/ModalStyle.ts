@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Modal = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -9,13 +9,13 @@ export const Modal = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
-  align-items: center;
   z-index: 101;
 `;
 
 export const ModalBody = styled.div`
   position: relative;
   flex-direction: row;
+  top: 70px;
   width: 300px;
   height: 500px;
   padding: 40px;
@@ -44,8 +44,7 @@ export const ChatModal = styled.div`
   height: 683px;
   background-color: #ffffff;
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 18px;
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 25px;
   display: flex;
@@ -54,7 +53,6 @@ export const ChatModal = styled.div`
 `;
 
 export const ChatModalBody = styled.div`
-  position: relative;
   flex-direction: row;
   width: 300px;
   height: 683px;

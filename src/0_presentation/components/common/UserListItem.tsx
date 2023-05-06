@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "./Button";
 import styled from "styled-components";
+import useUserService from "@root/1_application/useUserService";
+import useModal from "@root/1_application/useModal";
 
 interface UserListItemProps {
   userId: number;
@@ -48,8 +50,19 @@ const Icon = styled.img<IconProp>`
 `;
 
 const UserListItem = ({ userId, profile, nickname, role, state }: UserListItemProps) => {
+  const { getUserProfileById } = useUserService();
+  const { showModal } = useModal();
+  const handleItemClick = () => {
+    try {
+      getUserProfileById(userId);
+    } catch (error) {
+      console.log(error);
+    }
+
+    showModal({ modalType: "UserProfileModal" });
+  };
   return (
-    <Button name="user-banner">
+    <Button name="user-banner" onClick={handleItemClick}>
       <img src={profile} />
       {role && <Icon role={role} />}
       <span>{nickname}</span>
