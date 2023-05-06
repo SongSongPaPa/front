@@ -2,11 +2,14 @@ import React from "react";
 import Button from "./Button";
 import styled from "styled-components";
 import useChatService from "@root/1_application/useChatService";
+import useGameService from "@root/1_application/useGameService";
+import { useNavigate } from "react-router-dom";
 
 interface RoomListItemProps {
   roomId: number;
   isGame: boolean;
   name: string;
+  password?: string;
 }
 
 const Room = styled.div`
@@ -39,16 +42,41 @@ const HeadCount = styled.div`
   bottom: 66.98%;
 `;
 
-const RoomListItem = ({ roomId, isGame, name }: RoomListItemProps) => {
+const RoomListItem = ({ roomId, password, isGame, name }: RoomListItemProps) => {
   const { joinChat } = useChatService();
+  const { joinGame, watchGame } = useGameService();
+  const navigate = useNavigate();
+
   const handleClickJoinChat = () => {
-    //joinChat();
+    joinChat(roomId, password);
+    navigate("/chat");
+  };
+
+  const handleClickJoinGame = () => {
+    joinGame(roomId);
+    navigate("/game-wait");
+  };
+  const handleClickWatchGame = () => {
+    watchGame(roomId);
+    navigate("gaim-wait");
   };
   return (
     <Room>
       <Title>{name}</Title>
-      <Button name={isGame ? "join-game" : "join-chat"}>{isGame ? "play!" : "join"}</Button>
-      {isGame && <Button name="watch-game">watch</Button>}
+      {isGame ? (
+        <Button name="join-game" onClick={handleClickJoinGame}>
+          play!
+        </Button>
+      ) : (
+        <Button name="join-chat" onClick={handleClickJoinChat}>
+          join
+        </Button>
+      )}
+      {isGame && (
+        <Button name="watch-game" onClick={handleClickWatchGame}>
+          watch
+        </Button>
+      )}
     </Room>
   );
 };

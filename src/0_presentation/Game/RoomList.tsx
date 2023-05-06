@@ -17,9 +17,11 @@ const RoomList = () => {
   const rooms = useRecoilValue(gameRoomListState);
   return (
     <RoomListWrapper>
-      {rooms.map((room) => (
-        <RoomListItem key={room.gameId} roomId={room.gameId} name={room.name} isGame={true} />
-      ))}
+      {rooms.length === 0 ? (
+        <h1>텅...</h1>
+      ) : (
+        rooms.map((room) => <RoomListItem key={room.gameId} roomId={room.gameId} name={room.name} isGame={true} />)
+      )}
     </RoomListWrapper>
   );
 };

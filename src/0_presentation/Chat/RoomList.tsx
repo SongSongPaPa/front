@@ -17,9 +17,11 @@ const RoomList = () => {
   const rooms = useRecoilValue(chatRoomListState);
   return (
     <RoomListWrapper>
-      {rooms.map((room, index) => (
-        <RoomListItem key={index} roomId={room.chatId} name={room.name} isGame={false} />
-      ))}
+      {rooms.length === 0 ? (
+        <h1>텅...</h1>
+      ) : (
+        rooms.map((room) => <RoomListItem key={room.chatId} roomId={room.chatId} name={room.name} isGame={false} />)
+      )}
     </RoomListWrapper>
   );
 };

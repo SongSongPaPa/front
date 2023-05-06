@@ -19,7 +19,7 @@ const TestPage = () => {
     sendDirectMessage,
     inviteUser,
   } = useChatService();
-  const { getMyProfile, getUserProfileById, updateDisplayName, updateImage, followUser, unfollowUser, blockUser } =
+  const { getMyProfile, getUserProfileById, updateDisplayName, updateImage, followUser, blockUser, unFollowUser } =
     useUserService();
 
   const rooms = useRecoilValue(chatRoomListState);
@@ -106,9 +106,7 @@ const TestPage = () => {
       <p>
         <button onClick={getMyProfile}>My Profile</button>
       </p>
-      <p>
-        <button onClick={() => getUserProfileById(1)}>Other Profile</button>
-      </p>
+      <p></p>
       <p>
         <button
           onClick={() => {
@@ -126,7 +124,7 @@ const TestPage = () => {
         <button onClick={() => followUser(2)}>Follow User</button>
       </p>
       <p>
-        <button onClick={() => unfollowUser(2)}>Unfollow User</button>
+        <button onClick={() => unFollowUser(2)}>Unfollow User</button>
       </p>
       <p>
         <button onClick={() => blockUser(3)}>Block User</button>

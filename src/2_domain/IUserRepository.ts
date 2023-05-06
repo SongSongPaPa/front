@@ -1,11 +1,12 @@
+import { UserDetailDto } from "@root/3_infrastructure/dto/api/user.dto";
 import { UserInfo } from "./User";
 
 export interface IUserRepository {
-  getMyProfile(): Promise<UserInfo>;
-  getUserProfileById(id: number): Promise<UserInfo>;
+  getMyProfile(): Promise<UserDetailDto>;
+  getUserProfileById(id: number): Promise<UserDetailDto>;
   updateDisplayName(name: string): void;
   updateImage(image: string, mimeType: string): void;
   followUser(userId: number): void;
-  unfollowUser(userId: number): void;
+  unFollowUser(userId: number): void;
   blockUser(userId: number): void;
 }

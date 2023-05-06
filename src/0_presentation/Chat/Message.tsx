@@ -52,7 +52,7 @@ const Message = ({ message, sourceId, direct, system }: ChatMessage) => {
   console.log(me.id, sourceId, style);
   return (
     <StyledMessage className={style}>
-      {style === "sent" ? me.nickname : other.nickname}: {message}
+      {style === "sent" ? me.nickname : other ? other.nickname : ""}: {message}
     </StyledMessage>
   );
 };

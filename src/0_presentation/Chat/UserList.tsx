@@ -1,13 +1,24 @@
 import UserListItem from "../components/common/UserListItem";
-import { chatUserListState } from "@root/2_domain/recoil/userAtom";
+import { chatUserListState, meState } from "@root/2_domain/recoil/userAtom";
 import { useRecoilValue } from "recoil";
+import { chatState } from "@root/2_domain/recoil/chatAtom";
 
 const UserList = () => {
   const users = useRecoilValue(chatUserListState);
+  const me = useRecoilValue(meState);
+  const chatInfo = useRecoilValue(chatState);
+  console.log(users);
   return (
     <div>
-      {users.map((user, index) => (
-        <UserListItem key={index} userId={user.id} role={user.state} profile={user.profile} nickname={user.nickname} />
+      {users.map((user) => (
+        <UserListItem
+          key={user.id}
+          userId={user.id}
+          role={user.state}
+          profile={user.profile}
+          nickname={user.nickname}
+          enableRightClick={chatInfo.adminId === me.id || chatInfo.ownerId === me.id}
+        />
       ))}
     </div>
   );

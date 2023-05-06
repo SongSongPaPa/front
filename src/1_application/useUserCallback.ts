@@ -101,26 +101,26 @@ const useUserCallback = () => {
 
   const onFollowUser = useRecoilCallback(({ set }) => (data: { userId: number }) => {
     console.log("add friend", data.userId);
-    set(meState, (oldMe) => ({
-      ...oldMe,
-      friends: [...oldMe.friends, data.userId],
-    }));
+    set(meState, (prev) => {
+      const friends = prev.friends.find((item) => item.id === data.userId)!;
+      return { ...prev, friends: [...prev.friends, { ...friends, id: data.userId }] };
+    });
   });
 
   const onUnfollowUser = useRecoilCallback(({ set }) => (data: { userId: number }) => {
     console.log("remove friend", data.userId);
-    set(meState, (prevState) => ({
-      ...prevState,
-      friends: prevState.friends.filter((friendId) => friendId !== data.userId),
-    }));
+    set(meState, (prev) => {
+      const friends = prev.friends.filter((item) => item.id !== data.userId)!;
+      return { ...prev, friends: friends };
+    });
   });
 
   const onBlockUser = useRecoilCallback(({ set }) => (data: { userId: number }) => {
     console.log("block friend", data.userId);
-    set(meState, (oldMe) => ({
-      ...oldMe,
-      blocks: [...oldMe.blocks, data.userId],
-    }));
+    //set(meState, (oldMe) => ({
+    //   ...oldMe,
+    //   blocks: [...oldMe.blocks, data.userId],
+    // }));
   });
   return { onConnect, onChangeState, onUpdateDisplayName, onUpdateImage, onFollowUser, onUnfollowUser, onBlockUser };
 };

@@ -5,11 +5,17 @@ import ChatRoomList from "./Chat/RoomList";
 import UserInterface from "./User/UserInterface";
 import useModal from "@root/1_application/useModal";
 import { PageWrapper, RoomListContainer, ButtonContainer, RoomWrapper, UserInterfaceWrapper } from "./PageStyle";
+import useGameService from "@root/1_application/useGameService";
+import { useNavigate } from "react-router-dom";
 
 const Lobby = () => {
   const { showModal } = useModal();
-  const handleClickAlertModal = () => {
-    showModal({ modalType: "AlertModal" });
+  const { createGame } = useGameService();
+  const navigate = useNavigate();
+
+  const handleClickQuickStart = () => {
+    navigate("/game-wait");
+    createGame(1);
   };
   const handleClickChatRoomCreate = () => {
     showModal({ modalType: "ChatRoomCreateModal" });
@@ -23,7 +29,7 @@ const Lobby = () => {
       <RoomWrapper>
         <RoomListContainer>
           <ButtonContainer>
-            <Button name="lobby-small-common" onClick={handleClickAlertModal}>
+            <Button name="lobby-small-common" onClick={handleClickQuickStart}>
               Quick Start
             </Button>
             <Button name="lobby-small-common" onClick={handleClickGameRoomCreate}>

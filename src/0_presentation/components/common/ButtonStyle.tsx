@@ -61,6 +61,9 @@ export const ButtonStyle: ButtonStyleType = {
   `,
   "modal-round-common": `
     background-color: #6c757d;
+    width: 82px;
+    height:34px;
+    border-radius: 25px;
     color: white;
   `,
   "invite-text-icon": `

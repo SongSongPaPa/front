@@ -19,6 +19,6 @@ export interface UserInfo {
   level: number;
   profile: string;
   achievements: string[];
-  friends: number[];
-  blocks: number[];
+  friends: PublicUserInfo[];
+  blocks: PublicUserInfo[];
 }

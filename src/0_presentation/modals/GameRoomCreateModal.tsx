@@ -3,18 +3,21 @@ import { useState } from "react";
 import RadioGroup from "../components/common/RadioGroup";
 import useGameService from "@root/1_application/useGameService";
 import { Modal, ModalBody, Overlay } from "./ModalStyle";
+import { useNavigate } from "react-router-dom";
 
 const GameRoomCreateModal = () => {
   const { hideModal } = useModal();
   const { createGame } = useGameService();
   const [selectedValue, setSelectedValue] = useState("");
   const [inputValue, setInputValue] = useState("");
+  const navigate = useNavigate();
 
   const onClose = () => {
     hideModal();
   };
 
   const onConfirm = () => {
+    navigate("/game-wait");
     createGame(1);
     hideModal();
   };

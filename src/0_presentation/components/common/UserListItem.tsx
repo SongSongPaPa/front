@@ -1,15 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "./Button";
 import styled from "styled-components";
 import useUserService from "@root/1_application/useUserService";
 import useModal from "@root/1_application/useModal";
+import { UserStateType } from "@root/2_domain/User";
+import { useRecoilValue } from "recoil";
+import { detailState } from "@root/2_domain/recoil/userAtom";
+import Popover from "@root/0_presentation/Chat/Popover";
 
 interface UserListItemProps {
   userId: number;
   profile: string;
   nickname: string;
   role?: string;
-  state?: string;
+  state?: UserStateType;
+  enableRightClick?: boolean;
 }
 
 interface IconProp {
@@ -54,25 +59,39 @@ const Image = styled.img`
   height: 32px;
 `;
 
-const UserListItem = ({ userId, profile, nickname, role, state }: UserListItemProps) => {
+const UserListItem = ({ userId, profile, nickname, role, state, enableRightClick = false }: UserListItemProps) => {
   const { getUserProfileById } = useUserService();
+  const [showPopover, setShowPopover] = useState(false);
+  const other = useRecoilValue(detailState);
   const { showModal } = useModal();
-  const handleItemClick = () => {
+  const handleItemClick = async () => {
     try {
-      getUserProfileById(userId);
+      console.log("before", other);
+      await getUserProfileById(userId, state!);
     } catch (error) {
       console.log(error);
     }
 
     showModal({ modalType: "UserProfileModal" });
   };
+  const handleRightClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setShowPopover(true);
+    //const userBanner = event.currentTarget as HTMLDivElement;
+    //console.log(userBanner);
+  };
+  //console.log("after: ", other);
   return (
-    <Button name="user-banner" onClick={handleItemClick}>
-      <Image src={profile} />
-      {role && <Icon role={role} />}
-      <span>{nickname}</span>
-      {state && <Dot state={state} />}
-    </Button>
+    <div onContextMenu={enableRightClick ? handleRightClick : undefined}>
+      <Button name="user-banner" onClick={handleItemClick}>
+        <Image src={profile} />
+        {role && <Icon role={role} />}
+        <span>{nickname}</span>
+        {state && <Dot state={state} />}
+      </Button>
+      {showPopover && <Popover userId={userId} onClose={() => setShowPopover(false)} />}
+    </div>
   );
 };
 

@@ -2,17 +2,18 @@ import { IUserRepository } from "@domain/IUserRepository";
 import { UserInfo } from "@domain/User";
 import customAxios from "@root/lib/customAxios";
 import { Socket } from "socket.io-client";
+import { UserDetailDto } from "./dto/api/user.dto";
 import GlobalSocket from "./GlobalSocket";
 
 class UserRepository implements IUserRepository {
   private socket: Socket = GlobalSocket.getSocket();
 
-  getMyProfile = async (): Promise<UserInfo> => {
+  getMyProfile = async (): Promise<UserDetailDto> => {
     const me = await customAxios.get("/user/detail");
     return me.data;
   };
 
-  getUserProfileById = async (id: number): Promise<UserInfo> => {
+  getUserProfileById = async (id: number): Promise<UserDetailDto> => {
     const user = await customAxios.get(`/user/detail/${id}`);
     return user.data;
   };
@@ -28,11 +29,12 @@ class UserRepository implements IUserRepository {
   };
 
   followUser = (userId: number): void => {
+    console.log(userId);
     this.socket.emit("followUser", { userId: userId });
   };
 
-  unfollowUser = (userId: number): void => {
-    this.socket.emit("unfollowUser", { userId: userId });
+  unFollowUser = (userId: number): void => {
+    this.socket.emit("unFollowUser", { userId: userId });
   };
 
   blockUser = (userId: number): void => {

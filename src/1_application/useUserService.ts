@@ -1,25 +1,62 @@
 import { meState, detailState, userListState } from "@root/2_domain/recoil/userAtom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import UserRepository from "@root/3_infrastructure/UserRepository";
+import { UserStateType } from "@root/2_domain/User";
 
 const useUserService = () => {
   const [me, setMe] = useRecoilState(meState);
-  const setOther = useSetRecoilState(detailState);
+  const [other, setOther] = useRecoilState(detailState);
 
   const getMyProfile = async () => {
     try {
       const data = await UserRepository.getMyProfile();
-      setMe(data);
+      //
+      const friendList = data.friends.map((e) => {
+        return { id: e.id, nickname: e.nickname, state: UserStateType.OFFLINE, profile: e.profile };
+      });
+      const blockList = data.blocks.map((e) => {
+        return { id: e.id, nickname: e.nickname, state: UserStateType.OFFLINE, profile: e.profile };
+      });
+      console.log();
+      setMe({
+        id: data.id,
+        state: UserStateType.ONLINE,
+        name: data.name,
+        nickname: data.nickname,
+        level: data.level,
+        profile: data.profile,
+        achievements: data.achivements.map((e) => e.achivementTitle),
+        friends: friendList,
+        blocks: blockList,
+      });
       console.log(data);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const getUserProfileById = async (id: number) => {
+  const getUserProfileById = async (id: number, state: UserStateType) => {
     try {
       const data = await UserRepository.getUserProfileById(id);
-      setOther(data);
+      const friendList = data.friends.map((e) => {
+        return { id: e.id, nickname: e.nickname, state: UserStateType.OFFLINE, profile: e.profile };
+      });
+      const blockList = data.blocks.map((e) => {
+        return { id: e.id, nickname: e.nickname, state: UserStateType.OFFLINE, profile: e.profile };
+      });
+      console.log("int userservice : ", data);
+      setOther({
+        id: data.id,
+        state: state,
+        name: data.name,
+        nickname: data.nickname,
+        level: data.level,
+        profile: data.profile,
+        achievements: data.achivements.map((e) => e.achivementTitle),
+        friends: friendList,
+        blocks: blockList,
+      });
+      //setOther(data);
     } catch (error) {
       console.log(error);
     }
@@ -50,9 +87,9 @@ const useUserService = () => {
     }
   };
 
-  const unfollowUser = (userId: number) => {
+  const unFollowUser = (userId: number) => {
     try {
-      UserRepository.unfollowUser(userId);
+      UserRepository.unFollowUser(userId);
     } catch (error) {
       console.log(error);
     }
@@ -65,7 +102,7 @@ const useUserService = () => {
       console.log(error);
     }
   };
-  return { getMyProfile, getUserProfileById, updateDisplayName, updateImage, followUser, unfollowUser, blockUser };
+  return { getMyProfile, getUserProfileById, updateDisplayName, updateImage, followUser, unFollowUser, blockUser };
 };
 
 export default useUserService;

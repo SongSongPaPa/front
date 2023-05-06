@@ -1,6 +1,7 @@
-import { PublicUserInfo, UserInfo } from "../User";
+import { PublicUserInfo, UserInfo, UserStateType } from "../User";
 import { atom, selector, selectorFamily, useRecoilValue } from "recoil";
 import { chatState } from "./chatAtom";
+import useUserService from "@root/1_application/useUserService";
 
 export const meState = atom<UserInfo>({
   key: "me",
@@ -19,11 +20,18 @@ export const chatUserListState = selector({
   key: "userListSelector",
   get: ({ get }) => {
     const userIdList = get(chatState).users;
-    return userIdList.map((id) => {
-      return useRecoilValue(userSelector(id));
-    });
+    const userList = get(userListState);
+
+    console.log("get chatste:  ", get(chatState));
+    console.log("get user id list:  ", userIdList);
+
+    const result = userList.filter((item) => userIdList.includes(item.id));
+    console.log("chat selector result: ", result);
+    return result;
   },
 });
+
+//[gettor[0], getter[1]]
 
 export const detailState = atom<UserInfo>({
   key: "other",
@@ -47,10 +55,17 @@ export const filteredUserListState = selector({
     const list = get(userListState);
     const me = get(meState);
     const friends = me ? me.friends : [];
-
     switch (filter) {
       case true:
-        return list.filter((item) => friends.includes(item.id));
+        return friends.map((friend) => {
+          const item = list.find((user) => user.id === friend.id);
+          if (!item) {
+            return { ...friend, state: UserStateType.OFFLINE };
+          } else {
+            return item;
+          }
+        });
+
       default:
         return list;
     }
