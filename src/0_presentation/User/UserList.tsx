@@ -7,7 +7,7 @@ const UserList = () => {
   return (
     <div>
       {users.map((user, index) => (
-        <UserItem key={index} userId={index} profile={user.profile} nickname={user.nickname} state={user.state} />
+        <UserItem key={index} userId={user.id} profile={user.profile} nickname={user.nickname} state={user.state} />
       ))}
     </div>
   );

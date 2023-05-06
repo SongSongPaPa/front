@@ -2,7 +2,7 @@ import { useRecoilCallback } from "recoil";
 import { meState, userListState } from "@root/2_domain/recoil/userAtom";
 import { PublicUserInfo, UserStateType } from "@root/2_domain/User";
 import { UserInfoDto } from "@root/3_infrastructure/dto/socket/user.dto";
-import ChatPublicDto from "@infrastructure/dto/socket/chat.dto";
+import { ChatPublicDto } from "@infrastructure/dto/socket/chat.dto";
 import { GamePublicDto } from "@root/3_infrastructure/dto/socket/game.dto";
 import { gameRoomListState } from "@root/2_domain/recoil/gameAtom";
 import { GameRoomInfo } from "@root/2_domain/Game";
@@ -16,16 +16,18 @@ const useUserCallback = () => {
 
   const onChangeState = useRecoilCallback(
     ({ set }) =>
-      (data: { userId: number; username: string; state: UserStateType }) => {
+      (data: { userId: number; username: string; state: UserStateType; profile: string }) => {
         console.log("int onChangeState callback");
+        console.log(data);
         set(userListState, (prev) => {
           const user = prev.find((e) => e.id === data.userId);
           if (user === undefined) {
-            console.log("⛔️ 없는 유저인데요");
-            return prev;
+            // console.log("⛔️ 없는 유저인데요");
+
+            return [...prev, { id: data.userId, nickname: data.username, state: data.state, profile: data.profile }];
           }
-          user.state = data.state;
-          return prev.map((e) => (e.id === data.userId ? user : e));
+          //user.state = data.state;
+          return prev.map((e) => (e.id === data.userId ? { ...user, state: data.state } : e));
         });
       }
   );
@@ -62,41 +64,41 @@ const useUserCallback = () => {
     ({ set }) =>
       (data: { userList: UserInfoDto[]; chatList: ChatPublicDto[]; gameList: GamePublicDto[] }) => {
         console.log("onConnect, data: ", data);
-        // set(gameRoomListState, (prev) => {
-        //   return data.gameList.map((e) => {
-        //     const gameInfo: GameRoomInfo = {
-        //       gameId: e.gameId,
-        //       ownerId: e.ownerId,
-        //       name: e.name,
-        //       speed: e.speed,
-        //     };
-        //     return gameInfo;
-        //   });
-        // });
-        // //Todo : 성수야 profile 날려줘
-        // set(userListState, (prev) => {
-        //   return data.userList.map((e) => {
-        //     const userInfo: PublicUserInfo = {
-        //       id: e.userId,
-        //       nickname: e.username,
-        //       state: e.state as UserStateType,
-        //       profile: e.userId,
-        //     };
-        //     return userInfo;
-        //   });
-        // });
-        // set(chatRoomListState, (prev) => {
-        //   return data.chatList.map((e) => {
-        //     const chatInfo: ChatInfo = {
-        //       chatId: e.public.chatId,
-        //       ownerId: e.public.ownerId,
-        //       adminId: e.public.adminId,
-        //       type: typeConverter(e.public.type),
-        //       name: e.public.name,
-        //     };
-        //     return chatInfo;
-        //   });
-        // });
+        set(gameRoomListState, (prev) => {
+          return data.gameList.map((e) => {
+            const gameInfo: GameRoomInfo = {
+              gameId: e.gameId,
+              ownerId: e.ownerId,
+              name: e.name,
+              speed: e.speed,
+            };
+            return gameInfo;
+          });
+        });
+        //Todo : 성수야 profile 날려줘
+        set(userListState, (prev) => {
+          return data.userList.map((e) => {
+            const userInfo: PublicUserInfo = {
+              id: e.userId,
+              nickname: e.username,
+              state: e.state as UserStateType,
+              profile: e.profile,
+            };
+            return userInfo;
+          });
+        });
+        set(chatRoomListState, (prev) => {
+          return data.chatList.map((e) => {
+            const chatInfo: ChatInfo = {
+              chatId: e.chatId,
+              ownerId: e.ownerId,
+              adminId: e.adminId,
+              type: typeConverter(e.type),
+              name: e.name,
+            };
+            return chatInfo;
+          });
+        });
       }
   );
 

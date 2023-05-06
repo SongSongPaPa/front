@@ -1,6 +1,6 @@
 import { BallInfo, GameInfo, GameScoreInfo, PlayerInfo } from "@root/2_domain/Game";
 import { endGameState, gameRoomListState, gamingState } from "@root/2_domain/recoil/gameAtom";
-import ChatSessionDto from "@root/3_infrastructure/dto/socket/chat.dto";
+import { ChatSessionDto } from "@root/3_infrastructure/dto/socket/chat.dto";
 import GameSessionDto, { GamePlayerDto, GamePublicDto } from "@root/3_infrastructure/dto/socket/game.dto";
 import { useRecoilCallback } from "recoil";
 

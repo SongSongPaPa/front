@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "./Button";
 import styled from "styled-components";
+import useChatService from "@root/1_application/useChatService";
 
 interface RoomListItemProps {
   roomId: number;
@@ -40,6 +41,10 @@ const HeadCount = styled.div`
 `;
 
 const RoomListItem = ({ roomId, isGame, headCount, name }: RoomListItemProps) => {
+  const { joinChat } = useChatService();
+  const handleClickJoinChat = () => {
+    //joinChat();
+  };
   return (
     <Room>
       <Title>{name}</Title>

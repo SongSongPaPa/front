@@ -1,7 +1,7 @@
 import { useRecoilCallback, useRecoilState } from "recoil";
 import { chatRoomListState, chatState } from "@root/2_domain/recoil/chatAtom";
 import { ChatInfo, typeConverter } from "@root/2_domain/Chat";
-import ChatSessionDto, { ChatPublicDto } from "@root/3_infrastructure/dto/socket/chat.dto";
+import { ChatPublicDto, ChatSessionDto } from "@root/3_infrastructure/dto/socket/chat.dto";
 import { messageListState } from "@root/2_domain/recoil/messageAtom";
 import { ChatMessage } from "@root/2_domain/ChatMessage";
 

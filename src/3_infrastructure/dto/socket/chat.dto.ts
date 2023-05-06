@@ -11,7 +11,7 @@ export interface ChatPublicDto {
   name: string;
 }
 
-interface ChatPrivateDto {
+export interface ChatPrivateDto {
   room: string;
   password?: string;
   users: number[];
@@ -20,9 +20,7 @@ interface ChatPrivateDto {
   invited: number[];
 }
 
-interface ChatSessionDto {
+export interface ChatSessionDto {
   public: ChatPublicDto;
   private: ChatPrivateDto;
 }
-
-export default ChatSessionDto;

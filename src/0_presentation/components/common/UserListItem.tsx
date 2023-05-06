@@ -24,9 +24,9 @@ const Dot = styled.div<DotProp>`
   width: 8px;
   height: 8px;
   background-color: ${(props) => {
-    if (props.state === "online") return "#bfff8c";
+    if (props.state === "ingame") return "#fbe38f";
     else if (props.state === "offline") return "#e9e9e9";
-    else return "#fbe38f";
+    else return "#bfff8c";
   }};
   border-radius: 50%;
   border: none;
@@ -49,6 +49,11 @@ const Icon = styled.img<IconProp>`
   display: flex;
 `;
 
+const Image = styled.img`
+  width: 32px;
+  height: 32px;
+`;
+
 const UserListItem = ({ userId, profile, nickname, role, state }: UserListItemProps) => {
   const { getUserProfileById } = useUserService();
   const { showModal } = useModal();
@@ -63,7 +68,7 @@ const UserListItem = ({ userId, profile, nickname, role, state }: UserListItemPr
   };
   return (
     <Button name="user-banner" onClick={handleItemClick}>
-      <img src={profile} />
+      <Image src={profile} />
       {role && <Icon role={role} />}
       <span>{nickname}</span>
       {state && <Dot state={state} />}

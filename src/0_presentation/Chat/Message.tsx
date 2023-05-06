@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { ChatMessage } from "@root/2_domain/ChatMessage";
+import { useRecoilValue } from "recoil";
+import { meState } from "@root/2_domain/recoil/userAtom";
 
 const StyledMessage = styled.div`
   display: flex;
@@ -19,10 +21,14 @@ const StyledMessage = styled.div`
     background-color: #f0f0f0;
     align-self: flex-start;
   }
+
+  &.system {
+  }
 `;
 
 const Message = ({ message, sourceId, direct, system }: ChatMessage) => {
-  const isSentByMe = sourceId === 1;
+  const me = useRecoilValue(meState);
+  const isSentByMe = sourceId === me.id;
   return (
     <StyledMessage className={isSentByMe ? "sent" : "received"}>
       {sourceId}: {message}

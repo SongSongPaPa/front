@@ -4,7 +4,8 @@ import useModal from "@root/1_application/useModal";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useRecoilValue } from "recoil";
-import { currentChatRoomState } from "@root/2_domain/recoil/chatAtom";
+import { chatState } from "@root/2_domain/recoil/chatAtom";
+import useChatService from "@root/1_application/useChatService";
 
 const Header = styled.div`
   width: 864px;
@@ -22,12 +23,14 @@ const Header = styled.div`
 
 const ChatHeader = () => {
   const { showModal } = useModal();
-  const chatInfo = useRecoilValue(currentChatRoomState);
+  const chatInfo = useRecoilValue(chatState);
+  const { leaveChat } = useChatService();
   const navigate = useNavigate();
   const handleClickMenu = () => {
     showModal({ modalType: "ChatUserInfoModal" });
   };
   const handleClickBack = () => {
+    leaveChat();
     navigate("/lobby");
   };
   return (
