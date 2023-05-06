@@ -1,12 +1,12 @@
 import React from "react";
 import useModal from "@root/1_application/useModal";
 import { useRecoilValue } from "recoil";
-import { otherState } from "@root/2_domain/recoil/userAtom";
+import { detailState } from "@root/2_domain/recoil/userAtom";
 import { Modal, ModalBody, Overlay } from "./ModalStyle";
 
 const UserProfileModal = () => {
   const { hideModal } = useModal();
-  const profile = useRecoilValue(otherState);
+  const profile = useRecoilValue(detailState);
 
   const onClose = () => {
     hideModal();

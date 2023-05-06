@@ -1,10 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
-export interface MessageProps {
-  name: string;
-  content: string;
-}
+import { ChatMessage } from "@root/2_domain/ChatMessage";
 
 const StyledMessage = styled.div`
   display: flex;
@@ -25,12 +21,11 @@ const StyledMessage = styled.div`
   }
 `;
 
-const Message = (props: MessageProps) => {
-  const { name, content } = props;
-  const isSentByMe = name === "sohan";
+const Message = ({ message, sourceId, direct, system }: ChatMessage) => {
+  const isSentByMe = sourceId === 1;
   return (
     <StyledMessage className={isSentByMe ? "sent" : "received"}>
-      {name}: {content}
+      {sourceId}: {message}
     </StyledMessage>
   );
 };

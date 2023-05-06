@@ -1,13 +1,12 @@
-import { PrivateUserInfo } from "../User";
-import { PublicUserInfo } from "../User";
+import { PublicUserInfo, UserInfo } from "../User";
 import { atom, selector } from "recoil";
 
-export const meState = atom<PrivateUserInfo>({
+export const meState = atom<UserInfo>({
   key: "me",
   default: undefined,
 });
 
-export const otherState = atom<PrivateUserInfo>({
+export const detailState = atom<UserInfo>({
   key: "other",
   default: undefined,
 });

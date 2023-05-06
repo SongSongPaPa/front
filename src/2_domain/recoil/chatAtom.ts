@@ -11,12 +11,7 @@ export const chatRoomListState = atom<ChatInfo[]>({
   default: [],
 });
 
-interface MessageItem {
-  name: string;
-  content: string;
-}
-
-export const MessageListState = atom<MessageItem[]>({
-  key: "messagelist",
-  default: [],
+export const chatState = atom<ChatInfo>({
+  key: "invited chat room",
+  default: undefined,
 });

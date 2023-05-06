@@ -10,12 +10,11 @@ class ChatRepository implements IChatRepository {
   /* ================================= */
 
   public createChat(name: string, type: string, password?: string): void {
-    console.log(name, type);
     this.socket.emit("createChat", { chat: { name: name, type: type, password: password } });
   }
 
   public updateChat(name: string, type: string, password?: string): void {
-    this.socket.emit("updateChat", { name: name, type: type, password: password });
+    this.socket.emit("updateChat", { chat: { name: name, type: type, password: password } });
   }
 
   public setAdmin(userId: number): void {

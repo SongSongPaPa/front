@@ -1,10 +1,10 @@
-import { meState, otherState } from "@root/2_domain/recoil/userAtom";
+import { meState, detailState, userListState } from "@root/2_domain/recoil/userAtom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import UserRepository from "@root/3_infrastructure/UserRepository";
 
 const useUserService = () => {
   const [me, setMe] = useRecoilState(meState);
-  const setOther = useSetRecoilState(otherState);
+  const setOther = useSetRecoilState(detailState);
 
   const getMyProfile = async () => {
     try {

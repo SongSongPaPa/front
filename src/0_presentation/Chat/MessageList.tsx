@@ -1,4 +1,4 @@
-import { MessageListState } from "@root/2_domain/recoil/chatAtom";
+import { messageListState } from "@root/2_domain/recoil/messageAtom";
 import { useRecoilValue } from "recoil";
 import Message from "./Message";
 import styled from "styled-components";
@@ -13,7 +13,7 @@ const StyledMessageList = styled.div`
 `;
 
 const MessageList = () => {
-  const messages = useRecoilValue(MessageListState);
+  const messages = useRecoilValue(messageListState);
   return (
     <StyledMessageList>
       {messages.map((message, index) => (

@@ -25,9 +25,9 @@ const useGameService = () => {
     }
   };
 
-  const leaveGame = (gameId: number) => {
+  const leaveGame = () => {
     try {
-      GameRepository.leaveGame(gameId);
+      GameRepository.leaveGame();
     } catch (e) {
       console.log(e);
     }
@@ -43,7 +43,7 @@ const useGameService = () => {
 
   const movePaddle = (keyCode: number) => {
     try {
-      GameRepository.leaveGame(keyCode);
+      GameRepository.movePaddle(keyCode);
     } catch (e) {
       console.log(e);
     }
