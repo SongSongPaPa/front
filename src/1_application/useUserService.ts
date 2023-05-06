@@ -102,7 +102,24 @@ const useUserService = () => {
       console.log(error);
     }
   };
-  return { getMyProfile, getUserProfileById, updateDisplayName, updateImage, followUser, unFollowUser, blockUser };
+
+  const unBlockUser = (userId: number) => {
+    try {
+      UserRepository.unBlockUser(userId);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  return {
+    getMyProfile,
+    getUserProfileById,
+    updateDisplayName,
+    updateImage,
+    followUser,
+    unFollowUser,
+    blockUser,
+    unBlockUser,
+  };
 };
 
 export default useUserService;

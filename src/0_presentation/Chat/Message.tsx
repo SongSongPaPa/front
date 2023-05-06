@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { ChatMessage } from "@root/2_domain/ChatMessage";
 import { useRecoilValue } from "recoil";
 import { meState, userListState, userSelector } from "@root/2_domain/recoil/userAtom";
+import UserListItem from "../components/common/UserListItem";
+import { stringify } from "querystring";
 
 const StyledMessage = styled.div`
   display: flex;
@@ -14,11 +16,19 @@ const StyledMessage = styled.div`
 
   &.sent {
     background-color: #dcf8c6;
-    align-self: flex-end;
   }
 
   &.received {
     background-color: #f0f0f0;
+  }
+`;
+
+const MessageWrapper = styled.div`
+  &.sent {
+    align-self: flex-end;
+  }
+
+  &.received {
     align-self: flex-start;
   }
 
@@ -28,7 +38,6 @@ const StyledMessage = styled.div`
 
   &.direct {
     align-self: center;
-    color: green;
   }
 `;
 
@@ -45,15 +54,25 @@ const getMessageStyle = (id: number, sourceId: number, direct: boolean, system: 
   }
 };
 
+const getFormattedMessage = (name: string, message: string, type: string) => {
+  if (type === "system") {
+    return name + message;
+  }
+  return message;
+};
+
 const Message = ({ message, sourceId, direct, system }: ChatMessage) => {
   const me = useRecoilValue(meState);
   const other = useRecoilValue(userSelector(sourceId));
   const style = getMessageStyle(me.id, sourceId, direct, system);
+  const formattedMessage = getFormattedMessage(other.nickname, message, style);
   console.log(me.id, sourceId, style);
+  //console.log("message :  ***** ", other);
   return (
-    <StyledMessage className={style}>
-      {style === "sent" ? me.nickname : other ? other.nickname : ""}: {message}
-    </StyledMessage>
+    <MessageWrapper className={style}>
+      {style === "received" && <UserListItem userId={other.id} profile={other.profile} nickname={other.nickname} />}
+      <StyledMessage className={style}>{formattedMessage}</StyledMessage>
+    </MessageWrapper>
   );
 };
 

@@ -2,6 +2,7 @@ import { messageListState } from "@root/2_domain/recoil/messageAtom";
 import { useRecoilValue } from "recoil";
 import Message from "./Message";
 import styled from "styled-components";
+import { useEffect, useRef } from "react";
 
 const StyledMessageList = styled.div`
   display: flex;
@@ -15,8 +16,13 @@ const StyledMessageList = styled.div`
 
 const MessageList = () => {
   const messages = useRecoilValue(messageListState);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    scrollRef.current?.scrollTo(0, scrollRef.current.scrollHeight);
+  }, [messages]);
   return (
-    <StyledMessageList>
+    <StyledMessageList ref={scrollRef}>
       {messages.map((message, index) => (
         <Message key={index} {...message} />
       ))}

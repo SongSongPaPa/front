@@ -116,7 +116,7 @@ const useChatCallbacks = () => {
     //Todo: userAtom이 만들어지면, message에 유저이름을 넣어보자.
     set(messageListState, (prev) => {
       const message: ChatMessage = {
-        message: `${data.userId}가 나갔다`,
+        message: `가 나갔다`,
         sourceId: data.userId,
         direct: false,
         system: true,

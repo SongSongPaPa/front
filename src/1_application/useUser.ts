@@ -6,8 +6,16 @@ import { useNavigate } from "react-router-dom";
 const useUserEvent = () => {
   const socket = GlobalSocket.getSocket();
   const navigate = useNavigate();
-  const { onConnect, onChangeState, onUpdateDisplayName, onUpdateImage, onFollowUser, onUnfollowUser, onBlockUser } =
-    useUserCallback();
+  const {
+    onConnect,
+    onChangeState,
+    onUpdateDisplayName,
+    onUpdateImage,
+    onFollowUser,
+    onUnfollowUser,
+    onBlockUser,
+    onUnBlockUser,
+  } = useUserCallback();
   useEffect(() => {
     socket.on("connect", () => {
       navigate("/lobby");
@@ -28,6 +36,7 @@ const useUserEvent = () => {
     socket.on("single:user:followUser", onFollowUser);
     socket.on("single:user:unFollowUser", onUnfollowUser);
     socket.on("single:user:blockUser", onBlockUser);
+    socket.on("single:user:unBlockUser", onUnBlockUser);
   }, []);
 };
 

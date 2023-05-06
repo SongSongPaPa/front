@@ -9,4 +9,5 @@ export interface IUserRepository {
   followUser(userId: number): void;
   unFollowUser(userId: number): void;
   blockUser(userId: number): void;
+  unBlockUser(userId: number): void;
 }

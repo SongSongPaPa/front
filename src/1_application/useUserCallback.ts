@@ -117,12 +117,29 @@ const useUserCallback = () => {
 
   const onBlockUser = useRecoilCallback(({ set }) => (data: { userId: number }) => {
     console.log("block friend", data.userId);
-    //set(meState, (oldMe) => ({
-    //   ...oldMe,
-    //   blocks: [...oldMe.blocks, data.userId],
-    // }));
+    set(meState, (prev) => {
+      const blocks = prev.blocks.find((item) => item.id === data.userId)!;
+      return { ...prev, blocks: [...prev.blocks, { ...blocks, id: data.userId }] };
+    });
   });
-  return { onConnect, onChangeState, onUpdateDisplayName, onUpdateImage, onFollowUser, onUnfollowUser, onBlockUser };
+
+  const onUnBlockUser = useRecoilCallback(({ set }) => (data: { userId: number }) => {
+    console.log("unBlock friend", data.userId);
+    set(meState, (prev) => {
+      const blocks = prev.blocks.filter((item) => item.id !== data.userId)!;
+      return { ...prev, blocks: blocks };
+    });
+  });
+  return {
+    onConnect,
+    onChangeState,
+    onUpdateDisplayName,
+    onUpdateImage,
+    onFollowUser,
+    onUnfollowUser,
+    onBlockUser,
+    onUnBlockUser,
+  };
 };
 
 export default useUserCallback;

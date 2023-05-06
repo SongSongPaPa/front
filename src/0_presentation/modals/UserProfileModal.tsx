@@ -14,7 +14,7 @@ const Image = styled.img`
 
 const UserProfileModal = () => {
   const { hideModal } = useModal();
-  const { followUser, unFollowUser, blockUser } = useUserService();
+  const { followUser, unFollowUser, blockUser, unBlockUser } = useUserService();
   const detail = useRecoilValue(detailState);
   const me = useRecoilValue(meState);
   const isFriend = me.friends.find((item) => item.id === detail.id);
@@ -39,6 +39,9 @@ const UserProfileModal = () => {
     blockUser(detail.id);
   };
 
+  const handleClickUnBlock = () => {
+    unBlockUser(detail.id);
+  };
   console.log("in modal", detail);
   return (
     <Modal>
@@ -68,7 +71,7 @@ const UserProfileModal = () => {
             block
           </Button>
         ) : (
-          <Button name="modal-round-common" onClick={handleClickBlock}>
+          <Button name="modal-round-common" onClick={handleClickUnBlock}>
             unblock
           </Button>
         )}

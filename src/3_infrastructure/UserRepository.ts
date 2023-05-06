@@ -40,6 +40,10 @@ class UserRepository implements IUserRepository {
   blockUser = (userId: number): void => {
     this.socket.emit("blockUser", { userId: userId });
   };
+
+  unBlockUser = (userId: number): void => {
+    this.socket.emit("unBlockUser", { userId: userId });
+  };
 }
 
 export default new UserRepository();
