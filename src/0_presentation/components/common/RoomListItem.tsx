@@ -4,12 +4,13 @@ import styled from "styled-components";
 import useChatService from "@root/1_application/useChatService";
 import useGameService from "@root/1_application/useGameService";
 import { useNavigate } from "react-router-dom";
+import { ChatType } from "@root/2_domain/Chat";
 
 interface RoomListItemProps {
   roomId: number;
   isGame: boolean;
   name: string;
-  password?: string;
+  option?: string;
 }
 
 const Room = styled.div`
@@ -42,13 +43,13 @@ const HeadCount = styled.div`
   bottom: 66.98%;
 `;
 
-const RoomListItem = ({ roomId, password, isGame, name }: RoomListItemProps) => {
+const RoomListItem = ({ roomId, isGame, name, option }: RoomListItemProps) => {
   const { joinChat } = useChatService();
   const { joinGame, watchGame } = useGameService();
   const navigate = useNavigate();
 
   const handleClickJoinChat = () => {
-    joinChat(roomId, password);
+    joinChat(roomId);
     navigate("/chat");
   };
 
@@ -60,9 +61,11 @@ const RoomListItem = ({ roomId, password, isGame, name }: RoomListItemProps) => 
     watchGame(roomId);
     navigate("gaim-wait");
   };
+  console.log("chat option: ", option);
   return (
     <Room>
       <Title>{name}</Title>
+      <HeadCount>{option as string}</HeadCount>
       {isGame ? (
         <Button name="join-game" onClick={handleClickJoinGame}>
           play!

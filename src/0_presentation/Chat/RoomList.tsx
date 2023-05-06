@@ -20,7 +20,15 @@ const RoomList = () => {
       {rooms.length === 0 ? (
         <h1>텅...</h1>
       ) : (
-        rooms.map((room) => <RoomListItem key={room.chatId} roomId={room.chatId} name={room.name} isGame={false} />)
+        rooms.map((room) => (
+          <RoomListItem
+            key={room.chatId}
+            roomId={room.chatId}
+            name={room.name}
+            option={room.type as string}
+            isGame={false}
+          />
+        ))
       )}
     </RoomListWrapper>
   );

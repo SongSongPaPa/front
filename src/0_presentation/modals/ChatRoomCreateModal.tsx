@@ -20,12 +20,14 @@ const ChatRoomCreateModal = () => {
   const onConfirm = () => {
     hideModal();
     navigate("/chat");
-    createChat(inputValue, "public", password);
+    console.log("chat room props: ", inputValue, selectedValue, password);
+    createChat(inputValue, selectedValue, password);
   };
 
   const options = [
-    { label: "Option 1", value: "option1" },
-    { label: "Option 2", value: "option2" },
+    { label: "public", value: "public" },
+    { label: "protected", value: "protected" },
+    { label: "private", value: "private" },
   ];
 
   return (
