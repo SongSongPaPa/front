@@ -16,6 +16,14 @@ export const userSelector = selectorFamily<PublicUserInfo, number>({
       get(userListState).find((user) => user.id === id)!,
 });
 
+export const userNameSelector = selectorFamily<PublicUserInfo, string>({
+  key: "userSelector",
+  get:
+    (nickname: string) =>
+    ({ get }) =>
+      get(userListState).find((user) => user.nickname === nickname)!,
+});
+
 export const chatUserListState = selector({
   key: "userListSelector",
   get: ({ get }) => {

@@ -38,23 +38,27 @@ const MessageWrapper = styled.div`
 
   &.direct {
     align-self: center;
+    color: green;
   }
 `;
 
 const getMessageStyle = (id: number, sourceId: number, direct: boolean, system: boolean) => {
-  if (sourceId === id) {
-    return "sent";
-  }
   if (direct) {
     return "direct";
   } else if (system) {
     return "system";
+  } else if (sourceId === id) {
+    return "sent";
   } else {
     return "received";
   }
 };
 
 const getFormattedMessage = (name: string, message: string, type: string) => {
+  if (type === "direct") {
+    return name + "->" + message;
+  }
+
   if (type === "system") {
     return name + message;
   }
