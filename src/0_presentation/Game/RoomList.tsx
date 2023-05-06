@@ -18,7 +18,7 @@ const RoomList = () => {
   return (
     <RoomListWrapper>
       {rooms.map((room) => (
-        <RoomListItem key={room.gameId} roomId={room.gameId} name={room.name} headCount={0} isGame={true} />
+        <RoomListItem key={room.gameId} roomId={room.gameId} name={room.name} isGame={true} />
       ))}
     </RoomListWrapper>
   );

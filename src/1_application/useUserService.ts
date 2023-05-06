@@ -10,6 +10,7 @@ const useUserService = () => {
     try {
       const data = await UserRepository.getMyProfile();
       setMe(data);
+      console.log(data);
     } catch (error) {
       console.log(error);
     }

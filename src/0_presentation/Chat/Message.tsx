@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ChatMessage } from "@root/2_domain/ChatMessage";
 import { useRecoilValue } from "recoil";
-import { meState } from "@root/2_domain/recoil/userAtom";
+import { meState, userListState, userSelector } from "@root/2_domain/recoil/userAtom";
 
 const StyledMessage = styled.div`
   display: flex;
@@ -23,15 +23,36 @@ const StyledMessage = styled.div`
   }
 
   &.system {
+    align-self: center;
+  }
+
+  &.direct {
+    align-self: center;
+    color: green;
   }
 `;
 
+const getMessageStyle = (id: number, sourceId: number, direct: boolean, system: boolean) => {
+  if (sourceId === id) {
+    return "sent";
+  }
+  if (direct) {
+    return "direct";
+  } else if (system) {
+    return "system";
+  } else {
+    return "received";
+  }
+};
+
 const Message = ({ message, sourceId, direct, system }: ChatMessage) => {
   const me = useRecoilValue(meState);
-  const isSentByMe = sourceId === me.id;
+  const other = useRecoilValue(userSelector(sourceId));
+  const style = getMessageStyle(me.id, sourceId, direct, system);
+  console.log(me.id, sourceId, style);
   return (
-    <StyledMessage className={isSentByMe ? "sent" : "received"}>
-      {sourceId}: {message}
+    <StyledMessage className={style}>
+      {style === "sent" ? me.nickname : other.nickname}: {message}
     </StyledMessage>
   );
 };

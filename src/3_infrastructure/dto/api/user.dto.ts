@@ -22,6 +22,7 @@ export interface UserAchievementDto {
 }
 
 export interface UserDetailDto {
+  id: number;
   name: string;
   nickname: string;
   twoFactor: boolean;

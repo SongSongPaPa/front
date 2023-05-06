@@ -1,4 +1,4 @@
-import { useRecoilCallback } from "recoil";
+import { useRecoilCallback, useRecoilValue } from "recoil";
 import { meState, userListState } from "@root/2_domain/recoil/userAtom";
 import { PublicUserInfo, UserStateType } from "@root/2_domain/User";
 import { UserInfoDto } from "@root/3_infrastructure/dto/socket/user.dto";
@@ -7,7 +7,7 @@ import { GamePublicDto } from "@root/3_infrastructure/dto/socket/game.dto";
 import { gameRoomListState } from "@root/2_domain/recoil/gameAtom";
 import { GameRoomInfo } from "@root/2_domain/Game";
 import { chatRoomListState } from "@root/2_domain/recoil/chatAtom";
-import { ChatInfo, typeConverter } from "@root/2_domain/Chat";
+import { ChatInfo, PublicChatInfo, typeConverter } from "@root/2_domain/Chat";
 
 const useUserCallback = () => {
   /* ================================= */
@@ -17,8 +17,7 @@ const useUserCallback = () => {
   const onChangeState = useRecoilCallback(
     ({ set }) =>
       (data: { userId: number; username: string; state: UserStateType; profile: string }) => {
-        console.log("int onChangeState callback");
-        console.log(data);
+        console.log("int onChangeState callback", data.userId);
         set(userListState, (prev) => {
           const user = prev.find((e) => e.id === data.userId);
           if (user === undefined) {
@@ -89,10 +88,8 @@ const useUserCallback = () => {
         });
         set(chatRoomListState, (prev) => {
           return data.chatList.map((e) => {
-            const chatInfo: ChatInfo = {
+            const chatInfo: PublicChatInfo = {
               chatId: e.chatId,
-              ownerId: e.ownerId,
-              adminId: e.adminId,
               type: typeConverter(e.type),
               name: e.name,
             };

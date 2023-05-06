@@ -1,9 +1,9 @@
 import UserListItem from "../components/common/UserListItem";
-import { filteredUserListState } from "@root/2_domain/recoil/userAtom";
+import { chatUserListState } from "@root/2_domain/recoil/userAtom";
 import { useRecoilValue } from "recoil";
 
 const UserList = () => {
-  const users = useRecoilValue(filteredUserListState);
+  const users = useRecoilValue(chatUserListState);
   return (
     <div>
       {users.map((user, index) => (

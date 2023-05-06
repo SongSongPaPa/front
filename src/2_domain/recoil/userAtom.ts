@@ -1,9 +1,28 @@
 import { PublicUserInfo, UserInfo } from "../User";
-import { atom, selector } from "recoil";
+import { atom, selector, selectorFamily, useRecoilValue } from "recoil";
+import { chatState } from "./chatAtom";
 
 export const meState = atom<UserInfo>({
   key: "me",
   default: undefined,
+});
+
+export const userSelector = selectorFamily<PublicUserInfo, number>({
+  key: "userSelector",
+  get:
+    (id: number) =>
+    ({ get }) =>
+      get(userListState).find((user) => user.id === id)!,
+});
+
+export const chatUserListState = selector({
+  key: "userListSelector",
+  get: ({ get }) => {
+    const userIdList = get(chatState).users;
+    return userIdList.map((id) => {
+      return useRecoilValue(userSelector(id));
+    });
+  },
 });
 
 export const detailState = atom<UserInfo>({

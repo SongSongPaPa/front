@@ -51,7 +51,7 @@ const TestPage = () => {
       <div className="room-container">
         {rooms.map((room, index) => (
           <p key={index}>
-            방ID: {room.chatId}, 이름: {room.name} 오너ID: {room.ownerId} 어드민ID: {room.adminId}, 방타입: {room.type}
+            방ID: {room.chatId}, 이름: {room.name} 오너ID: 어드민ID:, 방타입: {room.type}
           </p>
         ))}
       </div>

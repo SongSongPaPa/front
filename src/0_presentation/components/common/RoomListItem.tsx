@@ -6,7 +6,6 @@ import useChatService from "@root/1_application/useChatService";
 interface RoomListItemProps {
   roomId: number;
   isGame: boolean;
-  headCount: number;
   name: string;
 }
 
@@ -40,7 +39,7 @@ const HeadCount = styled.div`
   bottom: 66.98%;
 `;
 
-const RoomListItem = ({ roomId, isGame, headCount, name }: RoomListItemProps) => {
+const RoomListItem = ({ roomId, isGame, name }: RoomListItemProps) => {
   const { joinChat } = useChatService();
   const handleClickJoinChat = () => {
     //joinChat();
@@ -48,7 +47,6 @@ const RoomListItem = ({ roomId, isGame, headCount, name }: RoomListItemProps) =>
   return (
     <Room>
       <Title>{name}</Title>
-      <HeadCount>{headCount}</HeadCount>
       <Button name={isGame ? "join-game" : "join-chat"}>{isGame ? "play!" : "join"}</Button>
       {isGame && <Button name="watch-game">watch</Button>}
     </Room>
