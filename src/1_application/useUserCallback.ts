@@ -34,24 +34,29 @@ const useUserCallback = () => {
   const onUpdateDisplayName = useRecoilCallback(({ set }) => (data: { userId: number; name: string }) => {
     console.log(data);
     console.log("change Name", data.userId, data.name);
-    set(meState, (oldMe) => {
-      if (oldMe.id === data.userId) {
-        return { ...oldMe, name: data.name };
-      } else {
-        return oldMe;
+    set(userListState, (prev) => {
+      return prev.map((e) => (e.id === data.userId ? { ...e, nickname: data.name } : e));
+    });
+    set(meState, (prev) => {
+      if (prev.id !== data.userId) {
+        return prev;
       }
+      return { ...prev, name: data.name };
     });
   });
 
   const onUpdateImage = useRecoilCallback(({ set }) => (data: { userId: number; imageUrl: string }) => {
     console.log(data);
     console.log("update image", data.userId, data.imageUrl);
-    set(meState, (oldMe) => {
-      if (oldMe.id === data.userId) {
-        return { ...oldMe, profile: data.imageUrl };
-      } else {
-        return oldMe;
+
+    set(userListState, (prev) => {
+      return prev.map((e) => (e.id === data.userId ? { ...e, profile: data.imageUrl } : e));
+    });
+    set(meState, (prev) => {
+      if (prev.id !== data.userId) {
+        return prev;
       }
+      return { ...prev, profile: data.imageUrl };
     });
   });
 

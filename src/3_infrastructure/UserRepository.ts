@@ -24,8 +24,8 @@ class UserRepository implements IUserRepository {
     this.socket.emit("updateDisplayName", { name: name });
   };
 
-  updateImage = (image: string, mimeType: string): void => {
-    this.socket.emit("updateImage", { image: image, mimeType: mimeType });
+  updateImage = (image: string): void => {
+    this.socket.emit("updateImage", { image: image });
   };
 
   followUser = (userId: number): void => {

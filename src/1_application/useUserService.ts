@@ -70,10 +70,10 @@ const useUserService = () => {
     }
   };
 
-  const updateImage = (image: string, mimeType: string) => {
+  const updateImage = (image: string) => {
     console.log("in updateImage");
     try {
-      UserRepository.updateImage(image, mimeType);
+      UserRepository.updateImage(image);
     } catch (error) {
       console.log(error);
     }
