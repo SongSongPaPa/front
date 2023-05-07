@@ -54,11 +54,11 @@ const RoomListItem = ({ roomId, isGame, name, option }: RoomListItemProps) => {
 
   const handleClickJoinGame = () => {
     joinGame(roomId);
-    navigate("/game-wait");
+    //navigate("/game-wait");
   };
   const handleClickWatchGame = () => {
     watchGame(roomId);
-    navigate("gaim-wait");
+    //navigate("gaim-wait");
   };
   console.log("chat option: ", option);
   return (

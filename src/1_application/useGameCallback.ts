@@ -12,7 +12,17 @@ const useGameCallbacks = () => {
   /* ================================= */
 
   const onCreateGame = useRecoilCallback(({ set }) => (newChat: GamePublicDto) => {
-    //Todo: 3초 2초 1초 내려주는 소켓 명세 있어야함
+    set(gameRoomListState, (prev) => {
+      return [
+        ...prev,
+        {
+          gameId: newChat.gameId,
+          ownerId: newChat.ownerId,
+          name: newChat.name,
+          speed: newChat.speed,
+        },
+      ];
+    });
   });
 
   const onBroadDeleteGame = useRecoilCallback(({ set }) => (data: { gameId: number }) => {
@@ -179,6 +189,13 @@ const useGameCallbacks = () => {
     });
   });
 
+  const onSingleLeaveGame = useRecoilCallback(({ set }) => () => {
+    set(gamingState, (prev) => {
+      return { ...prev, gameId: 0 };
+    });
+    navigate("/lobby");
+  });
+
   return {
     onCreateGame,
     onBroadDeleteGame,
@@ -192,6 +209,7 @@ const useGameCallbacks = () => {
     onSingleCreateGame,
     onSingleJoinGame,
     onSingleWatchGame,
+    onSingleLeaveGame,
   };
 };
 

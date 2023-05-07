@@ -14,7 +14,6 @@ const Lobby = () => {
   const navigate = useNavigate();
 
   const handleClickQuickStart = () => {
-    navigate("/game-wait");
     createGame(100);
   };
   const handleClickChatRoomCreate = () => {

@@ -17,6 +17,7 @@ const useGameEvent = () => {
     onSingleCreateGame,
     onSingleJoinGame,
     onSingleWatchGame,
+    onSingleLeaveGame,
   } = useGameCallbacks();
   useEffect(() => {
     socket.on("connect", () => {
@@ -40,6 +41,7 @@ const useGameEvent = () => {
 
     socket.on("single:game:joinGame", onSingleJoinGame);
     socket.on("single:game:watchGame", onSingleWatchGame);
+    socket.on("single:game:leaveGame", onSingleLeaveGame);
     console.log(socket);
   }, []);
 };
