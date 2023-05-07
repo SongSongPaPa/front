@@ -6,6 +6,7 @@ import GameRoomCreateModal from "./GameRoomCreateModal";
 import ChatUserInfoModal from "./ChatUserInfoModal";
 import UserProfileModal from "./UserProfileModal";
 import UserSettingModal from "./UserSettingModal";
+import TwoFactorSettingModal from "./TwoFactorSettingModal";
 import { modalState } from "@root/2_domain/recoil/modal";
 
 export const MODAL_TYPES = {
@@ -15,6 +16,7 @@ export const MODAL_TYPES = {
   ChatUserInfoModal: "ChatUserInfoModal",
   UserProfileModal: "UserProfileModal",
   UserSettingModal: "UserSettingModal",
+  TwoFactorSettingModal: "TwoFactorSettingModal",
 } as const;
 
 const MODAL_COMPONENTS: any = {
@@ -24,6 +26,7 @@ const MODAL_COMPONENTS: any = {
   [MODAL_TYPES.ChatUserInfoModal]: ChatUserInfoModal,
   [MODAL_TYPES.UserProfileModal]: UserProfileModal,
   [MODAL_TYPES.UserSettingModal]: UserSettingModal,
+  [MODAL_TYPES.TwoFactorSettingModal]: TwoFactorSettingModal,
 };
 
 const GlobalModal = () => {

@@ -69,3 +69,5 @@ export const LoginWrapper = styled.div`
     border-radius: 25px;
   }
 `;
+
+export const TwoFactorWrapper = styled.div``;
