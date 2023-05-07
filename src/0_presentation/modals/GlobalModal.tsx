@@ -7,6 +7,7 @@ import ChatUserInfoModal from "./ChatUserInfoModal";
 import UserProfileModal from "./UserProfileModal";
 import UserSettingModal from "./UserSettingModal";
 import ChatPasswordModal from "./ChatPasswordModal";
+import ChatInviteModal from "./ChatInviteModal";
 import { modalState } from "@root/2_domain/recoil/modal";
 
 export const MODAL_TYPES = {
@@ -17,6 +18,7 @@ export const MODAL_TYPES = {
   UserProfileModal: "UserProfileModal",
   UserSettingModal: "UserSettingModal",
   ChatPasswordModal: "ChatPasswordModal",
+  ChatInviteModal: "ChatInviteModal",
 } as const;
 
 const MODAL_COMPONENTS: any = {
@@ -27,6 +29,7 @@ const MODAL_COMPONENTS: any = {
   [MODAL_TYPES.UserProfileModal]: UserProfileModal,
   [MODAL_TYPES.UserSettingModal]: UserSettingModal,
   [MODAL_TYPES.ChatPasswordModal]: ChatPasswordModal,
+  [MODAL_TYPES.ChatInviteModal]: ChatInviteModal,
 };
 
 const GlobalModal = () => {

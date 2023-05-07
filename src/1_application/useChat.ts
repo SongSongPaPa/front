@@ -17,6 +17,7 @@ const useChatEvent = () => {
     onSingleJoinChat,
     onSingleLeaveChat,
     onSingleSendMessage,
+    onInviteUser,
   } = useChatCallbacks();
   useEffect(() => {
     socket.on("connect", () => {
@@ -42,7 +43,7 @@ const useChatEvent = () => {
     socket.on("single:chat:leaveChat", onSingleLeaveChat);
     socket.on("single:chat:sendMessage", onSingleSendMessage);
     //성수한테 물어봐야함
-    socket.on("single:chat:inviteUser", (data) => console.log(data));
+    socket.on("single:chat:inviteUser", onInviteUser);
   }, []);
 };
 

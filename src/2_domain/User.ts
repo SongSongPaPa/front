@@ -2,6 +2,7 @@ export enum UserStateType {
   ONLINE = "online",
   OFFLINE = "offline",
   IN_GAME = "inGame",
+  INCHAT = "inChat",
 }
 
 export interface PublicUserInfo {

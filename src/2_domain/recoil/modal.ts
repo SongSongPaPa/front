@@ -9,6 +9,7 @@ const {
   UserProfileModal,
   UserSettingModal,
   ChatPasswordModal,
+  ChatInviteModal,
 } = MODAL_TYPES;
 
 export interface ConfirmModalType {
@@ -43,6 +44,10 @@ export interface ChatPasswordModalType {
   modalType: typeof ChatPasswordModal;
 }
 
+export interface ChatInviteModalType {
+  modalType: typeof ChatInviteModal;
+}
+
 export type ModalType =
   | GameRoomCreateModalType
   | AlertModalType
@@ -50,7 +55,8 @@ export type ModalType =
   | ChatUserInfoModalType
   | UserProfileModalType
   | UserSettingModalType
-  | ChatPasswordModalType;
+  | ChatPasswordModalType
+  | ChatInviteModalType;
 
 export const modalState = atom<ModalType | null>({
   key: "modalState",

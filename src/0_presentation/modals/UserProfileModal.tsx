@@ -6,6 +6,8 @@ import { Modal, ModalBody, Overlay } from "./ModalStyle";
 import styled from "styled-components";
 import Button from "@presentation/components/common/Button";
 import useUserService from "@root/1_application/useUserService";
+import useChatService from "@root/1_application/useChatService";
+import { UserStateType } from "@root/2_domain/User";
 
 const Image = styled.img`
   width: 49px;
@@ -15,6 +17,7 @@ const Image = styled.img`
 const UserProfileModal = () => {
   const { hideModal } = useModal();
   const { followUser, unFollowUser, blockUser, unBlockUser } = useUserService();
+  const { inviteUser } = useChatService();
   const detail = useRecoilValue(detailState);
   const me = useRecoilValue(meState);
   const isFriend = me.friends.find((item) => item.id === detail.id);
@@ -41,6 +44,10 @@ const UserProfileModal = () => {
 
   const handleClickUnBlock = () => {
     unBlockUser(detail.id);
+  };
+
+  const handleClickInvite = () => {
+    inviteUser(detail.id);
   };
   console.log("in modal", detail);
   return (
@@ -73,6 +80,11 @@ const UserProfileModal = () => {
         ) : (
           <Button name="modal-round-common" onClick={handleClickUnBlock}>
             unblock
+          </Button>
+        )}
+        {me.state === UserStateType.INCHAT && (
+          <Button name="modal-round-common" onClick={handleClickInvite}>
+            chat invite
           </Button>
         )}
       </ModalBody>
