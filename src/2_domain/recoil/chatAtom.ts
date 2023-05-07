@@ -10,3 +10,8 @@ export const chatState = atom<ChatInfo>({
   key: "invited chat room",
   default: undefined,
 });
+
+export const focusedChatState = atom<number>({
+  key: "focused chat id",
+  default: 0,
+});

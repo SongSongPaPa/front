@@ -3,7 +3,6 @@ import { useState } from "react";
 import RadioGroup from "../components/common/RadioGroup";
 import useChatService from "@root/1_application/useChatService";
 import { Modal, ModalBody, Overlay } from "./ModalStyle";
-import { useNavigate } from "react-router-dom";
 
 const ChatRoomCreateModal = () => {
   const { hideModal } = useModal();
@@ -11,7 +10,6 @@ const ChatRoomCreateModal = () => {
   const [selectedValue, setSelectedValue] = useState<string | number>("public");
   const [inputValue, setInputValue] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
 
   const onClose = () => {
     hideModal();

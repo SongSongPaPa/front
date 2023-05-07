@@ -83,7 +83,7 @@ const useChatService = () => {
   };
 
   const inviteUser = (userId: number) => {
-    console.log("send inviteUser");
+    console.log("send inviteUser", userId);
     try {
       ChatRepository.inviteUser(userId);
     } catch (e) {

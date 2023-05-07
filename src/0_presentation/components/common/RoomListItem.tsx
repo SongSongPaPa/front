@@ -4,6 +4,9 @@ import styled from "styled-components";
 import useChatService from "@root/1_application/useChatService";
 import useGameService from "@root/1_application/useGameService";
 import { useNavigate } from "react-router-dom";
+import useModal from "@root/1_application/useModal";
+import { useSetRecoilState } from "recoil";
+import { focusedChatState } from "@root/2_domain/recoil/chatAtom";
 
 interface RoomListItemProps {
   roomId: number;
@@ -45,20 +48,23 @@ const HeadCount = styled.div`
 const RoomListItem = ({ roomId, isGame, name, option }: RoomListItemProps) => {
   const { joinChat } = useChatService();
   const { joinGame, watchGame } = useGameService();
-  const navigate = useNavigate();
+  const { showModal } = useModal();
+  const setId = useSetRecoilState(focusedChatState);
 
   const handleClickJoinChat = () => {
-    joinChat(roomId);
-    navigate("/chat");
+    if (option === "PROTECTED") {
+      setId(roomId);
+      showModal({ modalType: "ChatPasswordModal" });
+    } else if (option === "PRIVATE") {
+      alert("비공개 방입니다");
+    } else joinChat(roomId);
   };
 
   const handleClickJoinGame = () => {
     joinGame(roomId);
-    //navigate("/game-wait");
   };
   const handleClickWatchGame = () => {
     watchGame(roomId);
-    //navigate("gaim-wait");
   };
   return (
     <Room>

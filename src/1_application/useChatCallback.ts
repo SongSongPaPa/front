@@ -1,13 +1,15 @@
 import { useRecoilCallback, useRecoilState } from "recoil";
-import { chatRoomListState, chatState } from "@root/2_domain/recoil/chatAtom";
+import { chatRoomListState, chatState, focusedChatState } from "@root/2_domain/recoil/chatAtom";
 import { ChatInfo, PublicChatInfo, typeConverter } from "@root/2_domain/Chat";
 import { ChatPublicDto, ChatSessionDto } from "@root/3_infrastructure/dto/socket/chat.dto";
 import { messageListState } from "@root/2_domain/recoil/messageAtom";
 import { ChatMessage } from "@root/2_domain/ChatMessage";
 import { useNavigate } from "react-router-dom";
+import useModal from "./useModal";
 
 const useChatCallbacks = () => {
   const navigate = useNavigate();
+  const { showModal } = useModal();
   /* ================================= */
   /*             Broadcast             */
   /* ================================= */
@@ -173,6 +175,7 @@ const useChatCallbacks = () => {
     set(chatState, (prev) => {
       return { ...prev, chatId: 0 };
     });
+    console.log("navigate to lobby");
     navigate("/lobby");
   });
 
@@ -207,12 +210,15 @@ const useChatCallbacks = () => {
   );
 
   //성수한테 물어봐야함
-  // const onInviteUser = useRecoilCallback(({ set }) => (data: { chatId: number; sourceId: number }) => {
-  //   set(chatRoomListState, (prev) => {
-  //     const message: ChatMessage = { ...data, system: false };
-  //     return [...prev, message];
-  //   });
-  // });
+  const onInviteUser = useRecoilCallback(({ set }) => (data: { chatId: number; sourceId: number }) => {
+    console.log("on invite user");
+    set(focusedChatState, data.chatId);
+    showModal({ modalType: "ChatInviteModal" });
+    //   set(chatRoomListState, (prev) => {
+    //     const message: ChatMessage = { ...data, system: false };
+    //     return [...prev, message];
+    //   });
+  });
 
   return {
     onCreateChat,
@@ -227,6 +233,7 @@ const useChatCallbacks = () => {
     onSingleJoinChat,
     onSingleLeaveChat,
     onSingleSendMessage,
+    onInviteUser,
   };
 };
 

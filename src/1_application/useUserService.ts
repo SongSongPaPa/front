@@ -61,24 +61,25 @@ const useUserService = () => {
     }
   };
 
-  const checkTwoFactor = async (code: number): Promise<boolean> => {
-    const result = await UserRepository.checkTwoFactor(code);
-    if (result === true) {
-      console.log("로비로 넘어가는 로직을 수행해보자!!!");
-    } else {
-      console.log("뭔 에러가 났디야");
+  const checkTwoFactor = async (code: string): Promise<boolean> => {
+    try {
+      const result = await UserRepository.checkTwoFactor(code);
+      return result;
+    } catch (error) {
+      console.log(error);
+      return false;
     }
-    return result;
   };
 
-  const updateTwoFactor = async (code: number): Promise<boolean> => {
-    const result = await UserRepository.updateTwoFactor(code);
-    if (result === true) {
-      console.log("잘 바뀌었단다!");
-    } else {
-      console.log("뭔 에러가 났디야");
+  const updateTwoFactor = async (code: string): Promise<boolean> => {
+    try {
+      const result = await UserRepository.updateTwoFactor(code);
+
+      return result;
+    } catch (error) {
+      console.log(error);
+      return false;
     }
-    return result;
   };
 
   const updateDisplayName = (name: string) => {
