@@ -15,25 +15,22 @@ const Image = styled.img`
 `;
 
 const UserSettingModal = () => {
-  const { hideModal } = useModal();
+  const { hideModal, showModal } = useModal();
   const me = useRecoilValue(meState);
   const [nickname, setNickname] = useState(me.nickname);
-  const [code, setCode] = useState("");
-  const { updateImage, updateDisplayName, updateTwoFactor } = useUserService();
+  const { updateImage, updateDisplayName } = useUserService();
 
   const onClose = () => {
     hideModal();
   };
 
   const handleOnImageFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    //const socket = GlobalSocket.getSocket();
     const file = event.target.files![0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = (curr) => {
       const base64 = curr.target!.result;
       updateImage(base64 as string);
-      //socket.emit("updateImage", { image: base64 });
     };
   };
 
@@ -42,16 +39,9 @@ const UserSettingModal = () => {
     updateDisplayName(nickname);
   };
 
-  const handleTwoFactorChange = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const result = await updateTwoFactor(+code);
-    if (result === true) {
-      alert("잘 바뀌었단다.");
-    } else {
-      alert("엣큥, 비밀번호를 설정하지 못했어");
-    }
+  const handleClickTwoFactor = () => {
+    showModal({ modalType: "TwoFactorSettingModal" });
   };
-
   return (
     <Modal>
       <ModalBody>
@@ -63,23 +53,14 @@ const UserSettingModal = () => {
             value={nickname}
             onChange={(e: ChangeEvent<HTMLInputElement>) => setNickname(e.target.value)}
           />
-          <Button name="" type="submit" />
+          <Button name="" type="submit">
+            닉넴변경
+          </Button>
         </form>
-        <div></div>
         <div>2차 비밀번호 설정</div>
-        <form onSubmit={handleTwoFactorChange}>
-          숫자 6자리를 입력하세요 :
-          <br />
-          <Input
-            style={{ width: 100 }}
-            type="number"
-            value={code}
-            name="code"
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setCode(e.target.value)}
-          />
-          <br />
-          <Button name="code" type="submit" />
-        </form>
+        <Button name="modal-round-common" onClick={handleClickTwoFactor}>
+          go
+        </Button>
       </ModalBody>
       <Overlay onClick={onClose} />
     </Modal>

@@ -15,6 +15,7 @@ export const Modal = styled.div`
 export const ModalBody = styled.div`
   position: relative;
   flex-direction: row;
+  font-family: sans-mono;
   top: 70px;
   width: 300px;
   height: 500px;

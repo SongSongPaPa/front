@@ -3,7 +3,6 @@ import { useRecoilValue } from "recoil";
 import { chatRoomListState } from "@root/2_domain/recoil/chatAtom";
 import useChatService from "@root/1_application/useChatService";
 import useUserService from "@root/1_application/useUserService";
-import "./teststyle.css";
 import { messageListState } from "@root/2_domain/recoil/messageAtom";
 
 const TestPage = () => {
