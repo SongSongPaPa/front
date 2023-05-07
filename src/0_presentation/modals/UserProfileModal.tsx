@@ -19,7 +19,6 @@ const UserProfileModal = () => {
   const me = useRecoilValue(meState);
   const isFriend = me.friends.find((item) => item.id === detail.id);
   const isBlocked = me.blocks.find((item) => item.id === detail.id);
-  console.log(detail.friends);
   const onClose = () => {
     hideModal();
   };
@@ -42,7 +41,6 @@ const UserProfileModal = () => {
   const handleClickUnBlock = () => {
     unBlockUser(detail.id);
   };
-  console.log("in modal", detail);
   return (
     <Modal>
       <ModalBody>

@@ -29,7 +29,6 @@ const useUserService = () => {
         friends: friendList,
         blocks: blockList,
       });
-      console.log(data);
     } catch (error) {
       console.log(error);
     }

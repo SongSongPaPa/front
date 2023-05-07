@@ -9,13 +9,17 @@ const useGameEvent = () => {
     onBroadDeleteGame,
     onGroupWatchGame,
     onGroupJoinGame,
-    onGroupDeleteGame,
+    // onGroupDeleteGame,
     onGroupLeaveGame,
     onStartGame,
     onEndGame,
     onMovePaddle,
+    onInitRound,
+    onStartRound,
+    onMoveBall,
+    onEndRound,
+    onCountDownRound,
     onSingleJoinGame,
-    onSingleWatchGame,
     onSingleLeaveGame,
   } = useGameCallbacks();
   useEffect(() => {
@@ -32,16 +36,21 @@ const useGameEvent = () => {
 
     socket.on("group:game:watchGame", onGroupWatchGame);
     socket.on("group:game:joinGame", onGroupJoinGame);
-    socket.on("group:game:deleteGame", onGroupDeleteGame);
+    // socket.on("group:game:deleteGame", onGroupDeleteGame);
     socket.on("group:game:leaveGame", onGroupLeaveGame);
     socket.on("group:game:startGame", onStartGame);
     socket.on("group:game:endGame", onEndGame);
     socket.on("group:game:movePaddle", onMovePaddle);
 
+    socket.on("group:game:initRound", onInitRound);
+    socket.on("group:game:startRound", onStartRound);
+    socket.on("group:game:moveBall", onMoveBall);
+    socket.on("group:game:endRound", onEndRound);
+    socket.on("group:game:coundDownRound", onCountDownRound);
+
     socket.on("single:game:joinGame", onSingleJoinGame);
-    socket.on("single:game:watchGame", onSingleWatchGame);
+    socket.on("single:game:watchGame", onSingleJoinGame);
     socket.on("single:game:leaveGame", onSingleLeaveGame);
-    console.log(socket);
   }, []);
 };
 

@@ -106,7 +106,6 @@ const TestPage = () => {
       <p>
         <button
           onClick={() => {
-            console.log("changename");
             updateDisplayName("test");
           }}
         >

@@ -7,7 +7,6 @@ const UserList = () => {
   const users = useRecoilValue(chatUserListState);
   const me = useRecoilValue(meState);
   const chatInfo = useRecoilValue(chatState);
-  console.log(users);
   return (
     <div>
       {users.map((user) => (

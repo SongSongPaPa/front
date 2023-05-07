@@ -6,14 +6,15 @@ import UserInterface from "./User/UserInterface";
 
 const TwoFactor = () => {
   return (
-    <PageWrapper>
-      <RoomWrapper>
-        <GameContainer />
-      </RoomWrapper>
-      <UserInterfaceWrapper>
-        <UserInterface />
-      </UserInterfaceWrapper>
-    </PageWrapper>
+    // <PageWrapper>
+    //   <RoomWrapper>
+    //     <GameContainer />
+    //   </RoomWrapper>
+    //   <UserInterfaceWrapper>
+    //     <UserInterface />
+    //   </UserInterfaceWrapper>
+    // </PageWrapper>
+    <></>
   );
 };
 

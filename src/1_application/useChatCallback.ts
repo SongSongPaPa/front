@@ -68,11 +68,12 @@ const useChatCallbacks = () => {
   });
 
   const onDeleteChat = useRecoilCallback(({ set }) => (data: { chatId: number }) => {
+    console.log("in onDeleteChat callback");
     set(chatRoomListState, (prev) => {
       return prev.filter((element) => element.chatId !== data.chatId);
     });
     set(chatState, (prev) => {
-      if (prev.chatId === data.chatId) {
+      if (prev !== undefined && prev.chatId === data.chatId) {
         return { ...prev, chatId: 0 };
       }
       return prev;
@@ -165,6 +166,7 @@ const useChatCallbacks = () => {
   /* ============================== */
 
   const onSingleLeaveChat = useRecoilCallback(({ set }) => (data: { userId: number }) => {
+    console.log("in onSingleLeaveChat callback");
     set(messageListState, (prev) => {
       return [];
     });

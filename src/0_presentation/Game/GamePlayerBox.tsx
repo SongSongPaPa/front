@@ -12,7 +12,6 @@ interface GamePlayerBoxProps {
 const Box = styled.div<GamePlayerBoxProps>`
   font-size: 36px;
   background-color: ${(props) => {
-    console.log("box props", props);
     if (props.playerName) {
       return "#bfff8c";
     } else {
@@ -33,12 +32,6 @@ const Image = styled.img`
 `;
 
 const GamePlayerBox = ({ imagePath, playerName }: GamePlayerBoxProps) => {
-  //const gameInfo = useRecoilValue(gamingState);
-  //console.log("gamegmaegmae", gameInfo);
-  //const playerA = useRecoilValue(userSelector(gameInfo.players[0].userId));
-  //const playerB = useRecoilValue(userSelector(gameInfo.players[1].userId));
-  //console.log("playerA", playerA);
-  //console.log("playerB", playerB);
   return (
     <Box playerName={playerName}>
       <Image src={imagePath} />

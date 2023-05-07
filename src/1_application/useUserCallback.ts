@@ -17,8 +17,8 @@ const useUserCallback = () => {
   const onChangeState = useRecoilCallback(
     ({ set }) =>
       (data: { userId: number; username: string; state: UserStateType; profile: string }) => {
-        console.log("int onChangeState callback", data.userId);
         set(userListState, (prev) => {
+          console.log("int onChangeState callback, userId: ", data.userId, "   state: ", data.state);
           const user = prev.find((e) => e.id === data.userId);
           if (user === undefined) {
             // console.log("⛔️ 없는 유저인데요");
@@ -32,7 +32,6 @@ const useUserCallback = () => {
   );
 
   const onUpdateDisplayName = useRecoilCallback(({ set }) => (data: { userId: number; name: string }) => {
-    console.log(data);
     console.log("change Name", data.userId, data.name);
     set(userListState, (prev) => {
       return prev.map((e) => (e.id === data.userId ? { ...e, nickname: data.name } : e));

@@ -60,7 +60,6 @@ const RoomListItem = ({ roomId, isGame, name, option }: RoomListItemProps) => {
     watchGame(roomId);
     //navigate("gaim-wait");
   };
-  console.log("chat option: ", option);
   return (
     <Room>
       <Title>{name}</Title>

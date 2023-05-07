@@ -6,7 +6,6 @@ class GlobalSocket {
   });
 
   public static getSocket = (): Socket => {
-    console.log(`${process.env.REACT_APP_SOCKET_URL as string}`);
     return this.socket;
   };
 }
