@@ -19,13 +19,11 @@ export interface GamePublicDto {
 }
 
 export interface GamePrivateDto {
-  room: string;
   players: GamePlayerDto[];
   watcher: number[];
   ball: GameBallDto;
   totalScore: number;
   round: number;
-  pause: boolean;
   onGame: boolean;
   onRound: boolean;
 }

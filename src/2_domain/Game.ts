@@ -32,7 +32,6 @@ export interface GameInfo {
   round: number;
   totalScore: number;
   watcher: number[];
-  pause: boolean;
   onGame: boolean;
   onRound: boolean;
 }

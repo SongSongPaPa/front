@@ -4,7 +4,6 @@ import styled from "styled-components";
 import useChatService from "@root/1_application/useChatService";
 import useGameService from "@root/1_application/useGameService";
 import { useNavigate } from "react-router-dom";
-import { ChatType } from "@root/2_domain/Chat";
 
 interface RoomListItemProps {
   roomId: number;

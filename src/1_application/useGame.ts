@@ -38,9 +38,9 @@ const useGameEvent = () => {
     socket.on("group:game:endGame", onEndGame);
     socket.on("group:game:movePaddle", onMovePaddle);
 
-    socket.on("single:game:createGame", onSingleCreateGame);
     socket.on("single:game:joinGame", onSingleJoinGame);
     socket.on("single:game:watchGame", onSingleWatchGame);
+    console.log(socket);
   }, []);
 };
 
