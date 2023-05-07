@@ -171,6 +171,7 @@ const useChatCallbacks = () => {
     set(chatState, (prev) => {
       return { ...prev, chatId: 0 };
     });
+    console.log("navigate to lobby");
     navigate("/lobby");
   });
 
