@@ -8,6 +8,7 @@ import GlobalModal from "./0_presentation/modals/GlobalModal";
 import Chat from "./0_presentation/Chat";
 import GameWait from "./0_presentation/GameWait";
 import Login from "./0_presentation/Login";
+import TwoFactor from "./0_presentation/TwoFactor";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="lobby" element={<Lobby />} />
             <Route path="chat" element={<Chat />} />
             <Route path="game-wait" element={<GameWait />} />
+            <Route path="two-factor" element={<TwoFactor />} />
           </Routes>
         </div>
       </SocketHandler>

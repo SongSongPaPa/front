@@ -103,31 +103,6 @@ const useGameCallbacks = () => {
   /*             Single             */
   /* ============================== */
 
-  const onSingleCreateGame = useRecoilCallback(({ set }) => (data: GameSessionDto) => {
-    //console.log("on single create game");
-    set(gamingState, (prev) => {
-      console.log("game create", data);
-      const newBall: BallInfo = {
-        speed: data.private.ball.speed,
-        position: data.private.ball.position,
-      };
-      const game: GameInfo = {
-        gameId: data.public.gameId,
-        ownerId: data.public.ownerId,
-        name: data.public.name,
-        speed: data.public.speed,
-        players: data.private.players,
-        ball: newBall,
-        round: data.private.round,
-        totalScore: data.private.totalScore,
-        watcher: data.private.watcher,
-        onGame: data.private.onGame,
-        onRound: data.private.onRound,
-      };
-      return game;
-    });
-  });
-
   const onSingleJoinGame = useRecoilCallback(({ set }) => (data: GameSessionDto) => {
     console.log("on single join game");
     console.log("game data", data);
@@ -189,7 +164,6 @@ const useGameCallbacks = () => {
     onStartGame,
     onEndGame,
     onMovePaddle,
-    onSingleCreateGame,
     onSingleJoinGame,
     onSingleWatchGame,
   };
