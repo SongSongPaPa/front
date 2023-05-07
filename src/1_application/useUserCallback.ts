@@ -135,6 +135,10 @@ const useUserCallback = () => {
       return { ...prev, blocks: blocks };
     });
   });
+
+  const onError = useRecoilCallback(({ set }) => (data: { status: number; message: string }) => {
+    alert(data.message);
+  });
   return {
     onConnect,
     onChangeState,
@@ -144,6 +148,7 @@ const useUserCallback = () => {
     onUnfollowUser,
     onBlockUser,
     onUnBlockUser,
+    onError,
   };
 };
 

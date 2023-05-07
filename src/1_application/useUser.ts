@@ -15,6 +15,7 @@ const useUserEvent = () => {
     onUnfollowUser,
     onBlockUser,
     onUnBlockUser,
+    onError,
   } = useUserCallback();
   useEffect(() => {
     socket.on("connect", () => {
@@ -28,7 +29,7 @@ const useUserEvent = () => {
     });
 
     //Todo: socket에서도 401이면 로그인화면으로
-    socket.on("single:user:error", (data) => console.log(data));
+    socket.on("single:user:error", onError);
     socket.on("single:user:connect", onConnect);
     socket.on("broadcast:user:changeState", onChangeState);
     socket.on("broadcast:user:updateDisplayName", onUpdateDisplayName);
