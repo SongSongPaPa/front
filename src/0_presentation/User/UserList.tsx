@@ -5,7 +5,6 @@ import { useRecoilValue } from "recoil";
 const UserList = () => {
   const users = useRecoilValue(filteredUserListState);
   const me = useRecoilValue(meState);
-  console.log(users);
   return (
     <div>
       {users.map((user) => (

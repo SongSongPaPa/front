@@ -34,6 +34,11 @@ class GameRepository implements IGameRepository {
     console.log("GameRepository movePaddle, keyCode: ", keyCode);
     this.socket.emit("movePaddle", { keyCode: keyCode });
   };
+
+  public quickGame = (): void => {
+    console.log("quickGame");
+    this.socket.emit("quickGame");
+  };
 }
 
 export default new GameRepository();

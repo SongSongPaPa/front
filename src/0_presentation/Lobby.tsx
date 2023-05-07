@@ -10,11 +10,11 @@ import { useNavigate } from "react-router-dom";
 
 const Lobby = () => {
   const { showModal } = useModal();
-  const { createGame } = useGameService();
+  const { quickGame } = useGameService();
   const navigate = useNavigate();
 
   const handleClickQuickStart = () => {
-    createGame(100);
+    quickGame();
   };
   const handleClickChatRoomCreate = () => {
     showModal({ modalType: "ChatRoomCreateModal" });

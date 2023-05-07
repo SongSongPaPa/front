@@ -36,14 +36,10 @@ const MessageForm = () => {
       const splitted = message.split(" ", 1);
       const rest = message.substring(splitted[0].length);
       const name = splitted[0].slice(1).toString();
-      console.log("splitted message: ", splitted);
-      console.log("rest message: ", rest);
-      console.log("extracted name: ", name);
       if (splitted.length < 1) {
         return;
       }
       const user = userList.find((item) => item.nickname === name);
-      console.log(user);
       if (user) {
         sendDirectMessage(user.id, name + ":" + rest);
       }

@@ -30,11 +30,7 @@ export const chatUserListState = selector({
     const userIdList = get(chatState).users;
     const userList = get(userListState);
 
-    console.log("get chatste:  ", get(chatState));
-    console.log("get user id list:  ", userIdList);
-
     const result = userList.filter((item) => userIdList.includes(item.id));
-    console.log("chat selector result: ", result);
     return result;
   },
 });
@@ -63,7 +59,6 @@ export const filteredUserListState = selector({
     const list = get(userListState);
     const me = get(meState);
     const friends = me ? me.friends : [];
-    console.log(me);
     switch (filter) {
       case true:
         return friends.map((friend) => {

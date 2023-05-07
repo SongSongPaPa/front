@@ -14,6 +14,7 @@ export interface IGameRepository {
   leaveGame(): void;
   startGame(): void;
   movePaddle(keyCode: number): void;
+  quickGame(): void;
 
   /* ============================== */
   /*             Single             */

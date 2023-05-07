@@ -51,6 +51,7 @@ const TwoFactor = () => {
         </form>
       </Wrapper>
     </PageWrapper>
+
   );
 };
 
