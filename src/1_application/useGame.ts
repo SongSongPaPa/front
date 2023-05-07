@@ -14,7 +14,6 @@ const useGameEvent = () => {
     onStartGame,
     onEndGame,
     onMovePaddle,
-    onSingleCreateGame,
     onSingleJoinGame,
     onSingleWatchGame,
     onSingleLeaveGame,

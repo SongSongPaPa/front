@@ -1,9 +1,8 @@
 export interface AuthResponseDto {
   status: number;
   message: string;
-  twoFactor?: boolean;
+  twoFactor?: string;
   firstAccess?: boolean;
-  token?: boolean;
 }
 
 export interface TokenDto {
