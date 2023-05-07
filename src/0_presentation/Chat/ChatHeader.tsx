@@ -36,7 +36,7 @@ const ChatHeader = () => {
   return (
     <Header>
       <Button name="back" onClick={handleClickBack} />
-      <p>{chatInfo ? chatInfo.name : "sample"}</p>
+      <p>{chatInfo ? chatInfo.name : "잠시 후 다시 시도해주세요"}</p>
       <Button name="menu" onClick={handleClickMenu} />
     </Header>
   );

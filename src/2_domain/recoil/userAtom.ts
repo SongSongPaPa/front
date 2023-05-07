@@ -63,6 +63,7 @@ export const filteredUserListState = selector({
     const list = get(userListState);
     const me = get(meState);
     const friends = me ? me.friends : [];
+    console.log(me);
     switch (filter) {
       case true:
         return friends.map((friend) => {
@@ -75,7 +76,7 @@ export const filteredUserListState = selector({
         });
 
       default:
-        return list;
+        return list.filter((user) => me && user.id !== me.id);
     }
   },
 });

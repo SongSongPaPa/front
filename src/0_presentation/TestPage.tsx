@@ -31,9 +31,7 @@ const TestPage = () => {
         <a href={process.env.REACT_APP_API_URL + "/auth/login"}>login</a>
       </p>
       <h1>Chat</h1>
-      <p>
-        <button onClick={() => createChat("테스트", "public", undefined)}>Create Chat</button>
-      </p>
+      <p></p>
       <p>
         <button onClick={() => updateChat("테테...테슬라", "public", undefined)}>Update Chat name</button>
       </p>
@@ -55,9 +53,7 @@ const TestPage = () => {
           </p>
         ))}
       </div>
-      <p>
-        <button onClick={() => joinChat(1, "1234")}>Joni Chat 1 </button>
-      </p>
+      <p></p>
       <p>
         <button onClick={() => leaveChat()}>Leave Chat</button>
       </p>

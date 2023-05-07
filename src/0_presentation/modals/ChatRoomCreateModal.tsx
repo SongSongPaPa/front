@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const ChatRoomCreateModal = () => {
   const { hideModal } = useModal();
   const { createChat } = useChatService();
-  const [selectedValue, setSelectedValue] = useState("");
+  const [selectedValue, setSelectedValue] = useState("public");
   const [inputValue, setInputValue] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ const ChatRoomCreateModal = () => {
     <Modal>
       <ModalBody>
         <h1>Create Chat</h1>
-        <input value={inputValue} onChange={(event) => setInputValue(event.target.value)}></input>
+        <input type="text" value={inputValue} onChange={(event) => setInputValue(event.target.value)} required></input>
         <input value={password} onChange={(event) => setPassword(event.target.value)}></input>
         <RadioGroup options={options} selectedOption={selectedValue} setSelectedOption={setSelectedValue}></RadioGroup>
         <button onClick={onClose}>close</button>
