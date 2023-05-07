@@ -10,6 +10,7 @@ import { useRecoilCallback } from "recoil";
 
 import useChatEvent from "./useChat";
 import useUserEvent from "./useUser";
+import useGameEvent from "./useGame";
 
 interface SocketProviderProps {
   children: ReactNode;
@@ -20,6 +21,7 @@ export const SocketHandler = ({ children }: SocketProviderProps) => {
 
   useChatEvent();
   useUserEvent();
+  useGameEvent();
   return <>{children}</>;
 };
 

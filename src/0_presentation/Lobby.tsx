@@ -15,7 +15,7 @@ const Lobby = () => {
 
   const handleClickQuickStart = () => {
     navigate("/game-wait");
-    createGame(1);
+    createGame(100);
   };
   const handleClickChatRoomCreate = () => {
     showModal({ modalType: "ChatRoomCreateModal" });

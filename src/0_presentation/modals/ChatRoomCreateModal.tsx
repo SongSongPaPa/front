@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const ChatRoomCreateModal = () => {
   const { hideModal } = useModal();
   const { createChat } = useChatService();
-  const [selectedValue, setSelectedValue] = useState("public");
+  const [selectedValue, setSelectedValue] = useState<string | number>("public");
   const [inputValue, setInputValue] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const ChatRoomCreateModal = () => {
     hideModal();
     navigate("/chat");
     console.log("chat room props: ", inputValue, selectedValue, password);
-    createChat(inputValue, selectedValue, password);
+    createChat(inputValue, selectedValue as string, password);
   };
 
   const options = [

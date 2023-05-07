@@ -7,7 +7,7 @@ class GameRepository implements IGameRepository {
 
   public createGame = (speed: number): void => {
     console.log("GameRepository createGame, speed: ", speed);
-    this.socket.emit("createGame", { speed: speed });
+    this.socket.emit("createGame", { game: { speed: speed } });
   };
 
   public joinGame = (gameId: number): void => {

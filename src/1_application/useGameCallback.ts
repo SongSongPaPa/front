@@ -3,8 +3,10 @@ import { endGameState, gameRoomListState, gamingState } from "@root/2_domain/rec
 import { ChatSessionDto } from "@root/3_infrastructure/dto/socket/chat.dto";
 import GameSessionDto, { GamePlayerDto, GamePublicDto } from "@root/3_infrastructure/dto/socket/game.dto";
 import { useRecoilCallback } from "recoil";
+import { useNavigate } from "react-router-dom";
 
 const useGameCallbacks = () => {
+  const navigate = useNavigate();
   /* ================================= */
   /*             Broadcast             */
   /* ================================= */
@@ -14,6 +16,7 @@ const useGameCallbacks = () => {
   });
 
   const onBroadDeleteGame = useRecoilCallback(({ set }) => (data: { gameId: number }) => {
+    console.log("broad delete game");
     set(gameRoomListState, (prev) => {
       return prev.filter((e) => e.gameId !== data.gameId);
     });
@@ -40,16 +43,20 @@ const useGameCallbacks = () => {
 
   //Todo: 로직 수정되면 작성
   const onGroupDeleteGame = useRecoilCallback(({ set }) => () => {
+    console.log("group delete");
     set(gamingState, (prev) => {
       return prev;
     });
+    navigate("/lobby");
   });
 
   const onGroupLeaveGame = useRecoilCallback(({ set }) => (data: { userId: number }) => {
+    console.log("group leave");
     set(gamingState, (prev) => {
       prev.players = prev.players.filter((e) => e.userId !== data.userId);
       return prev;
     });
+    navigate("/lobby");
   });
 
   const onStartGame = useRecoilCallback(({ set }) => () => {
@@ -97,7 +104,9 @@ const useGameCallbacks = () => {
   /* ============================== */
 
   const onSingleCreateGame = useRecoilCallback(({ set }) => (data: GameSessionDto) => {
+    //console.log("on single create game");
     set(gamingState, (prev) => {
+      console.log("game create", data);
       const newBall: BallInfo = {
         speed: data.private.ball.speed,
         position: data.private.ball.position,
@@ -112,7 +121,6 @@ const useGameCallbacks = () => {
         round: data.private.round,
         totalScore: data.private.totalScore,
         watcher: data.private.watcher,
-        pause: data.private.pause,
         onGame: data.private.onGame,
         onRound: data.private.onRound,
       };
@@ -121,11 +129,14 @@ const useGameCallbacks = () => {
   });
 
   const onSingleJoinGame = useRecoilCallback(({ set }) => (data: GameSessionDto) => {
+    console.log("on single join game");
+    console.log("game data", data);
     set(gamingState, (prev) => {
       const newBall: BallInfo = {
         speed: data.private.ball.speed,
         position: data.private.ball.position,
       };
+
       const game: GameInfo = {
         gameId: data.public.gameId,
         ownerId: data.public.ownerId,
@@ -136,12 +147,13 @@ const useGameCallbacks = () => {
         round: data.private.round,
         totalScore: data.private.totalScore,
         watcher: data.private.watcher,
-        pause: data.private.pause,
         onGame: data.private.onGame,
         onRound: data.private.onRound,
       };
+
       return game;
     });
+    navigate("/game-wait");
   });
 
   const onSingleWatchGame = useRecoilCallback(({ set }) => (data: GameSessionDto) => {
@@ -160,7 +172,6 @@ const useGameCallbacks = () => {
         round: data.private.round,
         totalScore: data.private.totalScore,
         watcher: data.private.watcher,
-        pause: data.private.pause,
         onGame: data.private.onGame,
         onRound: data.private.onRound,
       };

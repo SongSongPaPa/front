@@ -1,7 +1,7 @@
 interface RadioGroupProps {
-  options: { label: string; value: string }[];
-  selectedOption: string;
-  setSelectedOption: (option: string) => void;
+  options: { label: string; value: string | number }[];
+  selectedOption: string | number;
+  setSelectedOption: (option: string | number) => void;
 }
 
 const RadioGroup = ({ options, selectedOption, setSelectedOption }: RadioGroupProps) => {

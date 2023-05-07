@@ -1,5 +1,8 @@
+import { gamingState } from "@root/2_domain/recoil/gameAtom";
 import React from "react";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
+import { userSelector } from "@root/2_domain/recoil/userAtom";
 
 interface GamePlayerBoxProps {
   imagePath?: string;
@@ -9,7 +12,8 @@ interface GamePlayerBoxProps {
 const Box = styled.div<GamePlayerBoxProps>`
   font-size: 36px;
   background-color: ${(props) => {
-    if (props.imagePath) {
+    console.log("box props", props);
+    if (props.playerName) {
       return "#bfff8c";
     } else {
       return "#d9d9d9";
@@ -23,10 +27,21 @@ const Box = styled.div<GamePlayerBoxProps>`
   display: flex;
 `;
 
+const Image = styled.img`
+  width: 80px;
+  height: 80px;
+`;
+
 const GamePlayerBox = ({ imagePath, playerName }: GamePlayerBoxProps) => {
+  //const gameInfo = useRecoilValue(gamingState);
+  //console.log("gamegmaegmae", gameInfo);
+  //const playerA = useRecoilValue(userSelector(gameInfo.players[0].userId));
+  //const playerB = useRecoilValue(userSelector(gameInfo.players[1].userId));
+  //console.log("playerA", playerA);
+  //console.log("playerB", playerB);
   return (
-    <Box>
-      <img src={imagePath}></img>
+    <Box playerName={playerName}>
+      <Image src={imagePath} />
       <div>{playerName ? playerName : "waiting..."}</div>
     </Box>
   );

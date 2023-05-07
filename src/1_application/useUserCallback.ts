@@ -137,6 +137,7 @@ const useUserCallback = () => {
   });
 
   const onError = useRecoilCallback(({ set }) => (data: { status: number; message: string }) => {
+    console.log(data);
     alert(data.message);
   });
   return {
