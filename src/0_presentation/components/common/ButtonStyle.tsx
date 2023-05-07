@@ -102,7 +102,7 @@ export const ButtonStyle: ButtonStyleType = {
   `,
 
   back: `
-  background-image: url("@assets/image/back.png");
+  background-image: url("/src/assets/image/back.png");
   background-repeat: no-repeat;
   background-position: center;
   background-color: #fcfcfc;

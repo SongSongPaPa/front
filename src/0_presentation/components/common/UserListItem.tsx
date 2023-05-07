@@ -7,6 +7,7 @@ import { UserStateType } from "@root/2_domain/User";
 import { useRecoilValue } from "recoil";
 import { detailState } from "@root/2_domain/recoil/userAtom";
 import Popover from "@root/0_presentation/Chat/Popover";
+import { AiTwotoneCrown } from "react-icons/ai";
 
 interface UserListItemProps {
   userId: number;
@@ -37,21 +38,17 @@ const Dot = styled.div<DotProp>`
   border: none;
 `;
 
-const Icon = styled.img<IconProp>`
-  background-image: url(${(props) => {
-    if (props.role === "online") return "@assets/image/gold.png";
-    else if (props.role === "offline") return "'/src/assets/image/silver.png'";
-    else return "@assets/image/gold.png";
-  }});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #fcfcfc;
-  border: none;
+const IconWrap = styled.div<IconProp>`
   cursor: pointer;
   width: 12px;
   height: 9px;
   position: relative;
   display: flex;
+  color: ${(props) => {
+    if (props.role === "ingame") return "#fbe38f";
+    else if (props.role === "offline") return "#e9e9e9";
+    else return "red";
+  }};
 `;
 
 const Image = styled.img`
@@ -86,7 +83,11 @@ const UserListItem = ({ userId, profile, nickname, role, state, enableRightClick
     <div onContextMenu={enableRightClick ? handleRightClick : undefined}>
       <Button name="user-banner" onClick={handleItemClick}>
         <Image src={profile} />
-        {role && <Icon role={role} />}
+        {role && (
+          <IconWrap role={role}>
+            <AiTwotoneCrown />
+          </IconWrap>
+        )}
         <span>{nickname}</span>
         {state && <Dot state={state} />}
       </Button>
