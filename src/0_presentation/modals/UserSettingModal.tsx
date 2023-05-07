@@ -18,7 +18,8 @@ const UserSettingModal = () => {
   const { hideModal } = useModal();
   const me = useRecoilValue(meState);
   const [nickname, setNickname] = useState(me.nickname);
-  const { updateImage, updateDisplayName } = useUserService();
+  const [code, setCode] = useState("");
+  const { updateImage, updateDisplayName, updateTwoFactor } = useUserService();
 
   const onClose = () => {
     hideModal();
@@ -40,7 +41,17 @@ const UserSettingModal = () => {
     event.preventDefault();
     updateDisplayName(nickname);
   };
-  console.log("after image change: ", me.profile);
+
+  const handleTwoFactorChange = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const result = await updateTwoFactor(+code);
+    if (result === true) {
+      alert("잘 바뀌었단다.");
+    } else {
+      alert("엣큥, 비밀번호를 설정하지 못했어");
+    }
+  };
+
   return (
     <Modal>
       <ModalBody>
@@ -53,6 +64,21 @@ const UserSettingModal = () => {
             onChange={(e: ChangeEvent<HTMLInputElement>) => setNickname(e.target.value)}
           />
           <Button name="" type="submit" />
+        </form>
+        <div></div>
+        <div>2차 비밀번호 설정</div>
+        <form onSubmit={handleTwoFactorChange}>
+          숫자 6자리를 입력하세요 :
+          <br />
+          <Input
+            style={{ width: 100 }}
+            type="number"
+            value={code}
+            name="code"
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setCode(e.target.value)}
+          />
+          <br />
+          <Button name="code" type="submit" />
         </form>
       </ModalBody>
       <Overlay onClick={onClose} />

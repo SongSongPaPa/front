@@ -2,8 +2,7 @@ export interface UserDto {
   id: number;
   name: string;
   nickname: string;
-  twoFactor: boolean;
-  twoFactorUid: string;
+  twoFactor?: string;
   profile: string;
   firstAccess: boolean;
 }
@@ -11,8 +10,7 @@ export interface UserDto {
 export interface UserLog {
   name: string;
   nickname: string;
-  twoFactor: boolean;
-  twoFactorUid: string;
+  twoFactor?: string;
   profile: string;
 }
 
@@ -25,8 +23,7 @@ export interface UserDetailDto {
   id: number;
   name: string;
   nickname: string;
-  twoFactor: boolean;
-  twoFactorUid: string;
+  twoFactor?: string;
   profile: string;
   level: number;
   firstAccess: boolean;

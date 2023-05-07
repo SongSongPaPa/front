@@ -18,6 +18,20 @@ class UserRepository implements IUserRepository {
     return user.data;
   };
 
+  /////////////
+
+  checkTwoFactor = async (code: number): Promise<boolean> => {
+    const result = await customAxios.post(`/auth/two-factor`, { code: code });
+    return result.status === 200;
+  };
+
+  updateTwoFactor = async (code: number): Promise<boolean> => {
+    const result = await customAxios.patch(`/auth/two-factor`, { code: code });
+    return result.status === 200;
+  };
+
+  ///////////
+
   updateDisplayName = (name: string): void => {
     console.log("emit update display name");
     console.log(this.socket);
