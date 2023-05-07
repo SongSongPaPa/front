@@ -19,8 +19,6 @@ const ChatRoomCreateModal = () => {
 
   const onConfirm = () => {
     hideModal();
-    navigate("/chat");
-    console.log("chat room props: ", inputValue, selectedValue, password);
     createChat(inputValue, selectedValue as string, password);
   };
 

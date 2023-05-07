@@ -4,9 +4,10 @@ import { ChatInfo, PublicChatInfo, typeConverter } from "@root/2_domain/Chat";
 import { ChatPublicDto, ChatSessionDto } from "@root/3_infrastructure/dto/socket/chat.dto";
 import { messageListState } from "@root/2_domain/recoil/messageAtom";
 import { ChatMessage } from "@root/2_domain/ChatMessage";
-import { userSelector } from "@root/2_domain/recoil/userAtom";
+import { useNavigate } from "react-router-dom";
 
 const useChatCallbacks = () => {
+  const navigate = useNavigate();
   /* ================================= */
   /*             Broadcast             */
   /* ================================= */
@@ -170,6 +171,7 @@ const useChatCallbacks = () => {
     set(chatState, (prev) => {
       return { ...prev, chatId: 0 };
     });
+    navigate("/lobby");
   });
 
   //Todo: 채팅방 페이지로 넘어가는 로직 필요
@@ -189,6 +191,7 @@ const useChatCallbacks = () => {
     set(messageListState, (prev) => {
       return [];
     });
+    navigate("/chat");
   });
 
   const onSingleSendMessage = useRecoilCallback(

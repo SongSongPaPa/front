@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "../components/common/Button";
 import useModal from "@root/1_application/useModal";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useRecoilValue } from "recoil";
 import { chatState } from "@root/2_domain/recoil/chatAtom";
@@ -25,13 +24,11 @@ const ChatHeader = () => {
   const { showModal } = useModal();
   const chatInfo = useRecoilValue(chatState);
   const { leaveChat } = useChatService();
-  const navigate = useNavigate();
   const handleClickMenu = () => {
     showModal({ modalType: "ChatUserInfoModal" });
   };
   const handleClickBack = () => {
     leaveChat();
-    navigate("/lobby");
   };
   return (
     <Header>
