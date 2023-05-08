@@ -1,13 +1,13 @@
 import { meState, detailState, userListState } from "@root/2_domain/recoil/userAtom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import UserRepository from "@root/3_infrastructure/UserRepository";
-import { UserStateType } from "@root/2_domain/User";
+import { UserInfo, UserStateType } from "@root/2_domain/User";
 
 const useUserService = () => {
   const [me, setMe] = useRecoilState(meState);
   const [other, setOther] = useRecoilState(detailState);
 
-  const getMyProfile = async () => {
+  const getMyProfile = async (): Promise<UserInfo | null> => {
     try {
       const data = await UserRepository.getMyProfile();
       //
@@ -17,8 +17,7 @@ const useUserService = () => {
       const blockList = data.blocks.map((e) => {
         return { id: e.id, nickname: e.nickname, state: UserStateType.OFFLINE, profile: e.profile };
       });
-      console.log();
-      setMe({
+      return {
         id: data.id,
         state: UserStateType.ONLINE,
         name: data.name,
@@ -28,9 +27,11 @@ const useUserService = () => {
         achievements: data.achivements.map((e) => e.achivementTitle),
         friends: friendList,
         blocks: blockList,
-      });
+        firstAccess: data.firstAccess,
+      };
     } catch (error) {
       console.log(error);
+      return null;
     }
   };
 
@@ -54,8 +55,18 @@ const useUserService = () => {
         achievements: data.achivements.map((e) => e.achivementTitle),
         friends: friendList,
         blocks: blockList,
+        firstAccess: data.firstAccess,
       });
       //setOther(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const firstAccess = async () => {
+    try {
+      const result = await UserRepository.firstAccess();
+      return result;
     } catch (error) {
       console.log(error);
     }
@@ -74,7 +85,6 @@ const useUserService = () => {
   const updateTwoFactor = async (code: string): Promise<boolean> => {
     try {
       const result = await UserRepository.updateTwoFactor(code);
-
       return result;
     } catch (error) {
       console.log(error);
@@ -133,6 +143,7 @@ const useUserService = () => {
   return {
     getMyProfile,
     getUserProfileById,
+    firstAccess,
     checkTwoFactor,
     updateTwoFactor,
     updateDisplayName,

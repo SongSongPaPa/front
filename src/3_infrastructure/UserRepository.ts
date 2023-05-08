@@ -18,6 +18,10 @@ class UserRepository implements IUserRepository {
     return user.data;
   };
 
+  firstAccess = async (): Promise<void> => {
+    await customAxios.get(`/auth/first-access`);
+  };
+
   /////////////
 
   checkTwoFactor = async (code: string): Promise<boolean> => {
@@ -27,7 +31,7 @@ class UserRepository implements IUserRepository {
 
   updateTwoFactor = async (code: string): Promise<boolean> => {
     const result = await customAxios.patch(`/auth/two-factor`, { code: code });
-    return result.status === 201;
+    return result.status === 200;
   };
 
   ///////////
