@@ -61,6 +61,15 @@ const useUserService = () => {
     }
   };
 
+  const firstAccess = async () => {
+    try {
+      const result = await UserRepository.firstAccess();
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const checkTwoFactor = async (code: string): Promise<boolean> => {
     try {
       const result = await UserRepository.checkTwoFactor(code);

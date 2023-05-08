@@ -18,6 +18,11 @@ class UserRepository implements IUserRepository {
     return user.data;
   };
 
+  firstAccess = async (): Promise<void> => {
+    const user = await customAxios.get(`/auth/first-access`);
+    return user.data;
+  };
+
   /////////////
 
   checkTwoFactor = async (code: string): Promise<boolean> => {
