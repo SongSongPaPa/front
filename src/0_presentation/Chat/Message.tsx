@@ -70,6 +70,9 @@ const Message = ({ message, sourceId, direct, system }: ChatMessage) => {
   const other = useRecoilValue(userSelector(sourceId));
   const style = getMessageStyle(me.id, sourceId, direct, system);
   const formattedMessage = getFormattedMessage(other ? other.nickname : "[system] ", message, style);
+  if (me.blocks.find((item) => item.id === sourceId)) {
+    return <div></div>;
+  }
   return (
     <MessageWrapper className={style}>
       {style === "received" && <UserListItem userId={other.id} profile={other.profile} nickname={other.nickname} />}
