@@ -40,7 +40,7 @@ const useUserCallback = () => {
       if (prev.id !== data.userId) {
         return prev;
       }
-      return { ...prev, name: data.name };
+      return { ...prev, nickname: data.name };
     });
   });
 
