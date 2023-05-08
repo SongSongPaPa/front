@@ -66,7 +66,6 @@ const RoomListItem = ({ roomId, isGame, name, option }: RoomListItemProps) => {
   const handleClickWatchGame = () => {
     watchGame(roomId);
   };
-  console.log("chat option: ", option);
   return (
     <Room>
       <Title>{name}</Title>

@@ -63,7 +63,6 @@ const UserListItem = ({ userId, profile, nickname, role, state, enableRightClick
   const { showModal } = useModal();
   const handleItemClick = async () => {
     try {
-      console.log("before", other);
       await getUserProfileById(userId, state!);
     } catch (error) {
       console.log(error);
@@ -75,10 +74,7 @@ const UserListItem = ({ userId, profile, nickname, role, state, enableRightClick
     event.preventDefault();
     event.stopPropagation();
     setShowPopover(true);
-    //const userBanner = event.currentTarget as HTMLDivElement;
-    //console.log(userBanner);
   };
-  //console.log("after: ", other);
   return (
     <div onContextMenu={enableRightClick ? handleRightClick : undefined}>
       <Button name="user-banner" onClick={handleItemClick}>

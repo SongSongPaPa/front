@@ -12,7 +12,6 @@ customAxios.interceptors.request.use(
 
 customAxios.interceptors.response.use(
   (response) => {
-    console.log(response);
     return response;
   },
   (error) => Promise.reject(error)

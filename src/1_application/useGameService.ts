@@ -49,6 +49,14 @@ const useGameService = () => {
     }
   };
 
+  const quickGame = () => {
+    try {
+      GameRepository.quickGame();
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return {
     createGame,
     joinGame,
@@ -56,6 +64,7 @@ const useGameService = () => {
     leaveGame,
     startGame,
     movePaddle,
+    quickGame,
   };
 };
 
