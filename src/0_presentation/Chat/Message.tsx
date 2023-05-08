@@ -2,9 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { ChatMessage } from "@root/2_domain/ChatMessage";
 import { useRecoilValue } from "recoil";
-import { meState, userListState, userSelector } from "@root/2_domain/recoil/userAtom";
+import { meState, userSelector } from "@root/2_domain/recoil/userAtom";
 import UserListItem from "../components/common/UserListItem";
-import { stringify } from "querystring";
 
 const StyledMessage = styled.div`
   display: flex;
