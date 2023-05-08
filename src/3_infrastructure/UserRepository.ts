@@ -19,8 +19,7 @@ class UserRepository implements IUserRepository {
   };
 
   firstAccess = async (): Promise<void> => {
-    const user = await customAxios.get(`/auth/first-access`);
-    return user.data;
+    await customAxios.get(`/auth/first-access`);
   };
 
   /////////////
@@ -32,7 +31,7 @@ class UserRepository implements IUserRepository {
 
   updateTwoFactor = async (code: string): Promise<boolean> => {
     const result = await customAxios.patch(`/auth/two-factor`, { code: code });
-    return result.status === 201;
+    return result.status === 200;
   };
 
   ///////////
