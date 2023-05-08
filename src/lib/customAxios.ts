@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const customAxios = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
@@ -14,7 +15,13 @@ customAxios.interceptors.response.use(
   (response) => {
     return response;
   },
-  (error) => Promise.reject(error)
+  (error) => {
+    if (error.response.data.statusCode === 401) {
+      alert("유효하지 않은 정보입니다.");
+      window.open("/", "_self");
+    }
+    return Promise.reject(error);
+  }
 );
 
 export default customAxios;

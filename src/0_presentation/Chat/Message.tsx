@@ -2,9 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { ChatMessage } from "@root/2_domain/ChatMessage";
 import { useRecoilValue } from "recoil";
-import { meState, userListState, userSelector } from "@root/2_domain/recoil/userAtom";
+import { meState, userSelector } from "@root/2_domain/recoil/userAtom";
 import UserListItem from "../components/common/UserListItem";
-import { stringify } from "querystring";
 
 const StyledMessage = styled.div`
   display: flex;
@@ -70,6 +69,9 @@ const Message = ({ message, sourceId, direct, system }: ChatMessage) => {
   const other = useRecoilValue(userSelector(sourceId));
   const style = getMessageStyle(me.id, sourceId, direct, system);
   const formattedMessage = getFormattedMessage(other ? other.nickname : "[system] ", message, style);
+  if (me.blocks.find((item) => item.id === sourceId)) {
+    return <div></div>;
+  }
   return (
     <MessageWrapper className={style}>
       {style === "received" && <UserListItem userId={other.id} profile={other.profile} nickname={other.nickname} />}
