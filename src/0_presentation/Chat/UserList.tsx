@@ -3,8 +3,6 @@ import { chatUserListState, meState } from "@root/2_domain/recoil/userAtom";
 import { useRecoilValue } from "recoil";
 import { chatState } from "@root/2_domain/recoil/chatAtom";
 
-export type UserRole = "admin" | "owner" | "none";
-
 const UserList = () => {
   const users = useRecoilValue(chatUserListState);
   const me = useRecoilValue(meState);
@@ -14,10 +12,10 @@ const UserList = () => {
   const ownerId = chatInfo?.ownerId;
 
   const getUserRole = (userId: number, adminId: number, ownerId: number) => {
-    if (userId === adminId) {
-      return "admin";
-    } else if (userId === ownerId) {
+    if (userId === ownerId) {
       return "owner";
+    } else if (userId === adminId) {
+      return "admin";
     } else return "none";
   };
   //console.log(users);

@@ -46,6 +46,9 @@ const useChatCallbacks = () => {
       const message: ChatMessage = { message: "방 정보가 바뀌었다리", sourceId: 0, direct: false, system: true };
       return [...prev, message];
     });
+    set(chatState, (prev) => {
+      return { ...prev, name: data.name };
+    });
   });
 
   const onSetAdmin = useRecoilCallback(({ set }) => (data: { chatId: number; ownerId: number; adminId: number }) => {

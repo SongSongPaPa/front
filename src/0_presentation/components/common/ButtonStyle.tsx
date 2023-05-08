@@ -7,7 +7,6 @@ type ButtonStyleType = {
 export const ButtonStyle: ButtonStyleType = {
   "lobby-small-common": `
     font-size: 15px;
-    font-family: Bouncy;
     background-color: #d9d9d9;
     border: none;
     border-radius: 25px;

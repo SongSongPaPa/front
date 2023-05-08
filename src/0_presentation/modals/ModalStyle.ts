@@ -15,7 +15,6 @@ export const Modal = styled.div`
 export const ModalBody = styled.div`
   position: relative;
   flex-direction: row;
-  font-family: sans-mono;
   top: 70px;
   width: 300px;
   height: 500px;
@@ -61,4 +60,12 @@ export const ChatModalBody = styled.div`
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
   z-index: 102;
+
+  > svg {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    color: #707070;
+  }
 `;

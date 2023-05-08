@@ -45,9 +45,9 @@ const IconWrap = styled.div<IconProp>`
   position: relative;
   display: flex;
   color: ${(props) => {
-    if (props.role === "ingame") return "#fbe38f";
-    else if (props.role === "offline") return "#e9e9e9";
-    else return "red";
+    if (props.role === "owner") return "#fbe38f";
+    else if (props.role === "admin") return "#e9e9e9";
+    else return "#ffffff";
   }};
 `;
 

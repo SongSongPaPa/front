@@ -9,6 +9,7 @@ const {
   UserProfileModal,
   UserSettingModal,
   ChatPasswordModal,
+  ChatSettingModal,
   ChatInviteModal,
   TwoFactorSettingModal,
 } = MODAL_TYPES;
@@ -45,6 +46,10 @@ export interface ChatPasswordModalType {
   modalType: typeof ChatPasswordModal;
 }
 
+export interface ChatSettingModalType {
+  modalType: typeof ChatSettingModal;
+}
+
 export interface ChatInviteModalType {
   modalType: typeof ChatInviteModal;
 }
@@ -61,6 +66,7 @@ export type ModalType =
   | UserProfileModalType
   | UserSettingModalType
   | ChatPasswordModalType
+  | ChatSettingModalType
   | ChatInviteModalType
   | TwoFactorSettingModalType;
 
