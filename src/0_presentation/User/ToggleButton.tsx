@@ -22,7 +22,6 @@ const userStyles = css`
 const dialogButtonStyles = css`
   font-size: 14px;
   font-weight: bold;
-  font-family: Bouncy;
   cursor: pointer;
   background-color: #ffffff;
   color: #000000;

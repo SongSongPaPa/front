@@ -1,10 +1,12 @@
-import React from "react";
-import Button from "../components/common/Button";
+import React, { useEffect } from "react";
 import useModal from "@root/1_application/useModal";
 import styled from "styled-components";
 import { useRecoilValue } from "recoil";
 import { chatState } from "@root/2_domain/recoil/chatAtom";
 import useChatService from "@root/1_application/useChatService";
+import { IoMdArrowBack } from "react-icons/io";
+import { CgMenu } from "react-icons/cg";
+import { useNavigate } from "react-router-dom";
 
 const Header = styled.div`
   width: 864px;
@@ -20,21 +22,43 @@ const Header = styled.div`
   }
 `;
 
+const IconWrap = styled.div`
+  svg {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+  }
+`;
+
 const ChatHeader = () => {
   const { showModal } = useModal();
   const chatInfo = useRecoilValue(chatState);
   const { leaveChat } = useChatService();
+  const navigate = useNavigate();
+
   const handleClickMenu = () => {
     showModal({ modalType: "ChatUserInfoModal" });
   };
+
   const handleClickBack = () => {
     leaveChat();
   };
+
+  useEffect(() => {
+    if (chatInfo === undefined) {
+      navigate("/lobby");
+    }
+  }, []);
+
   return (
     <Header>
-      <Button name="back" onClick={handleClickBack} />
+      <IconWrap>
+        <IoMdArrowBack onClick={handleClickBack} />
+      </IconWrap>
       <p>{chatInfo ? chatInfo.name : "잠시 후 다시 시도해주세요"}</p>
-      <Button name="menu" onClick={handleClickMenu} />
+      <IconWrap>
+        <CgMenu onClick={handleClickMenu} />
+      </IconWrap>
     </Header>
   );
 };

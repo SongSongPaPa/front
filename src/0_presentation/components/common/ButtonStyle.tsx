@@ -7,7 +7,6 @@ type ButtonStyleType = {
 export const ButtonStyle: ButtonStyleType = {
   "lobby-small-common": `
     font-size: 15px;
-    font-family: Bouncy;
     background-color: #d9d9d9;
     border: none;
     border-radius: 25px;
@@ -102,7 +101,7 @@ export const ButtonStyle: ButtonStyleType = {
   `,
 
   back: `
-  background-image: url("@assets/image/back.png");
+  background-image: url("/src/assets/image/back.png");
   background-repeat: no-repeat;
   background-position: center;
   background-color: #fcfcfc;

@@ -21,7 +21,7 @@ const Profile = () => {
   return (
     <div>
       <li>
-        <p>{profile.name}</p>
+        <p>{profile.nickname}</p>
         <p>{profile.level}</p>
         <Button name="" onClick={handleCilckSetting}>
           gogo

@@ -53,7 +53,6 @@ export const LoginWrapper = styled.div`
   > a {
     text-decoration: none;
     color: #000000;
-    font-family: Bouncy;
     font-size: 36px;
     text-align: center;
     vertical-align: middle;
