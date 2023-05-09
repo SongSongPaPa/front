@@ -18,6 +18,10 @@ class UserRepository implements IUserRepository {
     return user.data;
   };
 
+  doubleCheckNickname = async (nickname: string) => {
+    await customAxios.get("/user/nickname", { params: { nickname: nickname } });
+  };
+
   firstAccess = async (): Promise<void> => {
     await customAxios.get(`/auth/first-access`);
   };

@@ -62,6 +62,15 @@ const useUserService = () => {
       console.log(error);
     }
   };
+  const doubleCheckNickname = async (nickname: string): Promise<boolean> => {
+    try {
+      await UserRepository.doubleCheckNickname(nickname);
+      return false;
+    } catch (error) {
+      console.log(error);
+      return true;
+    }
+  };
 
   const firstAccess = async () => {
     try {
@@ -143,6 +152,7 @@ const useUserService = () => {
   return {
     getMyProfile,
     getUserProfileById,
+    doubleCheckNickname,
     firstAccess,
     checkTwoFactor,
     updateTwoFactor,
