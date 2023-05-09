@@ -19,7 +19,7 @@ const useUserEvent = () => {
   } = useUserCallback();
   useEffect(() => {
     socket.on("connect", () => {
-      navigate("/lobby");
+      //navigate("/lobby");
       console.log("User socket Connected to server");
     });
 

@@ -6,7 +6,7 @@ import Button from "../components/common/Button";
 import useModal from "@root/1_application/useModal";
 
 const Profile = () => {
-  const { getMyProfile, firstAccess } = useUserService();
+  const { getMyProfile } = useUserService();
   const [profile, setProfile] = useRecoilState(meState);
   const { showModal } = useModal();
   const handleCilckSetting = () => {
@@ -20,16 +20,13 @@ const Profile = () => {
         return;
       }
       setProfile(data);
-      if (data.firstAccess === true) {
-        showModal({ modalType: "UserSettingModal" });
-        firstAccess();
-      }
     }
     func();
   }, []);
   if (!profile) {
     return <div>Loading...</div>;
   }
+  console.log("me information", profile);
   return (
     <div>
       <li>

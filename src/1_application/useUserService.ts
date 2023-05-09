@@ -28,6 +28,7 @@ const useUserService = () => {
         friends: friendList,
         blocks: blockList,
         firstAccess: data.firstAccess,
+        gameHistory: data.userLogs,
       };
     } catch (error) {
       console.log(error);
@@ -56,28 +57,21 @@ const useUserService = () => {
         friends: friendList,
         blocks: blockList,
         firstAccess: data.firstAccess,
+        gameHistory: data.userLogs,
       });
       //setOther(data);
     } catch (error) {
       console.log(error);
     }
   };
-  const doubleCheckNickname = async (nickname: string): Promise<boolean> => {
-    try {
-      await UserRepository.doubleCheckNickname(nickname);
-      return false;
-    } catch (error) {
-      console.log(error);
-      return true;
-    }
-  };
 
-  const firstAccess = async () => {
+  const signUp = async (nickname: string, image: string): Promise<boolean> => {
     try {
-      const result = await UserRepository.firstAccess();
-      return result;
+      await UserRepository.signUp(nickname, image);
+      return true;
     } catch (error) {
       console.log(error);
+      return false;
     }
   };
 
@@ -152,8 +146,7 @@ const useUserService = () => {
   return {
     getMyProfile,
     getUserProfileById,
-    doubleCheckNickname,
-    firstAccess,
+    signUp,
     checkTwoFactor,
     updateTwoFactor,
     updateDisplayName,

@@ -18,6 +18,7 @@ export const meState = atom<UserInfo>({
     achievements: [],
     friends: [],
     blocks: [],
+    gameHistory: [],
   },
 });
 

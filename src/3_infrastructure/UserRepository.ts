@@ -1,5 +1,4 @@
 import { IUserRepository } from "@domain/IUserRepository";
-import { UserInfo } from "@domain/User";
 import customAxios from "@root/lib/customAxios";
 import { Socket } from "socket.io-client";
 import { UserDetailDto } from "./dto/api/user.dto";
@@ -18,14 +17,9 @@ class UserRepository implements IUserRepository {
     return user.data;
   };
 
-  doubleCheckNickname = async (nickname: string) => {
-    await customAxios.get("/user/nickname", { params: { nickname: nickname } });
+  signUp = async (nickname: string, image: string): Promise<void> => {
+    await customAxios.post(`/auth/signup`, { nickname: nickname, image: image });
   };
-
-  firstAccess = async (): Promise<void> => {
-    await customAxios.get(`/auth/first-access`);
-  };
-
   /////////////
 
   checkTwoFactor = async (code: string): Promise<boolean> => {

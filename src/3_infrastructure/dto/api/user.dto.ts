@@ -8,10 +8,10 @@ export interface UserDto {
 }
 
 export interface UserLog {
-  name: string;
-  nickname: string;
-  twoFactor?: string;
-  profile: string;
+  id: number;
+  winnerId: number;
+  looserId: number;
+  score: number;
 }
 
 export interface UserAchievementDto {

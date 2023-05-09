@@ -138,11 +138,15 @@ const useUserCallback = () => {
 
   const onError = useRecoilCallback(({ set }) => (data: { status: number; message: string }) => {
     console.log(data);
+    if (data.status === 302) {
+      return;
+    }
     alert(data.message);
     if (data.status === 401) {
       navigate("/");
     }
   });
+
   return {
     onConnect,
     onChangeState,

@@ -8,6 +8,7 @@ import styled from "styled-components";
 import Input from "../components/common/Input";
 import { useState } from "react";
 import Button from "../components/common/Button";
+import GameLogs from "../User/GameLogs";
 
 const Image = styled.img`
   width: 83px;
@@ -61,6 +62,8 @@ const UserSettingModal = () => {
         <Button name="modal-round-common" onClick={handleClickTwoFactor}>
           go
         </Button>
+        <div>게임 전적</div>
+        <GameLogs />
       </ModalBody>
       <Overlay onClick={onClose} />
     </Modal>

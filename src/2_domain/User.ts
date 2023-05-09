@@ -1,3 +1,5 @@
+import { UserLog } from "@root/3_infrastructure/dto/api/user.dto";
+
 export enum UserStateType {
   ONLINE = "online",
   OFFLINE = "offline",
@@ -23,4 +25,5 @@ export interface UserInfo {
   achievements: string[];
   friends: PublicUserInfo[];
   blocks: PublicUserInfo[];
+  gameHistory: UserLog[];
 }
