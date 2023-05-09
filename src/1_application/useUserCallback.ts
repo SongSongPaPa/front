@@ -8,8 +8,10 @@ import { gameRoomListState } from "@root/2_domain/recoil/gameAtom";
 import { GameRoomInfo } from "@root/2_domain/Game";
 import { chatRoomListState } from "@root/2_domain/recoil/chatAtom";
 import { ChatInfo, PublicChatInfo, typeConverter } from "@root/2_domain/Chat";
+import { useNavigate } from "react-router-dom";
 
 const useUserCallback = () => {
+  const navigate = useNavigate();
   /* ================================= */
   /*             Broadcast             */
   /* ================================= */
@@ -78,7 +80,6 @@ const useUserCallback = () => {
             return gameInfo;
           });
         });
-        //Todo : 성수야 profile 날려줘
         set(userListState, (prev) => {
           return data.userList.map((e) => {
             const userInfo: PublicUserInfo = {
@@ -138,6 +139,9 @@ const useUserCallback = () => {
   const onError = useRecoilCallback(({ set }) => (data: { status: number; message: string }) => {
     console.log(data);
     alert(data.message);
+    if (data.status === 401) {
+      navigate("/");
+    }
   });
   return {
     onConnect,

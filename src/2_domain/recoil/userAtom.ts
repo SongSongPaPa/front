@@ -1,11 +1,24 @@
 import { PublicUserInfo, UserInfo, UserStateType } from "../User";
 import { atom, selector, selectorFamily, useRecoilValue } from "recoil";
 import { chatState } from "./chatAtom";
-import useUserService from "@root/1_application/useUserService";
+
+const defaultImageURL =
+  "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcvU39g%2Fbtr7hSO7dGu%2F7BfyRmVjkstGJQVpq2UQSk%2Fimg.png";
 
 export const meState = atom<UserInfo>({
   key: "me",
-  default: undefined,
+  default: {
+    id: 0,
+    name: "",
+    nickname: "",
+    state: UserStateType.OFFLINE,
+    level: 0,
+    profile: defaultImageURL,
+    firstAccess: true,
+    achievements: [],
+    friends: [],
+    blocks: [],
+  },
 });
 
 export const userSelector = selectorFamily<PublicUserInfo, number>({

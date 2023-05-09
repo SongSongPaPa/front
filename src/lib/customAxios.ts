@@ -20,6 +20,10 @@ customAxios.interceptors.response.use(
       alert("유효하지 않은 정보입니다.");
       window.open("/", "_self");
     }
+    if (error.response.status === 502) {
+      alert("서버가 아픔 ㅜㅜ");
+      window.open("/", "_self");
+    }
     return Promise.reject(error);
   }
 );

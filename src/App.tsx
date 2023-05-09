@@ -9,6 +9,7 @@ import Chat from "./0_presentation/Chat";
 import GameWait from "./0_presentation/GameWait";
 import Login from "./0_presentation/Login";
 import TwoFactor from "./0_presentation/TwoFactor";
+import Signup from "./0_presentation/Signup";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="chat" element={<Chat />} />
             <Route path="game-wait" element={<GameWait />} />
             <Route path="two-factor" element={<TwoFactor />} />
+            <Route path="signup" element={<Signup />} />
           </Routes>
         </div>
       </SocketHandler>

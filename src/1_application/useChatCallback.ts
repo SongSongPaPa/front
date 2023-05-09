@@ -100,7 +100,6 @@ const useChatCallbacks = () => {
       }
       return { ...prev, users: [...prev.users, data.userId] };
     });
-    //Todo: userAtom이 만들어지면, message에 유저이름을 넣어보자.
     set(messageListState, (prev) => {
       const message: ChatMessage = {
         message: `가 들어왔다`,
@@ -120,7 +119,6 @@ const useChatCallbacks = () => {
       }
       return { ...prev, users: prev.users.filter((e) => e !== data.userId) };
     });
-    //Todo: userAtom이 만들어지면, message에 유저이름을 넣어보자.
     set(messageListState, (prev) => {
       const message: ChatMessage = {
         message: `가 나갔다`,
@@ -182,7 +180,6 @@ const useChatCallbacks = () => {
     navigate("/lobby");
   });
 
-  //Todo: 채팅방 페이지로 넘어가는 로직 필요
   const onSingleJoinChat = useRecoilCallback(({ set }) => (newChat: ChatSessionDto) => {
     set(chatState, (prev) => {
       console.log("in onSingleJoinChat callback");

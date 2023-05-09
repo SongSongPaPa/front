@@ -24,11 +24,10 @@ const useUserEvent = () => {
     });
 
     socket.on("disconnect", () => {
-      navigate("/");
+      //navigate("/");
       console.log("User socket Disconnected from server");
     });
 
-    //Todo: socket에서도 401이면 로그인화면으로
     socket.on("single:user:error", onError);
     socket.on("single:user:connect", onConnect);
     socket.on("broadcast:user:changeState", onChangeState);
