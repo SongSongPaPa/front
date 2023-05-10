@@ -7,7 +7,7 @@ import { Modal, ModalBody, Overlay } from "./ModalStyle";
 const ChatRoomCreateModal = () => {
   const { hideModal } = useModal();
   const { createChat } = useChatService();
-  const [selectedValue, setSelectedValue] = useState<string | number>("public");
+  const [selectedValue, setSelectedValue] = useState("public");
   const [inputValue, setInputValue] = useState("");
   const [password, setPassword] = useState("");
 

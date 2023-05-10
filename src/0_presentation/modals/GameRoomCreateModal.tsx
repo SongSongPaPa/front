@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const GameRoomCreateModal = () => {
   const { hideModal } = useModal();
   const { createGame } = useGameService();
-  const [selectedValue, setSelectedValue] = useState<string | number>(100);
+  const [selectedValue, setSelectedValue] = useState("100");
   const [inputValue, setInputValue] = useState("");
   const navigate = useNavigate();
 
@@ -17,14 +17,14 @@ const GameRoomCreateModal = () => {
   };
 
   const onConfirm = () => {
-    createGame(selectedValue as number);
+    createGame(parseInt(selectedValue));
     hideModal();
   };
 
   const options = [
-    { label: "speed normal", value: 100 },
-    { label: "speed double", value: 200 },
-    { label: "extra fast", value: 1000 },
+    { label: "speed normal", value: "100" },
+    { label: "speed double", value: "200" },
+    { label: "extra fast", value: "1000" },
   ];
 
   return (
