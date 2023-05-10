@@ -66,7 +66,7 @@ const useGameCallbacks = () => {
   const onGroupLeaveGame = useRecoilCallback(({ set }) => (data: { userId: number; breakGame: boolean }) => {
     console.log("group leave");
     set(gamingState, (prev) => {
-      return { ...prev, players: prev.players.filter((e) => e.userId !== data.userId), onGame: !data.breakGame };
+      return { ...prev, players: prev.players.filter((e) => e.userId !== data.userId), onGame: data.breakGame };
     });
     // set(gameRoomListState, (prev) => {
     //   prev.players = prev.players.filter((e) => e.userId !== data.userId);
