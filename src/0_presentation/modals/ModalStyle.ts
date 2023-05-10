@@ -14,7 +14,9 @@ export const Modal = styled.div`
 
 export const ModalBody = styled.div`
   position: relative;
-  flex-direction: row;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   top: 70px;
   width: 300px;
   height: 500px;

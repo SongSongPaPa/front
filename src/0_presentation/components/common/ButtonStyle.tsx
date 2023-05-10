@@ -54,9 +54,11 @@ export const ButtonStyle: ButtonStyleType = {
     bottom: 0%;
     cursor: pointer;
   `,
-  "modal-sqaure-common": `
-    background-color: #6c757d;
-    color: white;
+  "modal-square-common": `
+    width:50px;
+    height:33px;
+    background-color: #D9D9D9;
+    border:none;
   `,
   "modal-round-common": `
     background-color: #6c757d;

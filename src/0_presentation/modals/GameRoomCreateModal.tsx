@@ -4,6 +4,8 @@ import RadioGroup from "../components/common/RadioGroup";
 import useGameService from "@root/1_application/useGameService";
 import { Modal, ModalBody, Overlay } from "./ModalStyle";
 import { useNavigate } from "react-router-dom";
+import Button from "../components/common/Button";
+import styled from "styled-components";
 
 const GameRoomCreateModal = () => {
   const { hideModal } = useModal();
@@ -22,8 +24,8 @@ const GameRoomCreateModal = () => {
   };
 
   const options = [
-    { label: "speed normal", value: "100" },
-    { label: "speed double", value: "200" },
+    { label: "normal", value: "100" },
+    { label: "double", value: "200" },
     { label: "extra fast", value: "1000" },
   ];
 
@@ -31,10 +33,18 @@ const GameRoomCreateModal = () => {
     <Modal>
       <ModalBody>
         <h1>Create Game</h1>
+        <label>title</label>
         <input value={inputValue} onChange={(event) => setInputValue(event.target.value)}></input>
+        <label>speed</label>
         <RadioGroup options={options} selectedOption={selectedValue} setSelectedOption={setSelectedValue}></RadioGroup>
-        <button onClick={onClose}>close</button>
-        <button onClick={onConfirm}>ok</button>
+        <ButtonWrapper>
+          <Button name="modal-square-common" onClick={onConfirm}>
+            ok
+          </Button>
+          <Button name="modal-square-common" onClick={onClose}>
+            close
+          </Button>
+        </ButtonWrapper>
       </ModalBody>
       <Overlay onClick={onClose}></Overlay>
     </Modal>
@@ -42,3 +52,9 @@ const GameRoomCreateModal = () => {
 };
 
 export default GameRoomCreateModal;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  align-self: center;
+  gap: 10px;
+`;

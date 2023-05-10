@@ -3,6 +3,8 @@ import { useState } from "react";
 import RadioGroup from "../components/common/RadioGroup";
 import useChatService from "@root/1_application/useChatService";
 import { Modal, ModalBody, Overlay } from "./ModalStyle";
+import Button from "../components/common/Button";
+import styled from "styled-components";
 
 const ChatRoomCreateModal = () => {
   const { hideModal } = useModal();
@@ -30,11 +32,20 @@ const ChatRoomCreateModal = () => {
     <Modal>
       <ModalBody>
         <h1>Create Chat</h1>
+        <label>Title</label>
         <input type="text" value={inputValue} onChange={(event) => setInputValue(event.target.value)} required></input>
+        <label>Password</label>
         <input value={password} onChange={(event) => setPassword(event.target.value)}></input>
+        <label>Option</label>
         <RadioGroup options={options} selectedOption={selectedValue} setSelectedOption={setSelectedValue}></RadioGroup>
-        <button onClick={onClose}>close</button>
-        <button onClick={onConfirm}>ok</button>
+        <ButtonWrapper>
+          <Button name="modal-square-common" onClick={onConfirm}>
+            ok
+          </Button>
+          <Button name="modal-square-common" onClick={onClose}>
+            close
+          </Button>
+        </ButtonWrapper>
       </ModalBody>
       <Overlay onClick={onClose}></Overlay>
     </Modal>
@@ -42,3 +53,9 @@ const ChatRoomCreateModal = () => {
 };
 
 export default ChatRoomCreateModal;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  align-self: center;
+  gap: 10px;
+`;
