@@ -8,6 +8,7 @@ import Button from "@presentation/components/common/Button";
 import useUserService from "@root/1_application/useUserService";
 import useChatService from "@root/1_application/useChatService";
 import { UserStateType } from "@root/2_domain/User";
+import useGameService from "@root/1_application/useGameService";
 
 const Image = styled.img`
   width: 49px;
@@ -18,6 +19,7 @@ const UserProfileModal = () => {
   const { hideModal } = useModal();
   const { followUser, unFollowUser, blockUser, unBlockUser } = useUserService();
   const { inviteUser } = useChatService();
+  const { inviteGame } = useGameService();
   const detail = useRecoilValue(detailState);
   const me = useRecoilValue(meState);
   const isFriend = me.friends.find((item) => item.id === detail.id);
@@ -46,6 +48,9 @@ const UserProfileModal = () => {
   };
   const handleClickInvite = () => {
     inviteUser(detail.id);
+  };
+  const handleClickInviteGame = () => {
+    inviteGame(detail.id);
   };
   console.log("in modal", detail);
   return (
@@ -83,6 +88,11 @@ const UserProfileModal = () => {
         {me.state === UserStateType.INCHAT && (
           <Button name="modal-round-common" onClick={handleClickInvite}>
             chat invite
+          </Button>
+        )}
+        {me.state === UserStateType.INCHAT && (
+          <Button name="modal-round-common" onClick={handleClickInviteGame}>
+            game invite
           </Button>
         )}
       </ModalBody>

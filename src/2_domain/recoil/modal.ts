@@ -11,6 +11,7 @@ const {
   ChatPasswordModal,
   ChatSettingModal,
   ChatInviteModal,
+  GameInviteModal,
   TwoFactorSettingModal,
 } = MODAL_TYPES;
 
@@ -54,6 +55,10 @@ export interface ChatInviteModalType {
   modalType: typeof ChatInviteModal;
 }
 
+export interface GameInviteModalType {
+  modalType: typeof GameInviteModal;
+}
+
 export interface TwoFactorSettingModalType {
   modalType: typeof TwoFactorSettingModal;
 }
@@ -68,6 +73,7 @@ export type ModalType =
   | ChatPasswordModalType
   | ChatSettingModalType
   | ChatInviteModalType
+  | GameInviteModalType
   | TwoFactorSettingModalType;
 
 export const modalState = atom<ModalType | null>({

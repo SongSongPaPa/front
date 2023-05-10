@@ -19,4 +19,5 @@ export interface IGameRepository {
   /* ============================== */
   /*             Single             */
   /* ============================== */
+  inviteGame(userId: number): void;
 }

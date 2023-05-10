@@ -5,10 +5,12 @@ import GameSessionDto, { GameBallDto, GamePlayerDto, GamePublicDto } from "@root
 import { useRecoilCallback, useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import { userListState } from "@root/2_domain/recoil/userAtom";
+import { focusedGameState } from "@root/2_domain/recoil/gameAtom";
+import useModal from "./useModal";
 
 const useGameCallbacks = () => {
   const navigate = useNavigate();
-  const users = useRecoilState(userListState);
+  const { showModal } = useModal();
 
   /* ================================= */
   /*             Broadcast             */
@@ -161,7 +163,7 @@ const useGameCallbacks = () => {
   });
 
   const onCountDownRound = useRecoilCallback(({ set }) => (data: { count: number }) => {
-    set(readyGameState, (prev) => {
+    set(readyGameState, () => {
       console.log("on count do rou callbck", data.count);
       return data.count;
     });
@@ -175,7 +177,7 @@ const useGameCallbacks = () => {
     console.log("on single join game");
     console.log("game data", data);
 
-    set(gamingState, (prev) => {
+    set(gamingState, () => {
       const newBall: BallInfo = {
         speed: data.private.ball.speed,
         position: data.private.ball.position,
@@ -208,6 +210,18 @@ const useGameCallbacks = () => {
     navigate("/lobby");
   });
 
+  const onSingleInviteGame = useRecoilCallback(
+    ({ set }) =>
+      (data: { gameId: number; sourceId: number; sourceUsername: string }) => {
+        console.log("on single invite game");
+        set(focusedGameState, () => {
+          const newState: [number, string] = [data.gameId, data.sourceUsername];
+          return newState;
+        });
+        showModal({ modalType: "GameInviteModal" });
+      }
+  );
+
   return {
     onCreateGame,
     onBroadDeleteGame,
@@ -227,6 +241,7 @@ const useGameCallbacks = () => {
 
     onSingleJoinGame,
     onSingleLeaveGame,
+    onSingleInviteGame,
   };
 };
 

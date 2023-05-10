@@ -57,6 +57,13 @@ const useGameService = () => {
     }
   };
 
+  const inviteGame = (userId: number) => {
+    try {
+      GameRepository.inviteGame(userId);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   return {
     createGame,
     joinGame,
@@ -65,6 +72,7 @@ const useGameService = () => {
     startGame,
     movePaddle,
     quickGame,
+    inviteGame,
   };
 };
 

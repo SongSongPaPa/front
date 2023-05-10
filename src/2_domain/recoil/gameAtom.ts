@@ -37,3 +37,8 @@ export const filteredUserListState = selector({
     });
   },
 });
+
+export const focusedGameState = atom<[number, string]>({
+  key: "focused game state",
+  default: [0, ""],
+});

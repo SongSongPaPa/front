@@ -21,6 +21,7 @@ const useGameEvent = () => {
     onCountDownRound,
     onSingleJoinGame,
     onSingleLeaveGame,
+    onSingleInviteGame,
   } = useGameCallbacks();
   useEffect(() => {
     socket.on("connect", () => {
@@ -51,6 +52,7 @@ const useGameEvent = () => {
     socket.on("single:game:joinGame", onSingleJoinGame);
     socket.on("single:game:watchGame", onSingleJoinGame);
     socket.on("single:game:leaveGame", onSingleLeaveGame);
+    socket.on("single:game:inviteGame", onSingleInviteGame);
   }, []);
 };
 
