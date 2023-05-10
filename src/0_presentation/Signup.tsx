@@ -27,7 +27,7 @@ const Signup = () => {
     event.preventDefault();
     const success = await signUp(nickname, base64);
     if (success) {
-      navigate("/lobby");
+      window.open("/lobby", "_self");
     }
   };
 
