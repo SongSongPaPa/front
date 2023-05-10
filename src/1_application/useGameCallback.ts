@@ -213,7 +213,7 @@ const useGameCallbacks = () => {
   const onSingleInviteGame = useRecoilCallback(
     ({ set }) =>
       (data: { gameId: number; sourceId: number; sourceUsername: string }) => {
-        console.log("on single invite game");
+        console.log("on single invite game 오오고고있있니?");
         set(focusedGameState, () => {
           const newState: [number, string] = [data.gameId, data.sourceUsername];
           return newState;

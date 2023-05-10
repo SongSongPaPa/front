@@ -16,7 +16,7 @@ customAxios.interceptors.response.use(
     return response;
   },
   (error) => {
-    if (error.response.data.statusCode === 401) {
+    if (error.response.status === 401) {
       alert("유효하지 않은 정보입니다.");
       window.open("/", "_self");
     }

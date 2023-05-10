@@ -41,7 +41,7 @@ class GameRepository implements IGameRepository {
   };
 
   public inviteGame = (userId: number): void => {
-    console.log("inviteGame");
+    console.log("inviteGame", userId);
     this.socket.emit("inviteGame", { userId: userId });
   };
 }

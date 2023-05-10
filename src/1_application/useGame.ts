@@ -52,7 +52,7 @@ const useGameEvent = () => {
     socket.on("single:game:joinGame", onSingleJoinGame);
     socket.on("single:game:watchGame", onSingleJoinGame);
     socket.on("single:game:leaveGame", onSingleLeaveGame);
-    socket.on("single:game:inviteGame", onSingleInviteGame);
+    socket.on("single:game:inviteUser", onSingleInviteGame);
   }, []);
 };
 
