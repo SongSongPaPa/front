@@ -35,9 +35,6 @@ const UserProfileModal = () => {
   const handleClickUnfollow = () => {
     unFollowUser(detail.id);
   };
-  if (!detail) {
-    return <div>Loading...</div>;
-  }
 
   const handleClickBlock = () => {
     blockUser(detail.id);
@@ -54,6 +51,9 @@ const UserProfileModal = () => {
   };
   console.log("in modal", detail);
   console.log("in modal me", me);
+  if (!detail) {
+    return <div>Loading...</div>;
+  }
   return (
     <Modal>
       <ModalBody>
@@ -91,11 +91,11 @@ const UserProfileModal = () => {
             chat invite
           </Button>
         )}
-        {me.state === UserStateType.INCHAT && (
+        {
           <Button name="modal-round-common" onClick={handleClickInviteGame}>
             game invite
           </Button>
-        )}
+        }
       </ModalBody>
       <Overlay onClick={onClose} />
     </Modal>

@@ -30,6 +30,12 @@ const useUserCallback = () => {
           //user.state = data.state;
           return prev.map((e) => (e.id === data.userId ? { ...user, state: data.state } : e));
         });
+        // set(meState, (prev) => {
+        //   if (prev.id !== data.userId) {
+        //     return prev;
+        //   }
+        //   return { ...prev, state: data.state };
+        // });
       }
   );
 

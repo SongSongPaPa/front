@@ -9,8 +9,8 @@ export interface UserDto {
 
 export interface UserLog {
   id: number;
-  winnerId: number;
-  looserId: number;
+  winner: string;
+  looser: string;
   score: number;
 }
 

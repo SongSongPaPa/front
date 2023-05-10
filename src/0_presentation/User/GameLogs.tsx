@@ -1,4 +1,4 @@
-import { meState } from "@root/2_domain/recoil/userAtom";
+import { meState, userSelector } from "@root/2_domain/recoil/userAtom";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 
@@ -8,8 +8,25 @@ const StyledGameLog = styled.div`
   justify-content: space-between;
 `;
 
+interface GameLogProps {
+  winner: string;
+  looser: string;
+  score: number;
+}
+
+const GameLog = ({ winner, looser, score }: GameLogProps) => {
+  return (
+    <StyledGameLog>
+      <div>{winner}</div>
+      <div>{looser}</div>
+      <div>{score}</div>
+    </StyledGameLog>
+  );
+};
+
 const GameLogs = () => {
   const me = useRecoilValue(meState);
+  console.log("meinfo", me);
 
   if (!me) {
     return <div>Loading...</div>;
@@ -17,12 +34,7 @@ const GameLogs = () => {
   return (
     <div>
       {me.gameHistory.map((log) => (
-        <StyledGameLog key={log.id}>
-          <div>{log.id}</div>
-          <div>{log.winnerId}</div>
-          <div>{log.looserId}</div>
-          <div>{log.score}</div>
-        </StyledGameLog>
+        <GameLog key={log.id} winner={log.winner} looser={log.looser} score={log.score} />
       ))}
     </div>
   );

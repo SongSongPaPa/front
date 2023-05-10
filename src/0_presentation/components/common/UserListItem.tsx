@@ -23,11 +23,10 @@ const UserListItem = ({ userId, profile, nickname, role, state, enableRightClick
   const handleItemClick = async () => {
     try {
       await getUserProfileById(userId, state!);
+      showModal({ modalType: "UserProfileModal" });
     } catch (error) {
       console.log(error);
     }
-
-    showModal({ modalType: "UserProfileModal" });
   };
 
   const handleRightClick = (event: React.MouseEvent<HTMLDivElement>) => {
