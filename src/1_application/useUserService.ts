@@ -7,7 +7,7 @@ const useUserService = () => {
   const [me, setMe] = useRecoilState(meState);
   const [other, setOther] = useRecoilState(detailState);
 
-  const getMyProfile = async (): Promise<UserInfo | null> => {
+  const getMyProfile = async (): Promise<void> => {
     try {
       const data = await UserRepository.getMyProfile();
       //
@@ -17,7 +17,7 @@ const useUserService = () => {
       const blockList = data.blocks.map((e) => {
         return { id: e.id, nickname: e.nickname, state: UserStateType.OFFLINE, profile: e.profile };
       });
-      return {
+      setMe({
         id: data.id,
         state: UserStateType.ONLINE,
         name: data.name,
@@ -29,10 +29,9 @@ const useUserService = () => {
         blocks: blockList,
         firstAccess: data.firstAccess,
         gameHistory: data.userLogs,
-      };
+      });
     } catch (error) {
       console.log(error);
-      return null;
     }
   };
 
