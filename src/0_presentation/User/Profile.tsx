@@ -1,43 +1,55 @@
 import React, { useEffect } from "react";
 import useUserService from "@root/1_application/useUserService";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { meState } from "@root/2_domain/recoil/userAtom";
-import Button from "../components/common/Button";
 import useModal from "@root/1_application/useModal";
+import styled from "styled-components";
+import { IoIosSettings } from "react-icons/io";
 
 const Profile = () => {
   const { getMyProfile } = useUserService();
-  const [profile, setProfile] = useRecoilState(meState);
+  const [profile] = useRecoilState(meState);
   const { showModal } = useModal();
   const handleCilckSetting = () => {
     showModal({ modalType: "UserSettingModal" });
   };
   useEffect(() => {
-    async function func() {
-      const data = await getMyProfile();
-      if (data === null) {
-        console.log("잠시 서버가 아프니 좀따 오시오");
-        return;
-      }
-      setProfile(data);
-    }
-    func();
+    getMyProfile();
   }, []);
-  if (!profile) {
-    return <div>Loading...</div>;
+  if (profile.id === 0) {
+    return <ProfileWrapper>Loading...</ProfileWrapper>;
   }
-  console.log("me information", profile);
+  //console.log("me information", profile);
   return (
-    <div>
-      <li>
-        <p>{profile.nickname}</p>
-        <p>{profile.level}</p>
-        <Button name="" onClick={handleCilckSetting}>
-          gogo
-        </Button>
-      </li>
-    </div>
+    <ProfileWrapper>
+      <ProfileImage src={profile.profile} />
+      <div>{profile.nickname}</div>
+      <div>Lv.{profile.level}</div>
+      <IoIosSettings onClick={handleCilckSetting} size={30} />
+    </ProfileWrapper>
   );
 };
 
 export default Profile;
+
+const ProfileWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  width: 367px;
+  height: 150px;
+  > svg {
+    position: relative;
+    cursor: pointer;
+    align-self: flex-end;
+    right: 30px;
+    color: #707070;
+  }
+`;
+
+const ProfileImage = styled.img`
+  width: 49px;
+  height: 49px;
+`;

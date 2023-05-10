@@ -10,7 +10,7 @@ export const meState = atom<UserInfo>({
   default: {
     id: 0,
     name: "",
-    nickname: "",
+    nickname: "로딩중",
     state: UserStateType.OFFLINE,
     level: 0,
     profile: defaultImageURL,

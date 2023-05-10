@@ -15,6 +15,7 @@ const UserInterfaceWrapper = styled.div`
   border-radius: 25px;
   background-color: #fcfcfc;
   margin-left: 10px;
+  gap: 10px;
 `;
 
 const UserInterface = () => {
