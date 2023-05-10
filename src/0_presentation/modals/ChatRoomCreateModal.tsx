@@ -39,11 +39,11 @@ const ChatRoomCreateModal = () => {
         <label>Option</label>
         <RadioGroup options={options} selectedOption={selectedValue} setSelectedOption={setSelectedValue}></RadioGroup>
         <ButtonWrapper>
-          <Button name="modal-square-common" onClick={onConfirm}>
-            ok
-          </Button>
           <Button name="modal-square-common" onClick={onClose}>
             close
+          </Button>
+          <Button name="modal-square-common" onClick={onConfirm}>
+            ok
           </Button>
         </ButtonWrapper>
       </ModalBody>

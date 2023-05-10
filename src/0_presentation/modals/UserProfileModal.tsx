@@ -53,6 +53,7 @@ const UserProfileModal = () => {
     inviteGame(detail.id);
   };
   console.log("in modal", detail);
+  console.log("in modal me", me);
   return (
     <Modal>
       <ModalBody>
