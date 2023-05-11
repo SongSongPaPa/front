@@ -21,6 +21,7 @@ export const ButtonStyle: ButtonStyleType = {
     justify-content: center;
   `,
   "join-chat": `
+    font-family: 'ONE-Mobile-POP';
     font-size: 16px;
     color: #000000; 
     width: 98px;
@@ -30,8 +31,10 @@ export const ButtonStyle: ButtonStyleType = {
     border: none;
     position: absolute;
     top: 0px;
+    cursor: pointer;
   `,
   "join-game": `
+    font-family: 'ONE-Mobile-POP';
     font-size: 16px;
     color: #000000; 
     width: 98px;
@@ -44,7 +47,8 @@ export const ButtonStyle: ButtonStyleType = {
     cursor: pointer;
   `,
   "watch-game": `
-    font-size: 16px;
+    font-family: 'ONE-Mobile-POP';
+    font-size: 15px;
     color: #000000; 
     width: 98px;
     height: 53px;

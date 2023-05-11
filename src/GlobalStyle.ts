@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
 @font-face {
   font-family: 'ONE-Mobile-POP';
   src: url(${bouncyThin}) format('truetype');
-  unicode-range: U+0041-005A, U+0061-007A;
+  unicode-range: U+0041-005A, U+0061-007A, U+0020-002F, U+003A-0040, U+005B-0060, U+007B-007E;
 }
 
 @font-face {
