@@ -24,25 +24,25 @@ const GameRoomCreateModal = () => {
   };
 
   const options = [
-    { label: "normal", value: "100" },
-    { label: "double", value: "200" },
-    { label: "extra fast", value: "1000" },
+    { label: "NORMAL", value: "100" },
+    { label: "DOUBLE", value: "200" },
+    { label: "EXTRA FAST", value: "1000" },
   ];
 
   return (
     <Modal>
       <ModalBody>
-        <h1>Create Game</h1>
-        <label>Title</label>
+        <h1>CREATE GAME</h1>
+        <label>TITLE</label>
         <input value={inputValue} onChange={(event) => setInputValue(event.target.value)}></input>
-        <label>Speed</label>
+        <label>SPEED</label>
         <RadioGroup options={options} selectedOption={selectedValue} setSelectedOption={setSelectedValue}></RadioGroup>
         <ButtonWrapper>
           <Button name="modal-square-common" onClick={onClose}>
-            close
+            CLOSE
           </Button>
           <Button name="modal-square-common" onClick={onConfirm}>
-            ok
+            OK
           </Button>
         </ButtonWrapper>
       </ModalBody>

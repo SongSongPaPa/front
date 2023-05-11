@@ -6,7 +6,7 @@ type ButtonStyleType = {
 
 export const ButtonStyle: ButtonStyleType = {
   "lobby-small-common": `
-    font-family: "ONE-Mobile-POP";
+    font-family: 'bitbit';
     font-size: 15px;
     background-color: #d9d9d9;
     border: none;
@@ -21,7 +21,7 @@ export const ButtonStyle: ButtonStyleType = {
     justify-content: center;
   `,
   "join-chat": `
-    font-family: 'ONE-Mobile-POP';
+    font-family: 'bitbit';
     font-size: 16px;
     color: #000000; 
     width: 98px;
@@ -34,7 +34,7 @@ export const ButtonStyle: ButtonStyleType = {
     cursor: pointer;
   `,
   "join-game": `
-    font-family: 'ONE-Mobile-POP';
+    font-family: 'bitbit';
     font-size: 16px;
     color: #000000; 
     width: 98px;
@@ -47,7 +47,7 @@ export const ButtonStyle: ButtonStyleType = {
     cursor: pointer;
   `,
   "watch-game": `
-    font-family: 'ONE-Mobile-POP';
+    font-family: 'bitbit';
     font-size: 15px;
     color: #000000; 
     width: 98px;

@@ -42,16 +42,16 @@ const RoomListItem = ({ roomId, isGame, name, option }: RoomListItemProps) => {
       <HeadCount>{option as string}</HeadCount>
       {isGame ? (
         <Button name="join-game" onClick={handleClickJoinGame}>
-          play!
+          PLAY!
         </Button>
       ) : (
         <Button name="join-chat" onClick={handleClickJoinChat}>
-          join
+          JOIN
         </Button>
       )}
       {isGame && (
         <Button name="watch-game" onClick={handleClickWatchGame}>
-          watch
+          WATCH
         </Button>
       )}
     </Room>

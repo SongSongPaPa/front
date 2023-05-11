@@ -22,7 +22,7 @@ const UserInterface = () => {
   return (
     <UserInterfaceWrapper>
       <Profile></Profile>
-      <ToggleButton onText="Friend" offText="All" />
+      <ToggleButton onText="FRIEND" offText="ALL" />
       <SearchBar></SearchBar>
       <UserList></UserList>
     </UserInterfaceWrapper>

@@ -29,10 +29,10 @@ const Lobby = () => {
         <RoomListContainer>
           <ButtonContainer>
             <Button name="lobby-small-common" onClick={handleClickQuickStart}>
-              Quick Start
+              QUICK START
             </Button>
             <Button name="lobby-small-common" onClick={handleClickGameRoomCreate}>
-              Create Room
+              CREATE ROOM
             </Button>
           </ButtonContainer>
           <GameRoomList></GameRoomList>
@@ -40,7 +40,7 @@ const Lobby = () => {
         <RoomListContainer>
           <ButtonContainer>
             <Button name="lobby-small-common" onClick={handleClickChatRoomCreate}>
-              Create Room
+              CREATE ROOM
             </Button>
           </ButtonContainer>
           <ChatRoomList></ChatRoomList>

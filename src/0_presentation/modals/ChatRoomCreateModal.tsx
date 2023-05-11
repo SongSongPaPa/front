@@ -23,27 +23,27 @@ const ChatRoomCreateModal = () => {
   };
 
   const options = [
-    { label: "public", value: "public" },
-    { label: "protected", value: "protected" },
-    { label: "private", value: "private" },
+    { label: "PUBLIC", value: "public" },
+    { label: "PROTECTED", value: "protected" },
+    { label: "PRIVATE", value: "private" },
   ];
 
   return (
     <Modal>
       <ModalBody>
-        <h1>Create Chat</h1>
-        <label>Title</label>
+        <h1>CREATE CHAT</h1>
+        <label>TITLE</label>
         <input type="text" value={inputValue} onChange={(event) => setInputValue(event.target.value)} required></input>
-        <label>Password</label>
+        <label>PASSWORD</label>
         <input value={password} onChange={(event) => setPassword(event.target.value)}></input>
-        <label>Option</label>
+        <label>OPTION</label>
         <RadioGroup options={options} selectedOption={selectedValue} setSelectedOption={setSelectedValue}></RadioGroup>
         <ButtonWrapper>
           <Button name="modal-square-common" onClick={onClose}>
-            close
+            CLOSE
           </Button>
           <Button name="modal-square-common" onClick={onConfirm}>
-            ok
+            OK
           </Button>
         </ButtonWrapper>
       </ModalBody>
