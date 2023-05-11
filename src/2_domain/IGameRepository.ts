@@ -3,7 +3,7 @@ export interface IGameRepository {
   /*             Broadcast             */
   /* ================================= */
 
-  createGame(speed: number): void;
+  createGame(speed: number, title?: string): void;
 
   /* ============================= */
   /*             Group             */

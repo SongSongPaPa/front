@@ -40,9 +40,11 @@ const UserProfileModal = () => {
   };
   const handleClickInvite = () => {
     inviteUser(detail.id);
+    hideModal();
   };
   const handleClickInviteGame = () => {
     inviteGame(detail.id);
+    hideModal();
   };
   console.log("in modal", detail);
   console.log("in modal me", me);

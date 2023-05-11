@@ -117,6 +117,7 @@ const GamePlay = () => {
         onKeyDown={handleKeyInput}
         readOnly
         ref={gameDoing}
+        autoFocus
       ></input>
       <Row>
         {playerA ? <Score>{playerA.score}</Score> : <Score>0</Score>}

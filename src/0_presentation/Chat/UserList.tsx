@@ -18,7 +18,7 @@ const UserList = () => {
       return "admin";
     } else return "none";
   };
-  //console.log(users);
+  console.log("chat user list", users);
   return (
     <div>
       {users.map((user) => (
@@ -26,6 +26,7 @@ const UserList = () => {
           key={user.id}
           userId={user.id}
           role={getUserRole(user.id, adminId, ownerId)}
+          state={user.state}
           profile={user.profile}
           nickname={user.nickname}
           enableRightClick={chatInfo.adminId === me.id || chatInfo.ownerId === me.id}

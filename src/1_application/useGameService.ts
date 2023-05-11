@@ -1,9 +1,9 @@
 import GameRepository from "@root/3_infrastructure/GameRepository";
 
 const useGameService = () => {
-  const createGame = (speed: number) => {
+  const createGame = (speed: number, title?: string) => {
     try {
-      GameRepository.createGame(speed);
+      GameRepository.createGame(speed, title);
     } catch (e) {
       console.log(e);
     }

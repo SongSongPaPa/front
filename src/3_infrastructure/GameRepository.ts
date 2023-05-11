@@ -5,9 +5,9 @@ import GlobalSocket from "./GlobalSocket";
 class GameRepository implements IGameRepository {
   private socket: Socket = GlobalSocket.getSocket();
 
-  public createGame = (speed: number): void => {
+  public createGame = (speed: number, title?: string): void => {
     console.log("GameRepository createGame, speed: ", speed);
-    this.socket.emit("createGame", { game: { speed: speed } });
+    this.socket.emit("createGame", { game: { speed: speed, name: title } });
   };
 
   public joinGame = (gameId: number): void => {
