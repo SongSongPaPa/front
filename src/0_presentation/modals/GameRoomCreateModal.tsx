@@ -24,9 +24,9 @@ const GameRoomCreateModal = () => {
   };
 
   const options = [
-    { label: "NORMAL", value: "100" },
-    { label: "DOUBLE", value: "200" },
-    { label: "EXTRA FAST", value: "1000" },
+    { label: "NORMAL", value: "10" },
+    { label: "DOUBLE", value: "20" },
+    { label: "EXTRA FAST", value: "50" },
   ];
 
   return (

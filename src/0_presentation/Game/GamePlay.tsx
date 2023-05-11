@@ -83,68 +83,73 @@ const GamePlay = () => {
   });
 
   return (
-    <Column
-      onClick={(e) => {
-        const { current }: any = gameDoing;
-        current.focus();
-      }}
-    >
-      {!gameInfo.onRound ? (
-        <div
-          style={{
-            position: "absolute",
-            width: 200,
-            height: 200,
-            textAlign: "center",
-            backgroundColor: "#fff",
-            top: "50%",
-            left: "50%",
-          }}
-        >
-          <h1 style={{ color: "black" }}>{roundCount}</h1>
-        </div>
-      ) : (
-        <></>
-      )}
-      <input
-        style={{
-          border: "none",
-          cursor: "default",
-          textAlign: "center",
-          outline: "none",
-          backgroundColor: "transparent",
-        }}
-        onKeyDown={handleKeyInput}
-        readOnly
-        ref={gameDoing}
-        autoFocus
-      ></input>
-      <Row>
-        {playerA ? <Score>{playerA.score}</Score> : <Score>0</Score>}
-        {playerB ? <Score>{playerB.score}</Score> : <Score>0</Score>}
-      </Row>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "justify",
-          textSizeAdjust: "100px",
-          padding: "10px",
+    <Blocker>
+      <Column
+        onClick={(e) => {
+          const { current }: any = gameDoing;
+          current.focus();
         }}
       >
-        <div
+        {!gameInfo.onRound ? (
+          <h1
+            style={{
+              position: "fixed",
+              textAlign: "center",
+              backgroundColor: "none",
+              color: "#ffffff",
+              top: "200px",
+              left: "670px",
+              zIndex: 102,
+            }}
+          >
+            {roundCount}
+          </h1>
+        ) : (
+          <></>
+        )}
+        <input
           style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "justify",
+            border: "none",
+            cursor: "default",
+            textAlign: "center",
+            outline: "none",
+            backgroundColor: "transparent",
           }}
-        >
+          onKeyDown={handleKeyInput}
+          readOnly
+          ref={gameDoing}
+          autoFocus
+        ></input>
+        <Row>
+          {playerA ? <Score>{playerA.score}</Score> : <Score>0</Score>}
+          {playerB ? <Score>{playerB.score}</Score> : <Score>0</Score>}
+        </Row>
+
+        <GameZone>
           <div style={style}>{board}</div>
-        </div>
+        </GameZone>
         <h3> {"press up and down to move"} </h3>
-      </div>
-    </Column>
+      </Column>
+    </Blocker>
   );
 };
 
 export default GamePlay;
+
+const Blocker = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 101;
+`;
+
+const GameZone = styled.div`
+  display: flex;
+  position: absolute;
+  top: 200px;
+  left: 300px;
+  backgroud-color: transparent;
+`;
