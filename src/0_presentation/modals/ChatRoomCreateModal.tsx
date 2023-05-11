@@ -5,6 +5,7 @@ import useChatService from "@root/1_application/useChatService";
 import { Modal, ModalBody, Overlay } from "./ModalStyle";
 import Button from "../components/common/Button";
 import styled from "styled-components";
+import { RxCross2 } from "react-icons/rx";
 
 const ChatRoomCreateModal = () => {
   const { hideModal } = useModal();
@@ -31,6 +32,7 @@ const ChatRoomCreateModal = () => {
   return (
     <Modal>
       <ModalBody>
+        <RxCross2 onClick={onClose} />
         <h1>CREATE CHAT</h1>
         <label>TITLE</label>
         <input type="text" value={inputValue} onChange={(event) => setInputValue(event.target.value)} required></input>

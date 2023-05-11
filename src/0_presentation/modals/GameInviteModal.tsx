@@ -5,18 +5,29 @@ import Button from "../components/common/Button";
 import useGameService from "@root/1_application/useGameService";
 import { useRecoilValue } from "recoil";
 import { focusedGameState } from "@root/2_domain/recoil/gameAtom";
+import { meState } from "@root/2_domain/recoil/userAtom";
+import { chatState } from "@root/2_domain/recoil/chatAtom";
+import useChatService from "@root/1_application/useChatService";
 
 const GameInviteModal = () => {
   const { hideModal } = useModal();
   const { joinGame } = useGameService();
+  const { leaveChat } = useChatService();
   const [gameId, inviteUser] = useRecoilValue(focusedGameState);
+  const me = useRecoilValue(meState);
+  const chatInfo = useRecoilValue(chatState);
 
   const onClose = () => {
     hideModal();
   };
 
   const handleClickAccept = async () => {
-    console.log("invited game id: ", gameId);
+    //console.log("invited game id: ", gameId);
+    //console.log("invite game meState", me.state);
+    //console.log("invite game chatInfo", chatInfo);
+    if (chatInfo) {
+      leaveChat();
+    }
     joinGame(gameId);
     hideModal();
   };

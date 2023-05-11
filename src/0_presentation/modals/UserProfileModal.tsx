@@ -56,12 +56,6 @@ const UserProfileModal = () => {
         <p>
           Lv.{detail.level} {detail.nickname}
         </p>
-        <div>Achievements</div>
-        <div>
-          {detail.achievements.map((item, index) => (
-            <div key={index}>{item}</div>
-          ))}
-        </div>
         {isFriend === undefined ? (
           <Button name="modal-round-common" onClick={handleClickFollow}>
             follow

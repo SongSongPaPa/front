@@ -5,42 +5,6 @@ import { useRecoilValue } from "recoil";
 import { meState, userSelector } from "@root/2_domain/recoil/userAtom";
 import UserListItem from "../components/common/UserListItem";
 
-const StyledMessage = styled.div`
-  display: flex;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 10px;
-  max-width: 80%;
-  word-wrap: break-word;
-
-  &.sent {
-    background-color: #dcf8c6;
-  }
-
-  &.received {
-    background-color: #f0f0f0;
-  }
-`;
-
-const MessageWrapper = styled.div`
-  &.sent {
-    align-self: flex-end;
-  }
-
-  &.received {
-    align-self: flex-start;
-  }
-
-  &.system {
-    align-self: center;
-  }
-
-  &.direct {
-    align-self: center;
-    color: green;
-  }
-`;
-
 const getMessageStyle = (id: number, sourceId: number, direct: boolean, system: boolean) => {
   if (direct) {
     return "direct";
@@ -81,3 +45,40 @@ const Message = ({ message, sourceId, direct, system }: ChatMessage) => {
 };
 
 export default React.memo(Message);
+
+const StyledMessage = styled.div`
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 80%;
+  word-wrap: break-word;
+  font-family: "Pretendard-Regular";
+
+  &.sent {
+    background-color: #dcf8c6;
+  }
+
+  &.received {
+    background-color: #f0f0f0;
+  }
+`;
+
+const MessageWrapper = styled.div`
+  &.sent {
+    align-self: flex-end;
+  }
+
+  &.received {
+    align-self: flex-start;
+  }
+
+  &.system {
+    align-self: center;
+  }
+
+  &.direct {
+    align-self: center;
+    color: green;
+  }
+`;

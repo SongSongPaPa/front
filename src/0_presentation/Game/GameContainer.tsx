@@ -53,15 +53,17 @@ const GameContainer = () => {
             <IoMdArrowBack onClick={onClickLeave} />
           </IconWrap>
           <Title>{gameInfo.name}</Title>
-          {userList.map((user, idx) => {
-            return <GamePlayerBox imagePath={user.profile} playerName={user.nickname} key={idx}></GamePlayerBox>;
-          })}
+          <GameBoxWrap>
+            {userList.map((user, idx) => {
+              return <GamePlayerBox imagePath={user.profile} playerName={user.nickname} key={idx}></GamePlayerBox>;
+            })}
+          </GameBoxWrap>
           <StartButton
             style={{ display: me.id === gameInfo.ownerId ? "" : "none" }}
             onClick={handleClick}
             disabled={gameInfo.players.length < 2}
           >
-            Start
+            START
           </StartButton>
         </>
       ) : (
@@ -93,10 +95,17 @@ const Title = styled.div`
   font-size: 25px;
 `;
 
+const GameBoxWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 70px;
+`;
+
 const StartButton = styled.button`
   text-decoration: none;
   color: ${(props) => (props.disabled ? "#707070" : "#000000")};
   font-size: 36px;
+  font-family: "bitbit";
   text-align: center;
   vertical-align: middle;
   border: none;

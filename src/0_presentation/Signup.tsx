@@ -3,6 +3,7 @@ import { meState } from "@root/2_domain/recoil/userAtom";
 import React, { useState, useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 const Signup = () => {
   //const [profile, setProfile] = useRecoilState(meState);
@@ -32,16 +33,34 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <img src={profile.profile} />
+    <SignupWrapper>
+      <Image src={profile.profile} />
       <input type="file" accept="image/*" onChange={handleOnImageFileChange} />
       <form onSubmit={handleOnSubmit}>
-        <label>닉네임</label>
+        <label>NICKNAME:</label>
         <input type="text" value={nickname} onChange={(e) => setNickname(e.target.value)} />
         <button type="submit">제출</button>
       </form>
-    </div>
+    </SignupWrapper>
   );
 };
 
 export default Signup;
+
+const SignupWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 500px;
+  background-color: rgba(255, 255, 255, 0.4);
+  gap: 10px;
+  border-radius: 25px;
+`;
+
+const Image = styled.img`
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+`;

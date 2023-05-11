@@ -81,6 +81,7 @@ export const ButtonStyle: ButtonStyleType = {
     color: white;
   `,
   "user-banner": `
+  font-family: 'bitbit';
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -93,6 +94,7 @@ export const ButtonStyle: ButtonStyleType = {
   cursor: pointer;
   color:black;
   gap:10px;
+  border: none;
 }`,
 
   send: `
