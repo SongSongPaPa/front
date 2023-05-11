@@ -16,6 +16,7 @@ export const ModalBody = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
   top: 70px;
   width: 300px;

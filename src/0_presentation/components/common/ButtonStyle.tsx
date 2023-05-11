@@ -6,6 +6,7 @@ type ButtonStyleType = {
 
 export const ButtonStyle: ButtonStyleType = {
   "lobby-small-common": `
+    font-family: "ONE-Mobile-POP";
     font-size: 15px;
     background-color: #d9d9d9;
     border: none;
