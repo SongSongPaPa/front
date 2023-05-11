@@ -24,11 +24,15 @@ const Box = styled.div<GamePlayerBoxProps>`
   align-items: center;
   flex-direction: column;
   display: flex;
+  justify-content: center;
+  gap: 20px;
 `;
 
 const Image = styled.img`
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: #d9d9d9;
 `;
 
 const GamePlayerBox = ({ imagePath, playerName }: GamePlayerBoxProps) => {
