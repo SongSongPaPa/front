@@ -4,7 +4,6 @@ import { PageWrapper } from "./PageStyle";
 import styled from "styled-components";
 import Input from "./components/common/Input";
 import useUserService from "@root/1_application/useUserService";
-import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
   background-color: #fcfcfc;
@@ -24,7 +23,6 @@ const Wrapper = styled.div`
 const TwoFactor = () => {
   const [code, setCode] = useState("");
   const { checkTwoFactor } = useUserService();
-  const navigate = useNavigate();
 
   const handleCodeChange = (event: ChangeEvent<HTMLInputElement>) => {
     setCode(event.target.value);
@@ -34,10 +32,10 @@ const TwoFactor = () => {
     event.preventDefault();
     const result = await checkTwoFactor(code);
     if (result) {
-      navigate("/lobby");
+      window.open("/lobby", "_self");
     } else {
       alert("2차 비밀번호 인증에 실패했습니다");
-      navigate("/");
+      window.open("/", "_self");
     }
   };
   return (
@@ -51,7 +49,6 @@ const TwoFactor = () => {
         </form>
       </Wrapper>
     </PageWrapper>
-
   );
 };
 
