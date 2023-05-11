@@ -5,15 +5,8 @@ import { useRecoilValue } from "recoil";
 import { meState } from "@root/2_domain/recoil/userAtom";
 import useUserService from "@root/1_application/useUserService";
 import styled from "styled-components";
-import Input from "../components/common/Input";
 import { useState } from "react";
-import Button from "../components/common/Button";
 import GameLogs from "../User/GameLogs";
-
-const Image = styled.img`
-  width: 83px;
-  height: 83px;
-`;
 
 const UserSettingModal = () => {
   const { hideModal, showModal } = useModal();
@@ -48,13 +41,13 @@ const UserSettingModal = () => {
       <ModalBody>
         <Image src={me.profile} />
         <input type="file" accept="image/*" onChange={handleOnImageFileChange} />
-        <form onSubmit={handleNicknameChange}>
+        <Form onSubmit={handleNicknameChange}>
           <label>CHANGE NICKNAME</label>
           <input value={nickname} onChange={(e: ChangeEvent<HTMLInputElement>) => setNickname(e.target.value)} />
-          <Button name="" type="submit">
-            닉넴변경
-          </Button>
-        </form>
+          <ChangeNameButton name="" type="submit">
+            CHANGE
+          </ChangeNameButton>
+        </Form>
         <div>TWO-FACTOR AUTHENTICATE</div>
         <TwoFactorSettingButton onClick={handleClickTwoFactor}>2FA</TwoFactorSettingButton>
         <div>MATCH HISTORY</div>
@@ -74,4 +67,24 @@ const TwoFactorSettingButton = styled.button`
   background-color: #7abfff;
   border-radius: 10px;
   border: none;
+`;
+
+const ChangeNameButton = styled.button`
+  font-family: "bitbit";
+  width: 100px;
+  height: 33px;
+  background-color: #7abfff;
+  border-radius: 10px;
+  border: none;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Image = styled.img`
+  width: 83px;
+  height: 83px;
+  border-radius: 50%;
 `;
