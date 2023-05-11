@@ -90,4 +90,6 @@ const IconWrap = styled.div<IconProp>`
 const Image = styled.img`
   width: 32px;
   height: 32px;
+  border-radius: 50%;
+  border: 0.5px solid #d9d9d9;
 `;

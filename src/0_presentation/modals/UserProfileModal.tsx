@@ -10,11 +10,6 @@ import useChatService from "@root/1_application/useChatService";
 import { UserStateType } from "@root/2_domain/User";
 import useGameService from "@root/1_application/useGameService";
 
-const Image = styled.img`
-  width: 49px;
-  height: 49px;
-`;
-
 const UserProfileModal = () => {
   const { hideModal } = useModal();
   const { followUser, unFollowUser, blockUser, unBlockUser } = useUserService();
@@ -59,8 +54,7 @@ const UserProfileModal = () => {
       <ModalBody>
         <Image src={detail.profile} />
         <p>
-          Lv.{detail.level}
-          {detail.nickname}
+          Lv.{detail.level} {detail.nickname}
         </p>
         <div>Achievements</div>
         <div>
@@ -103,3 +97,10 @@ const UserProfileModal = () => {
 };
 
 export default UserProfileModal;
+
+const Image = styled.img`
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 0.5px solid #d9d9d9;
+`;

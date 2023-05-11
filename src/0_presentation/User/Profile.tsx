@@ -50,6 +50,8 @@ const ProfileWrapper = styled.div`
 `;
 
 const ProfileImage = styled.img`
-  width: 49px;
-  height: 49px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 0.5px solid #d9d9d9;
 `;
