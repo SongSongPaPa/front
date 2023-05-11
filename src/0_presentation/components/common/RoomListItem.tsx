@@ -17,7 +17,7 @@ interface RoomListItemProps {
 
 const RoomListItem = ({ roomId, isGame, name, option }: RoomListItemProps) => {
   const { joinChat } = useChatService();
-  const { joinGame, watchGame } = useGameService();
+  const { joinGame } = useGameService();
   const { showModal } = useModal();
   const setId = useSetRecoilState(focusedChatState);
 
@@ -33,9 +33,7 @@ const RoomListItem = ({ roomId, isGame, name, option }: RoomListItemProps) => {
   const handleClickJoinGame = () => {
     joinGame(roomId);
   };
-  const handleClickWatchGame = () => {
-    watchGame(roomId);
-  };
+
   return (
     <Room>
       <Title>{name}</Title>
@@ -47,11 +45,6 @@ const RoomListItem = ({ roomId, isGame, name, option }: RoomListItemProps) => {
       ) : (
         <Button name="join-chat" onClick={handleClickJoinChat}>
           JOIN
-        </Button>
-      )}
-      {isGame && (
-        <Button name="watch-game" onClick={handleClickWatchGame}>
-          WATCH
         </Button>
       )}
     </Room>

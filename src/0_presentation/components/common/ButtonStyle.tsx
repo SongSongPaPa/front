@@ -38,12 +38,12 @@ export const ButtonStyle: ButtonStyleType = {
     font-size: 16px;
     color: #000000; 
     width: 98px;
-    height: 53px;
+    height: 106px;
     background-color: #bfff8c;
-    border-radius: 25px 0px 0px 0px;
+    border-radius: 25px 0px 0px 25px;
     border: none;
     position: absolute;
-    top: 0%;
+    top: 0px;
     cursor: pointer;
   `,
   "watch-game": `
