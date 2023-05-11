@@ -49,20 +49,15 @@ const UserSettingModal = () => {
         <Image src={me.profile} />
         <input type="file" accept="image/*" onChange={handleOnImageFileChange} />
         <form onSubmit={handleNicknameChange}>
-          <Input
-            name="search"
-            value={nickname}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setNickname(e.target.value)}
-          />
+          <label>CHANGE NICKNAME</label>
+          <input value={nickname} onChange={(e: ChangeEvent<HTMLInputElement>) => setNickname(e.target.value)} />
           <Button name="" type="submit">
             닉넴변경
           </Button>
         </form>
-        <div>2차 비밀번호 설정</div>
-        <Button name="modal-round-common" onClick={handleClickTwoFactor}>
-          go
-        </Button>
-        <div>게임 전적</div>
+        <div>TWO-FACTOR AUTHENTICATE</div>
+        <TwoFactorSettingButton onClick={handleClickTwoFactor}>2FA</TwoFactorSettingButton>
+        <div>MATCH HISTORY</div>
         <GameLogs />
       </ModalBody>
       <Overlay onClick={onClose} />
@@ -71,3 +66,12 @@ const UserSettingModal = () => {
 };
 
 export default UserSettingModal;
+
+const TwoFactorSettingButton = styled.button`
+  font-family: "bitbit";
+  width: 50px;
+  height: 33px;
+  background-color: #7abfff;
+  border-radius: 10px;
+  border: none;
+`;

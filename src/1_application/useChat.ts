@@ -1,9 +1,15 @@
+import { chatRoomListState, chatState, focusedChatState } from "@root/2_domain/recoil/chatAtom";
 import GlobalSocket from "@root/3_infrastructure/GlobalSocket";
 import { useEffect } from "react";
+import { useResetRecoilState } from "recoil";
 import useChatCallbacks from "./useChatCallback";
 
 const useChatEvent = () => {
   const socket = GlobalSocket.getSocket();
+  const resetChatListState = useResetRecoilState(chatRoomListState);
+  const resetChatState = useResetRecoilState(chatState);
+  const resetFocusedChatState = useResetRecoilState(focusedChatState);
+
   const {
     onCreateChat,
     onUpdateChat,
@@ -26,6 +32,9 @@ const useChatEvent = () => {
 
     socket.on("disconnect", () => {
       console.log("Disconnected from server");
+      resetChatListState();
+      resetChatState();
+      resetFocusedChatState();
     });
     ///socket.on("single:chat:createChat", (data) => console.log(data));
     socket.on("broadcast:chat:createChat", onCreateChat);

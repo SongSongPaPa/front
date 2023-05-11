@@ -25,7 +25,7 @@ const GameInviteModal = () => {
     //console.log("invited game id: ", gameId);
     //console.log("invite game meState", me.state);
     //console.log("invite game chatInfo", chatInfo);
-    if (chatInfo) {
+    if (chatInfo && chatInfo.chatId > 0) {
       leaveChat();
     }
     joinGame(gameId);

@@ -2,12 +2,6 @@ import { meState, userSelector } from "@root/2_domain/recoil/userAtom";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 
-const StyledGameLog = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
 interface GameLogProps {
   winner: string;
   looser: string;
@@ -17,9 +11,11 @@ interface GameLogProps {
 const GameLog = ({ winner, looser, score }: GameLogProps) => {
   return (
     <StyledGameLog>
-      <div>{winner}</div>
-      <div>{looser}</div>
-      <div>{score}</div>
+      <div>{winner} : </div>
+      <div>{score >> 4}</div>
+      <div>........VS........</div>
+      <div>{looser} : </div>
+      <div>{score & 0b00001111}</div>
     </StyledGameLog>
   );
 };
@@ -32,12 +28,27 @@ const GameLogs = () => {
     return <div>Loading...</div>;
   }
   return (
-    <div>
+    <GameLogWrapper>
       {me.gameHistory.map((log) => (
         <GameLog key={log.id} winner={log.winner} looser={log.looser} score={log.score} />
       ))}
-    </div>
+    </GameLogWrapper>
   );
 };
 
 export default GameLogs;
+
+const StyledGameLog = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const GameLogWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 367px;
+  height: 200px;
+  overflow-y: scroll;
+  gap: 5px;
+`;

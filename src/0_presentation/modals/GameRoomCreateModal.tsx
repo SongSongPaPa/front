@@ -10,7 +10,7 @@ import { RxCross2 } from "react-icons/rx";
 const GameRoomCreateModal = () => {
   const { hideModal } = useModal();
   const { createGame } = useGameService();
-  const [selectedValue, setSelectedValue] = useState("100");
+  const [selectedValue, setSelectedValue] = useState("10");
   const [inputValue, setInputValue] = useState("");
   const navigate = useNavigate();
 

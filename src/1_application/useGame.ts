@@ -1,9 +1,16 @@
 import GlobalSocket from "@root/3_infrastructure/GlobalSocket";
 import { useEffect } from "react";
+import { useResetRecoilState } from "recoil";
 import useGameCallbacks from "./useGameCallback";
+import { gameRoomListState, gamingState, endGameState, focusedGameState } from "@root/2_domain/recoil/gameAtom";
 
 const useGameEvent = () => {
   const socket = GlobalSocket.getSocket();
+  const resetGameRoomList = useResetRecoilState(gameRoomListState);
+  const resetGamingState = useResetRecoilState(gamingState);
+  const resetEndGameState = useResetRecoilState(endGameState);
+  const resetFocusedGameState = useResetRecoilState(focusedGameState);
+
   const {
     onCreateGame,
     onBroadDeleteGame,
@@ -30,6 +37,10 @@ const useGameEvent = () => {
 
     socket.on("disconnect", () => {
       console.log("User socket Disconnected from server");
+      resetGameRoomList();
+      resetGamingState();
+      resetEndGameState();
+      resetFocusedGameState();
     });
 
     socket.on("broadcast:game:createGame", onCreateGame);

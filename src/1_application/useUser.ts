@@ -2,10 +2,16 @@ import GlobalSocket from "@root/3_infrastructure/GlobalSocket";
 import { useEffect } from "react";
 import useUserCallback from "./useUserCallback";
 import { useNavigate } from "react-router-dom";
+import { useResetRecoilState } from "recoil";
+import { detailState, meState, userListFilterState, userListState } from "@root/2_domain/recoil/userAtom";
 
 const useUserEvent = () => {
   const socket = GlobalSocket.getSocket();
-  const navigate = useNavigate();
+  const resetMe = useResetRecoilState(meState);
+  const resetDetail = useResetRecoilState(detailState);
+  const resetUserList = useResetRecoilState(userListState);
+  const resetUserFilter = useResetRecoilState(userListFilterState);
+
   const {
     onConnect,
     onChangeState,
@@ -26,6 +32,10 @@ const useUserEvent = () => {
     socket.on("disconnect", () => {
       //navigate("/");
       console.log("User socket Disconnected from server");
+      resetMe();
+      resetDetail();
+      resetUserList();
+      resetUserFilter();
     });
 
     socket.on("single:user:error", onError);
