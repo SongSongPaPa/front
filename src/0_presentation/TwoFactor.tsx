@@ -1,24 +1,10 @@
 import React, { FormEvent, ChangeEvent, useState } from "react";
 import Button from "./components/common/Button";
 import { PageWrapper } from "./PageStyle";
+import { ModalBody } from "./modals/ModalStyle";
 import styled from "styled-components";
 import Input from "./components/common/Input";
 import useUserService from "@root/1_application/useUserService";
-
-const Wrapper = styled.div`
-  background-color: #fcfcfc;
-  width: 864px;
-  height: 683px;
-  border-radius: 25px;
-  border: none;
-  gap: 20px;
-  position: relative;
-  top: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-`;
 
 const TwoFactor = () => {
   const [code, setCode] = useState("");
@@ -40,14 +26,15 @@ const TwoFactor = () => {
   };
   return (
     <PageWrapper>
-      <Wrapper>
+      <ModalBody>
+        <h1>Check TwoFactor Code</h1>
         <form onSubmit={handleCodeSubmit}>
           <Input name="search" value={code} onChange={handleCodeChange} />
           <Button name="modal-round-common" type="submit">
             submit
           </Button>
         </form>
-      </Wrapper>
+      </ModalBody>
     </PageWrapper>
   );
 };
