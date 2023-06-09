@@ -6,12 +6,10 @@ import UserInterface from "./User/UserInterface";
 import useModal from "@root/1_application/useModal";
 import { PageWrapper, RoomListContainer, ButtonContainer, RoomWrapper, UserInterfaceWrapper } from "./PageStyle";
 import useGameService from "@root/1_application/useGameService";
-import { useNavigate } from "react-router-dom";
 
 const Lobby = () => {
   const { showModal } = useModal();
   const { quickGame } = useGameService();
-  const navigate = useNavigate();
 
   const handleClickQuickStart = () => {
     quickGame();

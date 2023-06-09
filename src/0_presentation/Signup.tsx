@@ -1,8 +1,7 @@
 import useUserService from "@root/1_application/useUserService";
 import { meState } from "@root/2_domain/recoil/userAtom";
-import React, { useState, useEffect } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 
 const Signup = () => {
@@ -11,7 +10,6 @@ const Signup = () => {
   const [nickname, setNickname] = useState("");
   const [base64, setBase64] = useState("");
   const { signUp } = useUserService();
-  const navigate = useNavigate();
 
   const handleOnImageFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files![0];
