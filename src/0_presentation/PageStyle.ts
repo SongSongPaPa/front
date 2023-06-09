@@ -32,6 +32,14 @@ export const RoomListContainer = styled.div`
   left: 10px;
 `;
 
+export const ContainerTitle = styled.div`
+  display: flex;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 24px;
+`;
+
 export const ButtonContainer = styled.div`
   position: absolute;
   top: 10px;

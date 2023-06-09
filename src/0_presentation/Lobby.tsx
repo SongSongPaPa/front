@@ -4,7 +4,14 @@ import GameRoomList from "./Game/RoomList";
 import ChatRoomList from "./Chat/RoomList";
 import UserInterface from "./User/UserInterface";
 import useModal from "@root/1_application/useModal";
-import { PageWrapper, RoomListContainer, ButtonContainer, RoomWrapper, UserInterfaceWrapper } from "./PageStyle";
+import {
+  PageWrapper,
+  RoomListContainer,
+  ButtonContainer,
+  RoomWrapper,
+  UserInterfaceWrapper,
+  ContainerTitle,
+} from "./PageStyle";
 import useGameService from "@root/1_application/useGameService";
 
 const Lobby = () => {
@@ -25,6 +32,7 @@ const Lobby = () => {
     <PageWrapper>
       <RoomWrapper>
         <RoomListContainer>
+          <ContainerTitle>GAME</ContainerTitle>
           <ButtonContainer>
             <Button name="lobby-small-common" onClick={handleClickQuickStart}>
               QUICK START
@@ -36,6 +44,7 @@ const Lobby = () => {
           <GameRoomList></GameRoomList>
         </RoomListContainer>
         <RoomListContainer>
+          <ContainerTitle>CHAT</ContainerTitle>
           <ButtonContainer>
             <Button name="lobby-small-common" onClick={handleClickChatRoomCreate}>
               CREATE ROOM
