@@ -1,22 +1,24 @@
-import React from "react";
-import Button from "./components/common/Button";
-import GameRoomList from "./Game/RoomList";
-import ChatRoomList from "./Chat/RoomList";
-import UserInterface from "./User/UserInterface";
+import useGameService from "@root/1_application/useGameService";
 import useModal from "@root/1_application/useModal";
+import GlobalSocket from "@root/3_infrastructure/GlobalSocket";
+import { useEffect } from "react";
+import ChatRoomList from "./Chat/RoomList";
+import GameRoomList from "./Game/RoomList";
 import {
+  ButtonContainer,
+  ContainerTitle,
   PageWrapper,
   RoomListContainer,
-  ButtonContainer,
   RoomWrapper,
   UserInterfaceWrapper,
-  ContainerTitle,
 } from "./PageStyle";
-import useGameService from "@root/1_application/useGameService";
+import UserInterface from "./User/UserInterface";
+import Button from "./components/common/Button";
 
 const Lobby = () => {
   const { showModal } = useModal();
   const { quickGame } = useGameService();
+  const socket = GlobalSocket.getSocket();
 
   const handleClickQuickStart = () => {
     quickGame();
@@ -24,6 +26,10 @@ const Lobby = () => {
   const handleClickChatRoomCreate = () => {
     showModal({ modalType: "ChatRoomCreateModal" });
   };
+
+  useEffect(() => {
+    socket.connect();
+  }, [socket]);
 
   const handleClickGameRoomCreate = () => {
     showModal({ modalType: "GameRoomCreateModal" });
